@@ -1,0 +1,43 @@
+Date: October 22, 2015
+Instructions:
+	(Note "Please use one email for all these things")
+	1) Create a GitHub account. (www.github.com)
+	2) Create a FreedCamp account (www.freedcamp.com)
+	3) Download and install Git (https://git-scm.com/)
+	4) Install node and npm (https://nodejs.org/en/)
+	5) Comment the email address you used, and your GitHub account 
+		username. Please tell me the operating system you intend to 
+		use so I can start making some scripts.
+
+	>> I am going to add you as a contributor in GitHub so you can push
+		into our repository.
+	>> Freedcamp will be used to check our progress. We can discuss tasks
+		when we meet. Once you have an assigned task, place it to the in-
+		progress when you are working on it, and the completed column once
+		finished. Please test your code so we won't have a hard time during
+		integration.
+	>> Github will be our VCS. We don't need to meet to have progress. But you do need
+		to have some form of an internet connection.
+
+
+	=== RULES ===
+	1) DO NOT PUSH ASSETS into our github repository.
+	 	Assets include but are not limited to:
+	 	Images, audio files, icons, etc. These files are large and will
+	 	make it inconvenient to push, pull, and commit. Transfer these large
+	 	files via FB or USB flash drive instead so our workflow is faster.
+
+	 	Pushing assets will also make our .git file unnecessarily large.
+
+	2) Commit frequently, integrate frequently.
+		Let us try to have a working system state every 24 hours. Do not push
+		buggy code. Please test your code first.
+
+	3) Document.
+		Comment well! And be sure to make self-documenting commit messages.
+		Especially in commit messages. Avoud vague statements like "fixed bug".
+		Commit messages are useful whenever we want to track down commits that
+		can break our system. Don't worry if you make a mistake in your commit
+		message; we can check what you changed between commits anyway.
+
+	4) There are exceptions to these rules. If you have to, you may ask.

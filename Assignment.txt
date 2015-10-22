@@ -1,0 +1,28 @@
+October 22, 2015
+Please do these after setting up (see October 22 Instructions)
+
+1) go to http://nodeschool.io
+
+2) go to terminal and type: 
+	npm install -g git-it learnyounode
+
+3) Try to finish all the tasks in learnyounode. You can copy code online.
+	The solutions are online as well. I am not going to check
+	any code. Just make sure you understand the core concepts.
+	
+	They are really made to be hard, so you may need to research
+	a little bit. You may find the javascript documentation and 
+	nodejs documentation handy. Ask for help if you need it
+	or do not understand it. Don't try to finish it in one day.
+
+	How to do learnyounode:
+	type:
+		learnyounode
+	in the terminal and you will be prompted to a separate menu. From
+	there, try to follow the directions. If tou need help, tell me.
+	Try to use google and get acquainted with stackoverflow.
+
+4) bonuses: try to not use any external libraries for learnyounode. Only
+	use core modules (fs, http, ...)
+
+5) 
