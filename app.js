@@ -6,7 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var auth = require('./routes/auth')
+var auth = require('./routes/auth');
+var music = require('./routes/music');
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/auth', auth);
+app.use('/music', music);
 app.get('*',  function(req, res, next) {
   res.sendStatus(404);
 });
