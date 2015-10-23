@@ -2,9 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Mattify' });
-});
+router.route('/login')
+	.post(function(req, res, next) {
+		res.send('login route');
+	});
 
 module.exports = router;
 

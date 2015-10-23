@@ -1,0 +1,13 @@
+October 22, 2015
+Setting up our system (No database yet!)
+Note: Please ensure that you have read the instructions of October 22, 2015
+1) In your terminal, navigate to a folder where you want to place the project.
+2) In the terminal, type in:
+	git clone https://github.com/matthewmarcos94/CMSC127_Spotify.git
+3)	cd CMSC127_Spotify
+4)	For Linux users:
+		sudo npm install
+	For Windows users (eww):
+		npm install
+5)	To start server:
+		npm start

@@ -8,6 +8,11 @@ Instructions:
 	5) Comment the email address you used, and your GitHub account 
 		username. Please tell me the operating system you intend to 
 		use so I can start making some scripts.
+	6) Read this: https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup
+		Set up your name and email with git with:
+		git config --global user.name <userNameNoAngleBracketsOrQuotes>
+		git config --global user.email <emailNoAngleBracketsOrQuotes@whatever.com>
+		Just do the "Your Identity" part. Ask for help if necessary.
 
 	>> I am going to add you as a contributor in GitHub so you can push
 		into our repository.
@@ -18,7 +23,6 @@ Instructions:
 		integration.
 	>> Github will be our VCS. We don't need to meet to have progress. But you do need
 		to have some form of an internet connection.
-
 
 	=== RULES ===
 	1) DO NOT PUSH ASSETS into our github repository.
@@ -41,3 +45,4 @@ Instructions:
 		message; we can check what you changed between commits anyway.
 
 	4) There are exceptions to these rules. If you have to, you may ask.
+w

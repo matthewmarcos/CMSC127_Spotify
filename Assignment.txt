@@ -25,4 +25,6 @@ Please do these after setting up (see October 22 Instructions)
 4) bonuses: try to not use any external libraries for learnyounode. Only
 	use core modules (fs, http, ...)
 
-5) 
+5) Try to understand the concept of an MVC and a RESTful api. Youtube lang naman
+	ito so no pressure. Just watch a couple vids pag medyo bangag na kayo sa 
+	124 or sa 131.
