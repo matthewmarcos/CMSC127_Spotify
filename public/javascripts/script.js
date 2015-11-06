@@ -1,1 +1,1 @@
-alert('FiuCN');
+console.log('Script.js has loaded')

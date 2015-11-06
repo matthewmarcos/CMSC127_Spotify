@@ -12,7 +12,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '5000');
 app.set('port', port);
 
 /**
@@ -26,6 +26,11 @@ var server = http.createServer(app);
  */
 
 server.listen(port, function() {
+/**
+ * This function executes when the server starts.
+ * Put the admin seed here, as well as the creation of
+ * other tables.  
+ */
   console.log('server is working bro');
 });
 
