@@ -2,32 +2,55 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Mattify</title>
+	<title>Spotify</title>
 	<link rel="stylesheet" href="/stylesheets/reset.css">
 	<link rel="stylesheet" href="/stylesheets/materialize.min.css">
 	<link rel="stylesheet" href="/stylesheets/style.css">
 </head>
-<body ng-app="mattifyApp">
-	<h1>Hello! I am a hot bitch</h1>
-	<div class="container row">
-		<div class="row">
-			<form class="login-form col s4 offset-s8" ng-submit="printData">
-				<div class="input-field ">
-					<input type="text" name="username" ng-bind="username" id="username" >
-					<label for="username">Username</label>
+
+<body ng-app="mattifyApp" class="brown">
+	<nav class="grey lighten-4">
+    <div class="nav-wrapper row">
+			<div class="col s12">
+	      <a href="#" class="brand-logo brown-text bold">SPOTIFY</a>
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+	        <a class="waves-effect waves-light btn brown white-text">LOGIN</a>
+
+					<li><a class="grey-text text-darken-4">Premium</a></li>
+					<li><a class="grey-text text-darken-4">Help</a></li>
+					<li id="navmargin"><a class="grey-text text-darken-4">Download</a></li>
+
+						<li><a class="grey-text text-darken-4">SIGN UP</a></li>
+	      </ul>
+			</div>
+
+    </div>
+  </nav>
+		<footer class="page-footer grey lighten-4">
+			<div class="container">
+				<div class="row">
+					<div class="col l6 s12">
+						<h5 class="brown-text text-brown">Footer Content</h5>
+						<p class="grey-text text-darken-1">You can use rows and columns here to organize your footer content.</p>
+					</div>
+					<div class="col l4 offset-l2 s12">
+						<h5 class="brown-text text-brown">Links</h5>
+						<ul>
+							<li><a class="grey-text text-darken-1" href="#!">Link 1</a></li>
+							<li><a class="grey-text text-darken-1" href="#!">Link 2</a></li>
+							<li><a class="grey-text text-darken-1" href="#!">Link 3</a></li>
+							<li><a class="grey-text text-darken-1" href="#!">Link 4</a></li>
+						</ul>
+					</div>
 				</div>
-				<div class="input-field ">
-					<input type="password" name="password" ng-bind="password" id="password" >						
-				<label for="password">Password</label>
-				</div>
-				<div class="input-field ">
-					<a type="submit" id="submit" class ="btn waves-effect waves-light col s12">Log In!</a>
-				</div>
-				<br/>
-				<a href="#register" class="col s10 offset-s2">No account? Register here!</a>	
-			</form>	
+			</div>
+
+		<div class="footer-copyright grey lighten-2">
+			<div class="black-text container">© 2015 Copyright Text
+				<a class="black-text right" href="#!">More Links</a>
+			</div>
 		</div>
-	</div>
+	</footer>
 </body>
 
 	<script src="/javascripts/jquery.min.js"></script>
