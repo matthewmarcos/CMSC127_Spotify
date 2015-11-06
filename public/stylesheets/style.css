@@ -1,3 +1,6 @@
+html {
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
 
 body {
     display: flex;
@@ -11,10 +14,41 @@ footer{
   bottom: 0;
 }
 
-.bold{
+h5{
+  margin-left: 45px;
+}
+
+h6{
+    margin-left: 40px;
+    font-weight: bolder;
+}
+
+#bold{
   font-weight: bolder;
 }
 
 #navmargin{
   margin-right: 50px;
+}
+
+#iconimg{
+  height: 410px;
+  width: 410px;
+}
+
+#bodyButton{
+  margin-top: 15px;
+  margin-left: 150px;
+  margin-bottom: 15px;
+}
+
+#linkbutton{
+  border-radius: 20px;
+  outline-style: groove;
+  outline-color: white;
+}
+
+#topicon{
+  height: 100px;
+  width: 100px;
 }
