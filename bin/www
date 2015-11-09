@@ -31,7 +31,7 @@ server.listen(port, function() {
  * Put the admin seed here, as well as the creation of
  * other tables.  
  */
-  console.log('server is working bro');
+  console.log('Server is listening at localhost:' + port);
 });
 
 server.on('error', onError);

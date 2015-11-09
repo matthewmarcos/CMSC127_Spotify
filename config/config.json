@@ -1,0 +1,20 @@
+{
+  "development": {
+    "username": "cmsc127project",
+    "password": null,
+    "database": "spotify",
+    "host": "127.0.0.1",
+  },
+  "test": {
+    "username": "cmsc127project",
+    "password": null,
+    "database": "spotify",
+    "host": "127.0.0.1",
+  },
+  "production": {
+	"username": "cmsc127project",
+    "password": null,
+    "database": "spotify",
+    "host": "127.0.0.1",
+  }
+}
