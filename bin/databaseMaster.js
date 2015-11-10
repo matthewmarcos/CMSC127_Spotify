@@ -7,7 +7,7 @@
 var pg = require('pg');
 module.exports = function() {
 
-	var conString = "postgres://app_ro:myPassword@localhost/test1";
+	var conString = "postgres://cmsc127spotify:cmsc127@localhost/spotify";
 	var client = new pg.Client(conString);
 
 	client.connect(function(err) {
@@ -25,5 +25,11 @@ module.exports = function() {
 			console.log('Database connection successful');
 			client.end();
 		});
+
+		
 	});
 };
+
+createUserTable = function() {
+
+}
