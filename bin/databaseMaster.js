@@ -5,6 +5,7 @@
 */
 
 var pg = require('pg');
+
 module.exports = function() {
 
 	var conString = "postgres://cmsc127spotify:cmsc127@localhost/spotify";
