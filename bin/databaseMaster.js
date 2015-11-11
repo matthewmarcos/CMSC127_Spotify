@@ -26,10 +26,18 @@ module.exports = function() {
 			client.end();
 		});
 
-		
+		// client.query();
+		// client.query();
+		// client.query();
+		// client.query();
+		// client.query();
+		// client.query();
+		// client.query();
+		// client.query();
+		// client.query();
+		// client.query();
+		// client.query();
+		// client.end();
+
 	});
 };
-
-createUserTable = function() {
-
-}

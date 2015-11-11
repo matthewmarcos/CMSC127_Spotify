@@ -36,7 +36,7 @@ server.listen(port, function() {
 * other tables.  
 */
 	console.log('Server is listening at localhost:' + port);
-	databaseMaster(); //Creates Tables and admin seed
+	// databaseMaster(); //Creates Tables and admin seed
 	// console.log(process.env);
 });
 
