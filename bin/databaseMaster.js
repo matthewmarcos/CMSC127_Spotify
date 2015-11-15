@@ -5,40 +5,33 @@
 */
 
 var pg = require('pg');
+var async = require('async');
 
 module.exports = function() {
 
-	var conString = "postgres://cmsc127spotify:cmsc127@localhost/spotify";
-	var client = new pg.Client(conString);
+	var connString = "postgres://cmsc127spotify:cmsc127@localhost/spotify";
+	var client = new pg.Client(connString);
 
 	client.connect(function(err) {
 
-		if(err) {
-			return console.error('could not connect to postgres', err);
-		}
-		
-		client.query('SELECT NOW() AS "theTime"', function(err, result) {
-			if(err) {
-				return console.error('error running query', err);
+		async.waterfall([
+			function(callback) {
+				client.query('SELECT * from person;', function(err, data) {
+					if(err) {
+						callback(err);
+					} else {
+						callback(null, data);
+					}
+				});
+			},
+			function(data, callback) {
+				// console.log('rows');
+				callback(null, data);
 			}
-			console.log(result.rows[0].theTime);
-			//output: Tue Jan 15 2013 19:12:47 GMT-600 (CST)
-			console.log('Database connection successful');
+		], function(err, data) {
+			console.log(data.rows);
+			console.log('Data Retrieved successfully.');
 			client.end();
 		});
-
-		// client.query();
-		// client.query();
-		// client.query();
-		// client.query();
-		// client.query();
-		// client.query();
-		// client.query();
-		// client.query();
-		// client.query();
-		// client.query();
-		// client.query();
-		// client.end();
-
 	});
 };
