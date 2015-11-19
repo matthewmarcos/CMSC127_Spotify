@@ -105,7 +105,7 @@
 							<label for="confirm_password">Retype Password</label>
 						</div>
 					</div>
-					<input ng-disabled="frm.$invalid" type="button" value="Submit" ng-click="showMe()">
+					<input type="button" value="Submit" ng-click="showMe()">
 				 </div>
 
 			</div>
