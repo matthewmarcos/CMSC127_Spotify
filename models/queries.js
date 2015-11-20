@@ -1,0 +1,1 @@
+exports.user_string = "CREATE TABLE IF NOT EXISTS users( User_id serial PRIMARY KEY, username varchar(25), password varchar(40), email varchar(225) UNIQUE, isApproved boolean DEFAULT false, isAdmin boolean DEFAULT false, dateApproved date)";

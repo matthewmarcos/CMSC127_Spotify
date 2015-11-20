@@ -8,7 +8,7 @@ var app = require('../app');
 var debug = require('debug')('Mattify:server');
 var http = require('http');
 var pg = require('pg');
-var databaseMaster = require('./databaseMaster');
+var dbInit = require('./../models/dbInit');
 var async = require('async');
 
 
@@ -34,9 +34,9 @@ server.listen(port, function() {
 * This function executes when the server starts.
 * Put the admin seed here, as well as the creation of
 * other tables.  
-*/
+*/	
+	dbInit(); //Creates Tables and admin seed
 	console.log('Server is listening at localhost:' + port);
-	databaseMaster(); //Creates Tables and admin seed
 	// console.log(process.env);
 });
 
