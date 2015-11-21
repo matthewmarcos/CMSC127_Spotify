@@ -34,7 +34,7 @@
 		<div class="row">
 			<div class="valign-wrapper">
 				<div>
-				 <img id="iconimg" class="responsive-img" src="/images/icon.png">
+					<img id="iconimg" class="responsive-img" src="/images/icon.png">
 			 	</div>
 
 			 <div id = "home">

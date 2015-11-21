@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 
 router.route('/something/:id')
 	.get(function(req, res, next) {
-		res.json({ key: req.params.id});
+		res.send(req.params.id);
 	});
 
 router.route('*')

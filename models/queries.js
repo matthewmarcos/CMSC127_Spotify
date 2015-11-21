@@ -6,6 +6,7 @@
 
 var bcrypt = require('bcrypt-nodejs');
 var adminPassword = bcrypt.hashSync('admin');
+exports.adminPassword = adminPassword;
 
 exports.users = "CREATE TABLE IF NOT EXISTS users( users_id serial PRIMARY KEY, username varchar(25), password varchar(125), email varchar(225) UNIQUE, isApproved boolean DEFAULT false, isAdmin boolean DEFAULT false, dateApproved date)";
 exports.users_name = "CREATE TABLE IF NOT EXISTS users_name (Users_id integer REFERENCES users(users_id), fname varchar(25) NOT NULL, lname varchar(25) NOT NULL)";
