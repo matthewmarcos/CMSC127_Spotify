@@ -1,5 +1,9 @@
 // http://stackful-dev.com/setting-up-nodejs-and-postgresql-on-ubuntu-servers.html
-
+// createuser -P cmsc127spotify
+// password: cmsc127
+// createdb -O cmsc127spotify spotify
+// psql -U cmsc127spotify -W spotify
+// dropdb spotify
 /*
 	databaseMaster:
 		Create tables if does not exist in schema.
@@ -13,24 +17,78 @@ var queryString = require('./queries.js');
 
 module.exports = function() {
 
-	// async.series([
-		// ]);
-	createUser(disconnectAll);
-
-	// testDate(function() {
-	// 	testTable(disconnectAll);
-	// });
-
+	async.series([
+		function(callback) {
+            // create usrs table
+			createUser(callback);
+		},
+        function(callback) {
+            //Create users_name table
+            createUsersName(callback);
+        },
+		function(callback) {
+			// Create admin seed on users tables
+            // adminSeed(callback);
+		},
+        function(callback) {
+            //Insert First name and last name to admin user_name
+            // insertName(callback);
+        }
+	],
+	function(callback) {
+		disconnectAll();
+	});
 };
 
+
+//Insert First name and last name to admin user_name
+var insertName = function(onDone) {
+    pg.connect(dbUrl, function(err, client) {
+        client.query(queryString.insert_user, function(err, data){
+            if(err) {
+                console.log(err);
+                onDone(err, data);
+            }
+            onDone(null, data);
+        });
+    });
+};
+
+
+//Insert admin account credentials
+var adminSeed = function(onDone) {
+    pg.connect(dbUrl, function(err, client) {
+        client.query(queryString.insert_admin, function(err, data){
+            if(err) {
+                console.log(err);
+                onDone(err, data);
+            }
+            onDone(null, data);
+        });
+    });
+};
+
+//Create user_name table
+var createUsersName = function(onDone) {
+    pg.connect(dbUrl, function(err, client) {
+        client.query(queryString.users_name, function(err, data){
+            if(err) {
+                console.log(err);
+                onDone(err, data);
+            }
+            onDone(null, data);
+        });
+    });
+};
 
 var createUser = function(onDone) {
 	pg.connect(dbUrl, function(err, client) {
 		client.query(queryString.user_string, function(err, data){
 			if(err) {
 				console.log(err);
+                onDone(err, data);
 			}
-			onDone();
+			onDone(null, data);
 		});
     });
 };
