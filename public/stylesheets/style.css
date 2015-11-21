@@ -19,33 +19,35 @@ h6{
     font-weight: bolder;
 }
 
-
+ .input-field{
+   padding: 0px;
+ }
 /* label color */
  .input-field label {
-   color: #eeeeee
+   color: #C0C0C0
  }
  /* label focus color */
  .input-field input[type=text]:focus + label {
-   color: #eeeeee
+   color: #C0C0C0
  }
  /* label underline focus color */
  .input-field input[type=text]:focus {
-   border-bottom: 1px solid #ffffff;
-   box-shadow: 0 1px 0 0 #ffffff;
+   border-bottom: 1px solid #C0C0C0;
+   box-shadow: 0 1px 0 0 #C0C0C0;
  }
  /* valid color */
  .input-field input[type=text].valid {
-   border-bottom: 1px solid #ffffff;
-   box-shadow: 0 1px 0 0 #ffffff;
+   border-bottom: 1px solid #C0C0C0;
+   box-shadow: 0 1px 0 0 #C0C0C0;
  }
  /* invalid color */
  .input-field input[type=text].invalid {
-   border-bottom: 1px solid #ffffff;
-   box-shadow: 0 1px 0 0 #ffffff;
+   border-bottom: 1px solid #C0C0C0;
+   box-shadow: 0 1px 0 0 #C0C0C0;
  }
  /* icon prefix focus color */
  .input-field .prefix.active {
-   color: #ffffff;
+   color: #C0C0C0;
  }
 
 #bold{
@@ -80,4 +82,15 @@ h6{
 
 #homeh5{
   margin-left: 45px;
+}
+
+#submitbutton{
+  margin-top: 20px;
+  margin-left: 130px;
+}
+
+#loginIcon{
+  height: 150px;
+  width: 150px;
+  margin-top: 50px;
 }

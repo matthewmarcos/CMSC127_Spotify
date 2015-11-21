@@ -14,103 +14,78 @@
 </head>
 
 <body  class="brown">
-	<nav class="grey lighten-4">
-    <div class="nav-wrapper row">
-			<div class="col s12">
-	      <a href="#" id="bold" class="brand-logo brown-text">Spotify</a>
-	      <ul id="nav-mobile" class="right hide-on-med-and-down">
-	        <a class="waves-effect waves-light btn brown white-text" action="signup.html">LOGIN</a>
 
-					<li><a class="grey-text text-darken-4">Premium</a></li>
-					<li><a class="grey-text text-darken-4">Help</a></li>
-					<li id="navmargin"><a class="grey-text text-darken-4">Download</a></li>
-						<li><a class="grey-text text-darken-4">SIGN UP</a></li>
-	      </ul>
-			</div>
-    </div>
-  </nav>
+	<div id="home">
+		<nav class="grey lighten-4">
+	    <div class="nav-wrapper row">
+				<div class="col s12">
+		      <a href="#" id="bold" class="brand-logo brown-text">Spotify</a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		        <a class="waves-effect waves-light btn brown white-text" action="signup.html">LOGIN</a>
 
-	<div class="container">
-		<div class="row">
-			<div class="valign-wrapper">
-				<div>
-				 <img id="iconimg" class="responsive-img" src="/images/icon.png">
-			 	</div>
+						<li><a class="grey-text text-darken-4">Premium</a></li>
+						<li><a class="grey-text text-darken-4">Help</a></li>
+						<li id="navmargin"><a class="grey-text text-darken-4">Download</a></li>
+							<li><a class="grey-text text-darken-4">SIGN UP</a></li>
+		      </ul>
+				</div>
+	    </div>
+	  </nav>
 
-			 <div id = "home">
-				 <h4 id="bold" class="grey-text text-lighten-4">Get the right music, right now.</h4>
-				 <h5 id="homeh5" class="grey-text text-lighten-4">Listen to million of songs for free!</h5>
-				 <a id="bodyButton" class="waves-effect waves-light btn grey"></i>Start</a>
-				 <hr>
-				 <h6 class="grey-text text-lighten-5">By clicking <a class="pink-text text-lighten-4">Start
-				 </a> you agree to Spotify's <a class="pink-text text-lighten-4">Condition of use.</a></h6>
-			 </div>
-			 <div id = "signup" ng-controller="authController">
-					 <h5 id="bold" class="grey-text text-lighten-4">Create your free Spotify account</h5>
-				 		<hr>
+		<div class="container">
+			<div class="row">
+				<div class="valign-wrapper">
+					<div>
+					 <img id="iconimg" class="responsive-img" src="/images/icon.png">
+				 	</div>
 
-				 	<form name = "frm" >
-
-					<!--<div class="row">
-						 <div class="input-field col s6">
-							 <input id="last_name" type="text" class="validate" ng-model="user.firstName">
-							 <label for="last_name">First Name</label>
-						 </div>
-						 <div class="input-field col s6">
-							 <input id="first_name" type="text" class="validate" ng-model="user.lastName">
-							 <label for="last_name">Last Name</label>
-						 </div>
-		 	 		</div> -->
-
-					<div class="row">
-						<div class="input-field">
-	 					<input id="username" name="uName" type="text" class="validate" ng-model="user.userName" required>
-	 					<span ng-show = "frm.uName.$dirty && frm.uName.$error.required">Required!</span>
-	 					<label for="username">Username</label>
-
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="input-field col s6">
-							<input id="email" type="email" name="eMail"class="validate" ng-model="user.email" required>
-		 					<span ng-show = "frm.eMail.$dirty && frm.eMail.$error.required">Required!</span>
-		 					<span ng-show = "frm.eMail.$dirty && frm.eMail.$error.email">Invalid Email</span>
-							<label for="email">Email</label>
-						</div>
-
-						<div class="input-field col s6">
-							<input id="confirm_email" type="email" name="eMail2" class="validate" ng-model="user.confirmEmail" required>
-		 					<span ng-show = "frm.eMail2.$dirty && frm.eMail2.$error.required">Required!</span>
-		 					<span ng-show = "frm.eMail2.$dirty && frm.eMail2.$error.email">Invalid Email</span>
-							<label for="confirm_email">Confirm Email</label>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="input-field col s6">
-							<input id="password" type="password" name="pw" class="validate" ng-model="user.password" ng-minlength="5" ng-maxlength="20" required>
-		 					<span ng-show = "frm.pw.$dirty && frm.pw.$error.required">Required!</span>
-		 					<span ng-show = "frm.pw.$dirty && frm.pw.$error.minlength">Too Short!</span>
-		 					<span ng-show = "frm.pw.$dirty && frm.pw.$error.maxlength">Too Long!</span>
-		 					<label for="password">Password</label>
-						</div>
-
-						<div class="input-field col s6">
-							<input id="confirm_password" type="password" name="pw2"class="validate" ng-model="user.confirmPassword" ng-minlength="5" ng-maxlength="20" required>
-							<span ng-show = "frm.pw2.$dirty && frm.pw2.$error.required">Required!</span>
-							<span ng-show = "frm.pw2.$dirty && frm.pw2.$error.minlength">Too Short!</span>
-		 					<span ng-show = "frm.pw2.$dirty && frm.pw2.$error.maxlength">Too Long!</span>
-
-							<label for="confirm_password">Retype Password</label>
-						</div>
-					</div>
-					<input ng-disabled="frm.$invalid" type="button" value="Submit" ng-click="showMe()">
+				 <div>
+					 <h4 id="bold" class="grey-text text-lighten-4">Get the right music, right now.</h4>
+					 <h5 id="homeh5" class="grey-text text-lighten-4">Listen to million of songs for free!</h5>
+					 <a id="bodyButton" class="waves-effect waves-light btn grey"></i>Start</a>
+					 <hr>
+					 <h6 class="grey-text text-lighten-5">By clicking <a class="pink-text text-lighten-4">Start
+					 </a> you agree to Spotify's <a class="pink-text text-lighten-4">Condition of use.</a></h6>
 				 </div>
-
+				</div>
 			</div>
 		</div>
 	</div>
+
+		<div class="container center-align" id="login">
+			<div ng-controller="authController">
+
+				<div class="valign-wrapper">
+					<img id="loginIcon" class="responsive-img" src="/images/icon.png">
+				</div>
+
+				<div class="valign-wrapper">
+					<div class="card-panel hoverable grey lighten-4">
+						<div class="row">
+
+							<div class="row">
+							 <div class="input-field col s12">
+							 <input id="username" name="uName" type="text" class="validate" ng-model="user$$$.userName" required>
+							 <span ng-show = "frm.uName.$dirty && frm.uName.$error.required" class="white-text">Required!</span>
+							 <label for="username">Username</label>
+							</div>
+							</div>
+
+							<div class="row">
+						   <input id="password" type="password" name="pw" class="validate" ng-model="user.password" ng-minlength="5" ng-maxlength="20" required>
+						   <span ng-show = "frm.pw.$dirty && frm.pw.$error.required">Required!</span>
+						   <span ng-show = "frm.pw.$dirty && frm.pw.$error.minlength">Too Short!</span>
+						   <span ng-show = "frm.pw.$dirty && frm.pw.$error.maxlength">Too Long!</span>
+						   <label for="password">Password</label>
+							</div>
+
+							<a id="submitbutton" class="waves-effect waves-light btn grey" ng-disabled="frm.$invalid" value="Submit" ng-click="showMe()"></i>LOGIN</a>
+ 						</div>
+				 	</div>
+				</div>
+
+			</div>
+		</div>
 
 
 		<footer class="page-footer grey lighten-4">
