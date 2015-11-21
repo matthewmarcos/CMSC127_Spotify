@@ -6,8 +6,8 @@
 	<link rel="stylesheet" href="/stylesheets/reset.css">
 	<link rel="stylesheet" href="/stylesheets/materialize.min.css">
 	<link rel="stylesheet" href="/stylesheets/style.css">
-	
-	
+
+
 	<style>
 	input.ng-invalid.$dirty{ border: 1px solid red;}
 	</style>
@@ -48,9 +48,9 @@
 			 <div id = "signup" ng-controller="authController">
 					 <h5 id="bold" class="grey-text text-lighten-4">Create your free Spotify account</h5>
 				 		<hr>
-				 	
+
 				 	<form name = "frm" >
-				 	
+
 					<!--<div class="row">
 						 <div class="input-field col s6">
 							 <input id="last_name" type="text" class="validate" ng-model="user.firstName">
@@ -61,7 +61,7 @@
 							 <label for="last_name">Last Name</label>
 						 </div>
 		 	 		</div> -->
-		 	 		
+
 					<div class="row">
 						<div class="input-field">
 	 					<input id="username" name="uName" type="text" class="validate" ng-model="user.userName" required>
@@ -101,7 +101,7 @@
 							<span ng-show = "frm.pw2.$dirty && frm.pw2.$error.required">Required!</span>
 							<span ng-show = "frm.pw2.$dirty && frm.pw2.$error.minlength">Too Short!</span>
 		 					<span ng-show = "frm.pw2.$dirty && frm.pw2.$error.maxlength">Too Long!</span>
-		 					
+
 							<label for="confirm_password">Retype Password</label>
 						</div>
 					</div>
