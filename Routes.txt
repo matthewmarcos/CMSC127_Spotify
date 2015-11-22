@@ -1,0 +1,267 @@
+/auth/login (post)
+	Send: username and password (make sure you had it validated)
+	receive: 
+		If Existing combination in database
+			-> User object if exists in database
+				1) Fname
+				2) Lastname
+				3) Username
+				4) email
+				5) isAdmin
+				6) isApproved
+			-> User object contains session variables you can attach to $rootscope
+			-> User will be logged in inside the server
+		If non-existent combination in database
+			-> 400
+
+/auth/signup (post)
+	Send: 
+		1) User object 
+
+	Receive: 
+		If Existing combination in database
+			-> 409
+
+		If non-existent combination in database
+			-> User object if exists in database
+				1) Fname
+				2) Lastname
+				3) Username
+				4) email
+				5) isAdmin
+				6) isApproved
+			-> User object contains session variables you can attach to $rootscope
+			-> User will be logged in inside the server
+
+		Insertion Error
+			-> 405
+
+/auth/logout
+	Send: 
+		1) User object (rootscope from login)
+	Receive: redirect to index.
+
+/profile/:userid (get)
+	For viewing a userid's profile
+	Send:
+		1) User object (rootscope from login)
+	Receive:
+		If success
+			-> row sa users_name and users
+			-> array of playlists
+			-> array of songs
+		Fail
+			-> 403
+
+/profile/:userid (put)
+	Admin editing account if approved or not
+	Send:
+		1) username (one attached in rootscope)
+		2) isAdmin (one attached in rootscope)
+		3) userid
+		4) update user data
+	Receive:
+		If success
+			get request of unapproved users
+		Fail
+			-> 404 or 405
+
+/profile (get)
+	For viewing own profile
+	Send: 
+		1) User object (rootscope from login)
+	Recieve:
+		If found
+			-> Your entry in users_name and users as one object
+		If not found
+			-> 404
+
+/profile (put)
+	For editing own profile
+	Send: 
+		1) User object (rootscope from login)
+
+/api/playlist (post)
+	For creating a new playlist
+	Send:
+		1) User object (rootscope from login)
+		2) 
+		3) users_id
+		4) array of file_ids to add to playlist (music table)
+		5) array of playlist tags
+		6) playlistname
+	Receive:
+		If successful creation
+			-> Newly inserted playlist (push it to array of user's playlist)
+		Insertion Error
+			-> 500
+		No such thing as conflict error
+
+/api/playlist/:id (get)
+	Retrieving list of music in playlist with id
+	Send: (inside $http.get config object)
+		1) User object (rootscope from login)
+		3) users_id
+	Receive:
+		If playlist ID exists
+			-> Array of music contained in the playlist
+		Else
+			-> 404
+
+/api/playlist/:id (put)
+	Update playlist with id
+	Send:
+		1) User object (rootscope from login)
+		3) 
+		4) playlist object
+	Receive:
+		If successful creation
+			-> Newly edited playlist. (similar to get)
+				Do a get again to update client.
+		Insertion Error
+			-> 500
+		No such thing as conflict error
+
+
+/api/playlist/:id (delete)
+	delete playlist with id
+	Send:
+		1) User object (rootscope from login)
+	Receive:
+		If successful creation
+			-> get request for /api/playlist
+		Delete Error
+			-> 500
+		No such thing as conflict error
+		ID not found:
+			410
+
+
+
+/api/music (post)
+	For uploading new music
+	Send:
+		1) User object (rootscope from login)
+		4) music file
+		5) [<artist names>...]
+	Receive:
+		If successful creation
+			-> Newly inserted music (push it to array of user's playlist)
+		Insertion Error
+			-> 500
+		No such thing as conflict error
+
+/api/music (get)
+	For getting a list of all available music.
+	Send:
+		1) username (one attached in rootscope)
+		2) isAdmin (one attached in rootscope)
+		3) users_id
+	Receive 
+		If successful creation
+			-> Array of all songs(objects) 
+				{
+					song_name,
+					artist,
+					length,
+					times_played,
+					views
+				}
+
+/api/music/:id (put)
+	edit playlist with id
+		Send:
+			1) username (one attached in rootscope)
+			2) isAdmin (one attached in rootscope)
+		Receive:
+			If successful creation
+				-> Newly edited playlist.
+					Do a get again to update client.
+			Insertion Error
+				-> 500
+			No such thing as conflict error
+			Not found
+				-> 404
+
+/api/music/:id (delete)
+	delete playlist with id
+		Send:
+			1) username (one attached in rootscope)
+			2) isAdmin (one attached in rootscope)
+		Receive:
+			If successful creation
+				-> Newly deleted playlist.
+					Do a get again to update client.
+			Insertion Error
+				-> 500
+			No such thing as conflict error
+			Not found
+				-> 404
+
+
+/api/music/:id (get)
+	download playlist with id
+		Send:
+			1) username (one attached in rootscope)
+			2) isAdmin (one attached in rootscope)
+		Receive:
+			Success
+				-> File
+			No such thing as conflict error
+
+			Not found
+				-> 404
+
+
+/api/search/:parameter (get)
+	(For searching)
+	Retrieving list of:
+	music with name like parameter,
+	playlist with name like parameter,
+	playlist with tag like parameter,
+	artist with tag like parameter,
+	album with album name like parameter
+
+	All will be unique, so non repeating
+
+	Send: (inside $http.get config object)
+		1) username (one attached in rootscope)
+		2) isAdmin (one attached in rootscope)
+		3) users_id
+	Receive:
+		If playlist ID exists
+			-> json object with:
+				{
+					artists: [<objects of matched artists>],
+					playlists: [<objects of matched playlists>],
+					music: [<objects of matched music>],
+					album: [<objects of matched album>]
+				}
+
+				matched artist: {
+					artist_id
+					name
+				}
+
+				matched playlist {
+					id
+					user
+					date created
+				}
+
+				matched music {
+					music_name
+					times_played
+					views
+					length
+				}
+
+				matched album {
+					album_id
+					album_name
+					year
+					subscribers(count)
+				}
+		If no match
+			-> empty set
+
