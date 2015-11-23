@@ -1,8 +1,6 @@
-var app = angular.module('spotifyApp',['ngRoute']);
-
 
 //$rootscope use for login
-app.controller('authController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+/*app.controller('authController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
 	$scope.user = {
 		lastName : '',
@@ -18,15 +16,24 @@ app.controller('authController', ['$scope', '$http', '$location', function($scop
 		//escape strings
 	};
 
-}]);
+}]);*/
 
+	(function(){
+		angular
+			.module("spotifyApp", ["ngRoute"])
+			.config(config);
 
-app.config(['$routeProvider',
-  function($routeProvider) {
-    $routeProvider.
-      when('/login', {
-        templateUrl: 'templates/login.html',
-        controller: 'authController'
-      });
-  }]);
+		config.$inject =["$routeProvider"];
 
+		function config($routeProvider){
+			$routeProvider
+				.when('/login', {
+					'controller': "LoginCtrl",
+					'templateUrl$' : "/partials/login/login.view.html"
+				})
+				.otherwise({
+					'controller' : "HomeCtrl",
+					'templateUrl' : "/partials/home/home.view.html"
+				});
+		}
+	}());
