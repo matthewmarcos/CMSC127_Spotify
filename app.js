@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/auth', auth);
 app.use('/music', music);
-app.get('*',  function(req, res, next) {
+app.get('*', function(req, res, next) {
   res.sendStatus(404);
 });
 // catch 404 and forward to error handler

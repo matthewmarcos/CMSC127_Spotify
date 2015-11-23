@@ -69,6 +69,9 @@ module.exports = function() {
         },
         function(callback) {
             queryThis(queryString.users_subscribes_playlist, callback);
+        },
+        function(callback) {
+            searchAdmin(callback);
         }
 	],
 	function(err, results) {
@@ -96,7 +99,7 @@ var queryThis = function(query, onDone) {
                 onDone(err, data);
                 return;
             }
-            pg.end();
+            client.end();
             console.log('Query finished');
             onDone(null, data);
         });
@@ -105,6 +108,29 @@ var queryThis = function(query, onDone) {
 
 var searchAdmin = function(onDone) {
     pg.connect(dbUrl, function(err, client) {
-
+        var number = client.query(queryString.get_admin_count);
+        number.on('row', function(row) {
+            if(row.count === '0') {
+               console.log('Zero rows');
+               createAdmin(onDone);
+            } else {
+                console.log('Not zero rows')
+            }
+        });
     });
-}
+};
+
+
+var createAdmin = function(onDone) {
+    async.series([
+        function(callback) {
+            queryThis(queryString.insert_admin, callback);
+        },
+         function(callback) {
+            queryThis(queryString.insert_admin_name, callback);
+        }
+    ],
+    function(err, results) {
+        console.log('Finished queries');
+    });
+};
