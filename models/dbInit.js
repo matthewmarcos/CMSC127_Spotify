@@ -66,28 +66,45 @@ module.exports = function() {
         function(callback) {
             // album_contains_music
             queryThis(queryString.album_contains_music, callback);
+        },
+        function(callback) {
+            queryThis(queryString.users_subscribes_playlist, callback);
         }
 	],
-	function(callback) {
+	function(err, results) {
 		disconnectAll();
 	});
 };
 
 
 var disconnectAll = function() {
+    console.log('disconnecting');
     pg.end();
 };
 
 
 var queryThis = function(query, onDone) {
+    // console.log('Query finished');
     pg.connect(dbUrl, function(err, client) {
+        if(err) {
+            return console.error('Client cannot connect to PG');
+        }
         client.query(query, function(err, data){
             if(err) {
-                console.log(err);
+                console.log('Error');
                 disconnectAll();
                 onDone(err, data);
+                return;
             }
+            pg.end();
+            console.log('Query finished');
             onDone(null, data);
         });
     });
 };
+
+var searchAdmin = function(onDone) {
+    pg.connect(dbUrl, function(err, client) {
+
+    });
+}

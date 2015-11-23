@@ -1,8 +1,6 @@
 var bcrypt = require('bcrypt-nodejs');
 
-var hash = function(password) {
-	return bcrypt.hashSync(password);
-};
+var password = return bcrypt.hashSync('test');
 
 // Contains array of queries to run against database to fill it up
 exports.users = [

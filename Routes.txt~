@@ -1,5 +1,5 @@
 /auth/login (post)
-	Send: username and password
+	Send: username and password (make sure you had it validated)
 	receive: 
 		If Existing combination in database
 			-> User object if exists in database
@@ -12,17 +12,17 @@
 			-> User object contains session variables you can attach to $rootscope
 			-> User will be logged in inside the server
 		If non-existent combination in database
-			-> 400
+			-> 403
 
 /auth/signup (post)
 	Send: 
 		1) User object 
 
 	Receive: 
-		If Existing username in database
+		If existing username in database
 			-> 409
 
-		If non-existent combination in database
+		If successful insertion in database
 			-> User object if exists in database
 				1) Fname
 				2) Lastname
@@ -39,7 +39,7 @@
 /auth/logout
 	Send: 
 		1) User object (rootscope from login)
-	Receive: redirect to index.
+	Receive: redirect to index.?
 
 /profile/:userid (get)
 	For viewing a userid's profile
@@ -62,19 +62,7 @@
 		4) update user data
 	Receive:
 		If success
-			true
-		Fail
-			-> 404 or 405
-
-/profile/:userid (put)
-	Admin deleting disapproved account 
-	Send:
-		1) username (one attached in rootscope)
-		2) isAdmin (one attached in rootscope)
-		3) userid
-	Receive:
-		If success
-			true
+			get request of unapproved users
 		Fail
 			-> 404 or 405
 
@@ -92,8 +80,6 @@
 	For editing own profile
 	Send: 
 		1) User object (rootscope from login)
-		2) objkect to change
-
 
 /api/playlist (post)
 	For creating a new playlist
@@ -151,6 +137,7 @@
 			410
 
 
+
 /api/music (post)
 	For uploading new music
 	Send:
@@ -165,9 +152,10 @@
 		No such thing as conflict error
 
 /api/music (get)
-	For getting a list of all music na ginawa mo.
+	For getting a list of all available music.
 	Send:
-		1) user object
+		1) username (one attached in rootscope)
+		2) isAdmin (one attached in rootscope)
 		3) users_id
 	Receive 
 		If successful creation
@@ -181,11 +169,10 @@
 				}
 
 /api/music/:id (put)
-	edit music name with id
+	edit playlist with id
 		Send:
-			1) user object
+			1) username (one attached in rootscope)
 			2) isAdmin (one attached in rootscope)
-			3) new name
 		Receive:
 			If successful creation
 				-> Newly edited playlist.
@@ -213,9 +200,9 @@
 
 
 /api/music/:id (get)
-	download music with id
+	download playlist with id
 		Send:
-			1) user object(one attached in rootscope)
+			1) username (one attached in rootscope)
 			2) isAdmin (one attached in rootscope)
 		Receive:
 			Success
@@ -233,9 +220,7 @@
 	playlist with name like parameter,
 	playlist with tag like parameter,
 	artist with tag like parameter,
-	album with album name like parameter,
-	user with username like parameter
-
+	album with album name like parameter
 
 	All will be unique, so non repeating
 
