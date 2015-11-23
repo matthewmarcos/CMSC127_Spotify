@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var tokenizer = require('./../controllers/AuthController');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
