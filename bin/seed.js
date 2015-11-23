@@ -15,5 +15,5 @@ var fakeQuery = function(string, callback) {
 		console.log(datum);
 		callback(null);
 	}, function(err) {
-		console.log('Completed bitch');
+		console.log('Completed bro');
 	});

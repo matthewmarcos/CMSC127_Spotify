@@ -10,9 +10,9 @@
 // psql -U cmsc127spotify -W spotify
 // password: cmsc127
 /*
-	databaseMaster:
+	dbInit:
 		Create tables if does not exist in schema.
-		Creates admin seed afterwards.
+		Creates admin account afterwards.
 */
 
 var pg = require('pg');
@@ -66,28 +66,73 @@ module.exports = function() {
         function(callback) {
             // album_contains_music
             queryThis(queryString.album_contains_music, callback);
+        },
+        function(callback) {
+            queryThis(queryString.users_subscribes_playlist, callback);
+        },
+        function(callback) {
+            searchAdmin(callback);
         }
 	],
-	function(callback) {
+	function(err, results) {
 		disconnectAll();
 	});
 };
 
 
 var disconnectAll = function() {
+    console.log('disconnecting');
     pg.end();
 };
 
 
 var queryThis = function(query, onDone) {
+    // console.log('Query finished');
     pg.connect(dbUrl, function(err, client) {
+        if(err) {
+            return console.error('Client cannot connect to PG');
+        }
         client.query(query, function(err, data){
             if(err) {
-                console.log(err);
+                console.log('Error');
                 disconnectAll();
                 onDone(err, data);
+                return;
             }
+            client.end();
+            console.log('Query finished');
             onDone(null, data);
         });
+    });
+};
+
+
+var searchAdmin = function(onDone) {
+    pg.connect(dbUrl, function(err, client) {
+        var number = client.query(queryString.get_admin_count);
+        number.on('row', function(row) {
+            if(row.count === '0') {
+               console.log('Zero rows');
+               createAdmin(onDone);
+            } else {
+                console.log('Not zero rows')
+            }
+        });
+    });
+};
+
+
+var createAdmin = function(onDone) {
+    async.series([
+        function(callback) {
+            console.log('Creating admin account');
+            queryThis(queryString.insert_admin, callback);
+        },
+         function(callback) {
+            // queryThis(queryString.insert_admin_name, callback);
+        }
+    ],
+    function(err, results) {
+        console.log('Finished queries');
     });
 };
