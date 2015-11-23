@@ -10,9 +10,9 @@
 // psql -U cmsc127spotify -W spotify
 // password: cmsc127
 /*
-	databaseMaster:
+	dbInit:
 		Create tables if does not exist in schema.
-		Creates admin seed afterwards.
+		Creates admin account afterwards.
 */
 
 var pg = require('pg');
@@ -106,6 +106,7 @@ var queryThis = function(query, onDone) {
     });
 };
 
+
 var searchAdmin = function(onDone) {
     pg.connect(dbUrl, function(err, client) {
         var number = client.query(queryString.get_admin_count);
@@ -124,10 +125,11 @@ var searchAdmin = function(onDone) {
 var createAdmin = function(onDone) {
     async.series([
         function(callback) {
+            console.log('Creating admin account');
             queryThis(queryString.insert_admin, callback);
         },
          function(callback) {
-            queryThis(queryString.insert_admin_name, callback);
+            // queryThis(queryString.insert_admin_name, callback);
         }
     ],
     function(err, results) {
