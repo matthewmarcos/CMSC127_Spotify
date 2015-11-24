@@ -35,7 +35,7 @@ server.listen(port, function() {
 * Put the admin seed here, as well as the creation of
 * other tables.
 */
-	dbInit(); //Creates Tables and admin seed
+	//dbInit(); //Creates Tables and admin seed
 	console.log('Server is listening at localhost:' + port);
 	// console.log(process.env);
 });

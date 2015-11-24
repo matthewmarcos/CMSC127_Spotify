@@ -1,127 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="spotifyApp">
-<head>
-	<meta charset="UTF-8">
-	<title>Spotify</title>
-	<link rel="stylesheet" href="/stylesheets/reset.css">
-	<link rel="stylesheet" href="/stylesheets/materialize.min.css">
-	<link rel="stylesheet" href="/stylesheets/style.css">
+<html>
+	<head>
+		<title>Spotify</title>
+		<meta charset="utf-8"/>
+	</head>
+	<body ng-app="spotifyApp">
+		<div ng-view=""></div>
+		<script src="/javascripts/angular.min.js"></script>
+		<script src="/javascripts/angular-route.min.js"></script>
+		<script src="/javascripts/spotifyApp.js"></script>
+		<script src="/javascripts/jquery.min.js"></script>
+		<script src="/javascripts/materialize.min.js"></script>
+		<script src="/javascripts/script.js"></script>
 
-
-	<style>
-	input.ng-invalid.$dirty{ border: 1px solid red;}
-	</style>
-</head>
-
-<body  class="brown">
-
-	<div id="home">
-		<nav class="grey lighten-4">
-	    <div class="nav-wrapper row">
-				<div class="col s12">
-		      <a href="#" id="bold" class="brand-logo brown-text">Spotify</a>
-		      <ul id="nav-mobile" class="right hide-on-med-and-down">
-		        <a class="waves-effect waves-light btn brown white-text" action="signup.html">LOGIN</a>
-
-						<li><a class="grey-text text-darken-4">Premium</a></li>
-						<li><a class="grey-text text-darken-4">Help</a></li>
-						<li id="navmargin"><a class="grey-text text-darken-4">Download</a></li>
-							<li><a class="grey-text text-darken-4">SIGN UP</a></li>
-		      </ul>
-				</div>
-	    </div>
-	  </nav>
-
-		<div class="container">
-			<div class="row">
-				<div class="valign-wrapper">
-					<div>
-					 <img id="iconimg" class="responsive-img" src="/images/icon.png">
-				 	</div>
-
-				 <div>
-					 <h4 id="bold" class="grey-text text-lighten-4">Get the right music, right now.</h4>
-					 <h5 id="homeh5" class="grey-text text-lighten-4">Listen to million of songs for free!</h5>
-					 <a id="bodyButton" class="waves-effect waves-light btn grey"></i>Start</a>
-					 <hr>
-					 <h6 class="grey-text text-lighten-5">By clicking <a class="pink-text text-lighten-4">Start
-					 </a> you agree to Spotify's <a class="pink-text text-lighten-4">Condition of use.</a></h6>
-				 </div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-		<div class="container center-align" id="login">
-			<div ng-controller="authController">
-
-				<div class="valign-wrapper">
-					<img id="loginIcon" class="responsive-img" src="/images/icon.png">
-				</div>
-
-				<div class="valign-wrapper">
-					<div class="card-panel hoverable grey lighten-4">
-						<div class="row">
-
-							<div class="row">
-							 <div class="input-field col s12">
-							 <input id="username" name="uName" type="text" class="validate" ng-model="user$$$.userName" required>
-							 <span ng-show = "frm.uName.$dirty && frm.uName.$error.required" class="white-text">Required!</span>
-							 <label for="username">Username</label>
-							</div>
-							</div>
-
-							<div class="row">
-						   <input id="password" type="password" name="pw" class="validate" ng-model="user.password" ng-minlength="5" ng-maxlength="20" required>
-						   <span ng-show = "frm.pw.$dirty && frm.pw.$error.required">Required!</span>
-						   <span ng-show = "frm.pw.$dirty && frm.pw.$error.minlength">Too Short!</span>
-						   <span ng-show = "frm.pw.$dirty && frm.pw.$error.maxlength">Too Long!</span>
-						   <label for="password">Password</label>
-							</div>
-
-							<a id="submitbutton" class="waves-effect waves-light btn grey" ng-disabled="frm.$invalid" value="Submit" ng-click="showMe()"></i>LOGIN</a>
- 						</div>
-				 	</div>
-				</div>
-
-			</div>
-		</div>
-
-
-		<footer class="page-footer grey lighten-4">
-			<div class="container">
-				<div class="row">
-					<div class="col s6">
-						<h5 class="brown-text text-brown">Music for now.</h5>
-						<p class="grey-text text-darken-1">Spotify is all the music you'll ever need. Listen free or subscribe to
-						<a class="pink-text text-darken-2">Spotify Premium</a>.
-							Play on-demand, offline and ad-free.
-						<a class="pink-text text-darken-2">Free trial</a>.</p>
-					</div>
-					<div class="col s6">
-						<h5 class="brown-text text-brown">Links</h5>
-							<a id="linkbutton" class="waves-effect waves-light btn grey darken-4 white-text">Facebook</a></li>
-							<a id="linkbutton" class="waves-effect waves-light btn grey darken-4 white-text">Twitter</a></li>
-							<a id="linkbutton" class="waves-effect waves-light btn grey darken-4 white-text">Instagram</a></li>
-					</div>
-				</div>
-			</div>
-
-			<div class="footer-copyright grey lighten-2">
-				<div class="row">
-					<div class="col s6 offset-s5">
-						<p class="black-text">All Rights Reserved <a class="pink-text text-darken-2">SPOTIFY</a> 2015.</p>
-					</div>
-				</div>
-			</div>
-
-	</footer>
-</body>
-
-	<script src="/javascripts/angular.min.js"></script>
-	<script src="/javascripts/angular-route.min.js"></script>
-	<script src="/javascripts/spotifyApp.js"></script>
-	<script src="/javascripts/jquery.min.js"></script>
-	<script src="/javascripts/materialize.min.js"></script>
-	<script src="/javascripts/script.js"></script>
+		<script src="/partials/home/home.controller.js"></script>
+		<script src="/partials/home/home.service.js"></script>
+	</body>
 </html>
