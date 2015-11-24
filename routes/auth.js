@@ -1,11 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var AuthController = require('../controllers/AuthController')
 
 /* GET home page. */
 router.route('/login')
-	.post(function(req, res, next) {
-		res.send('login route');
-	});
+	.post();
 
 module.exports = router;
 
