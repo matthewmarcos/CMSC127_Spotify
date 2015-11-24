@@ -6,6 +6,11 @@
 	<link rel="stylesheet" href="/stylesheets/reset.css">
 	<link rel="stylesheet" href="/stylesheets/materialize.min.css">
 	<link rel="stylesheet" href="/stylesheets/style.css">
+
+
+	<style>
+	input.ng-invalid.$dirty{ border: 1px solid red;}
+	</style>
 </head>
 
 <body class="brown">

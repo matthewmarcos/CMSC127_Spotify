@@ -6,6 +6,11 @@
 	<link rel="stylesheet" href="/stylesheets/reset.css">
 	<link rel="stylesheet" href="/stylesheets/materialize.min.css">
 	<link rel="stylesheet" href="/stylesheets/style.css">
+
+
+	<style>
+	input.ng-invalid.$dirty{ border: 1px solid red;}
+	</style>
 </head>
 
 <body class="brown">
@@ -20,7 +25,7 @@
 				 	</div>
 
 				 <div>
-					 <h4 id="bold" class="grey-text text-lighten-4">THIS IS HOME</h4>
+					 <h4 id="bold" class="grey-text text-lighten-4">THIS IS LOGIN</h4>
 					 <h5 id="homeh5" class="grey-text text-lighten-4">Listen to million of songs for free!</h5>
 					 <a id="bodyButton" class="waves-effect waves-light btn grey"></i>Start</a>
 					 <hr>
