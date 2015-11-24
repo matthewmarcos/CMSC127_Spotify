@@ -5,7 +5,7 @@
 
 exports.isNotLoggedIn = function(req, res, next){
   if(!req.session.user) next();
-  else res.render('homepage');
+  else res.redirect('/home');
 };
 
 
@@ -23,6 +23,6 @@ exports.isLoggedIn = function(req, res, next){
 
 // Checks if isAdmin variable in session is true
 exports.isAdmin = function(req, res, next){
-  if(req.session.user && req.session.isAdmin) next();
+  if(req.session.user.isAdmin) next();
   else res.sendStatus(403);
 };

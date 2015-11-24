@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var SessionAuth = require('./../authentications/SessionAuth');
 /* GET home page. */
+
 router.get('/', SessionAuth.isNotLoggedIn, function(req, res, next) {
   res.render('index');
 });
