@@ -2,5 +2,5 @@
 (function(){
 	angular
 		.module("spotifyApp")
-		.controller("LoginCtrl", LoginCtrl);
+		.controller("SearchCtrl", HomeCtrl);
 })();

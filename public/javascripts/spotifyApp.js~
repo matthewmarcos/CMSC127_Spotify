@@ -1,4 +1,3 @@
-
 //$rootscope use for login
 /*app.controller('authController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
@@ -27,19 +26,18 @@
 
 		function config($routeProvider){
 			$routeProvider
-				.when('/home', {
+				.when('login/home', {
 					'controller': "HomeCtrl",
-					'templateUrl' : "/partials/homer/home.view.html"
-				})	
-				.when('/login', {
-					'controller': "LoginCtrl",
-					'templateUrl' : "/partials/login/login.view.html"
+					'templateUrl' : "/partials/home/home.view.html"
 				})
-				.when('/profile', {
-					'controller': "ProfileCtrl",
-					'templateUrl' : "/partials/profile/profile.view.html"
-				})				
-				
+				.when('login/search', {
+					'controller': "SearchCtrl",
+					'template' : "/partials/search/search.view.html"
+				})
+				.when('login/admin', {
+					'controller': "AdminCtrl",
+					'templateUrl' : "/partials/admin/admin.view.html"
+				})
 				.otherwise({
 					'controller' : "HomeCtrl",
 					'templateUrl' : "/partials/home/home.view.html"
