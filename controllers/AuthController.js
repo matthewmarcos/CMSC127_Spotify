@@ -56,6 +56,7 @@ exports.create = function(req, res) {
             }
         ], function(err, data) {
             client.end();
+            console.log(data);
             res.send(data);
         });
     });
