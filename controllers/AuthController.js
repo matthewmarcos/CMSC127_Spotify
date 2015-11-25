@@ -26,8 +26,8 @@ exports.create = function(req, res) {
         }
         async.waterfall([
             function(callback) {
-                client.query("SELECT COUNT(*) FROM users WHERE username = $1", 
-                            [req.body.username], function(err, data){
+                client.query("SELECT COUNT(*) FROM users WHERE username = $1 OR email = $2 OR picture = $3", 
+                            [req.body.username, req.body.email, req.body.picture], function(err, data){
                     if(err) {
                         console.log('Error');
                         // disconnectAll();
@@ -52,12 +52,17 @@ exports.create = function(req, res) {
                         }
                         callback(null, data);
                     })
+                } else {
+                    callback(409, null)
                 }
             }
         ], function(err, data) {
             client.end();
-            console.log(data);
-            res.send(data);
+            if(err) {
+                res.sendStatus(err);
+            } else {
+                res.send(data);
+            }
         });
     });
 }
