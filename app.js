@@ -12,6 +12,7 @@ var routes = require('./routes/index');
 var auth = require('./routes/auth');
 var music = require('./routes/music');
 var playlist = require('./routes/playlist');
+var profile = require('./routes/profile');
 
 
 var sessionMiddleware = session({
@@ -41,6 +42,8 @@ app.use('/', routes);
 app.use('/auth', auth);
 app.use('/music', music);
 app.use('/playlist', playlist);
+app.use('/profile', profile);
+
 app.get('*', function(req, res, next) {
   res.sendStatus(404);
 });

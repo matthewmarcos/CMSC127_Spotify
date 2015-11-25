@@ -24,16 +24,39 @@ exports.create = function(req, res) {
         if(err) {
             return console.error('Client cannot connect to PG');
         }
-        client.query("SELECT COUNT(*) FROM users WHERE username = $1", 
-        			[req.body.username], function(err, data){
-            client.end();
-            if(err) {
-                console.log('Error');
-                disconnectAll();
-                onDone(err, data);
-                return;
+        async.waterfall([
+            function(callback) {
+                client.query("SELECT COUNT(*) FROM users WHERE username = $1", 
+                            [req.body.username], function(err, data){
+                    if(err) {
+                        console.log('Error');
+                        // disconnectAll();
+                        callback(err, null);
+                        return;
+                    }
+                    callback(null, data);
+                });
+            },
+            function(data, callback) {
+                // res.send(data.rows[0].count);
+                if(data.rows[0].count === '0') {
+                    client.query("insert into users(fname, lname, username, password, picture, email,isApproved,isAdmin,dateApproved)" +
+                        "VALUES($1, $2, $3, $4, $5, $6, false, false, now())", 
+                        [req.body.fname, req.body.lname, req.body.username, createHash(req.body.password), req.body.picture, req.body.email],
+                        function(err, data) {
+                        if(err) {
+                            console.log(err);
+                            console.log('Error in creating new account')
+                            callback(err, null);
+                            return;
+                        }
+                        callback(null, data);
+                    })
+                }
             }
-            res.send(data.rows[0].count);
+        ], function(err, data) {
+            client.end();
+            res.send(data);
         });
     });
 }
@@ -55,7 +78,6 @@ exports.login = function(req, res){
             }
             if(data.rows.length >= 1 && isValidPassword(req.body.password, data.rows[0].password)) {
             	var user = {};
-
             	user.fname = data.rows[0].fname;
             	user.lname = data.rows[0].lname;
             	user.username = data.rows[0].username;
