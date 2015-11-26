@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var tokenizer = require('./../controllers/AuthController');
+var SessionAuth = require('./../authentications/SessionAuth');
+
 
 
 /* GET home page. */

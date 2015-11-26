@@ -115,7 +115,7 @@ var searchAdmin = function(onDone) {
                console.log('Zero rows');
                createAdmin(onDone);
             } else {
-                console.log('Not zero rows')
+                console.log('Admin account already exists!')
             }
         });
     });

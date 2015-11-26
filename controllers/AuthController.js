@@ -3,13 +3,13 @@
 		Queries database for login 
 */
 
-
-// var models = require('../models');
-var models;
+var pg = require('pg');
+var dbUrl = "postgres://cmsc127spotify:cmsc127@localhost/spotify";
 var bCrypt = require('bcrypt-nodejs');
+var async = require('async');
 
 var isValidPassword = function(userInput, password){
-		return bCrypt.compareSync(userInput, password);
+	return bCrypt.compareSync(userInput, password);
 };
 
 
@@ -19,35 +19,96 @@ var createHash = function(password){
 };
 
 
-exports.login = function(req, res, next){
+exports.create = function(req, res) {
+	pg.connect(dbUrl, function(err, client) {
+        if(err) {
+            return console.error('Client cannot connect to PG');
+        }
+        async.waterfall([
+            function(callback) {
+                client.query("SELECT COUNT(*) FROM users WHERE username = $1 OR email = $2", 
+                            [req.body.username, req.body.email], function(err, data){
+                    if(err) {
+                        console.log('Error');
+                        // disconnectAll();
+                        callback(err, null);
+                        return;
+                    }
+                    callback(null, data);
+                });
+            },
+            function(data, callback) {
+                // res.send(data.rows[0].count);
+                if(data.rows[0].count === '0') {
+                    client.query("insert into users(fname, lname, username, password, picture, email,isApproved,isAdmin,dateApproved)" +
+                        "VALUES($1, $2, $3, $4, $5, $6, false, false, now())", 
+                        [req.body.fname, req.body.lname, req.body.username, createHash(req.body.password), req.body.picture, req.body.email],
+                        function(err, data) {
+                        if(err) {
+                            console.log(err);
+                            console.log('Error in creating new account')
+                            callback(err, null);
+                            return;
+                        }
+                        callback(null, data);
+                    })
+                } else {
+                    callback(409, null)
+                }
+            }
+        ], function(err, data) {
+            client.end();
+            if(err) {
+                res.sendStatus(err);
+            } else {
+                res.send(data);
+            }
+        });
+    });
+}
+
+exports.login = function(req, res){
 	// expect username, password
-	models.users.findAll({
-		// Where username == username
-			where: {
-				username: req.body.username
-			}
-		})
-		.then(function(accounts){
-			// If account exists and password is valid
-			if(accounts.length > 0
-				&& isValidPassword(req.body.password, accounts[0].password)) {
-			// Defining session variables
-				req.session.isAdmin = accounts[0].isAdmin,
-				req.session.user = accounts[0].isValidated,
-				req.session.id = accounts[0].userName
-				res.redirect('/');
-//				res.send(req.session);
-			} else {
-				//If account is not found
-				res.sendStatus(404);
-			}
-		});
+    pg.connect(dbUrl, function(err, client) {
+        if(err) {
+            return console.error('Client cannot connect to PG');
+        }
+        client.query("SELECT * FROM users WHERE username = $1", 
+        			[req.body.username], function(err, data){
+            client.end();
+            if(err) {
+                console.log('Error');
+                disconnectAll();
+                onDone(err, data);
+                return;
+            }
+            if(data.rows.length >= 1 && isValidPassword(req.body.password, data.rows[0].password)) {
+            	var user = {};
+            	user.fname = data.rows[0].fname;
+            	user.lname = data.rows[0].lname;
+            	user.username = data.rows[0].username;
+            	user.picture = data.rows[0].picture;
+            	user.isapproved = data.rows[0].isapproved;
+            	user.isadmin = data.rows[0].isadmin;
+            	user.dateapproved = data.rows[0].dateapproved;
+            	req.session.user = user;
+            	res.send(req.session);
+
+            } else {
+            	res.sendStatus(404);
+            }
+        });
+    });
+
 };
 
 
 exports.logout = function(req, res, next){
 	//destroy session, scram.
 	req.session.destroy(function(err) {
+        if(err) {
+            throw err;
+        }
 	  	res.redirect('/');
 	});
 };
