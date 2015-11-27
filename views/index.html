@@ -1,18 +1,101 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Spotify</title>
-		<meta charset="utf-8"/>
+	<meta charset="UTF-8">
+	<title>Spotify</title>
+	<link rel="stylesheet" href="/stylesheets/reset.css">
+	<link rel="stylesheet" href="/stylesheets/materialize.min.css">
+	<link rel="stylesheet" href="/stylesheets/style.css">
 	</head>
-	<body ng-app="spotifyApp">
-		<div ng-view=""></div>
+	
+	<body  class="brown">
+<!-- =============================================================================================================================== -->
+<!-- =================================================THIS IS THE HEADER============================================================ -->
+<!-- =============================================================================================================================== -->
+
+	<nav class="grey lighten-4">
+    <div class="nav-wrapper row">
+		<div class="col s12">
+			<a href="#" id="bold" class="brand-logo brown-text">Spotify</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+	        <a class="waves-effect waves-light btn brown white-text" href="/login">LOGIN</a>
+			<li><a class="grey-text text-darken-4">Premium</a></li>
+			<li><a class="grey-text text-darken-4">Help</a></li>
+			<li id="navmargin"><a class="grey-text text-darken-4">Download</a></li>
+			<li><a class="grey-text text-darken-4">SIGN UP</a></li>
+			</ul>
+		</div>
+    </div>
+ 	</nav>
+	
+<!-- =============================================================================================================================== -->
+<!-- ===================================================THIS IS THE BODY/CONTENT==================================================== -->
+<!-- =============================================================================================================================== -->
+
+	<div class="container">
+		<div class="row">
+			<div class="valign-wrapper">
+				<div>
+					<img id="iconimg" class="responsive-img" src="/images/icon.png">
+			 	</div>
+
+				 <div>
+					 <h4 id="bold" class="grey-text text-lighten-4">THIS IS index.html </h4>
+					 <h5 id="homeh5" class="grey-text text-lighten-4">this is basically what you see at localhost:5000</h5>
+					 <a id="bodyButton" class="waves-effect waves-light btn grey"></i>Start</a>
+					 <hr>
+					 <h6 class="grey-text text-lighten-5">By clicking <a class="pink-text text-lighten-4">Start
+					 </a> you agree to Spotify's <a class="pink-text text-lighten-4">Condition of use.</a></h6>
+				 </div>
+			</div>
+		</div>
+	</div>
+	
+<!-- =============================================================================================================================== -->
+<!-- =================================================THIS IS THE FOOTER============================================================ -->
+<!-- =============================================================================================================================== -->
+
+			<footer class="page-footer grey lighten-4">
+			<div class="container">
+				<div class="row">
+					<div class="col s6">
+						<h5 class="brown-text text-brown">Music for now.</h5>
+						<p class="grey-text text-darken-1">Spotify is all the music you'll ever need. Listen free or subscribe to
+						<a class="pink-text text-darken-2">Spotify Premium</a>.
+							Play on-demand, offline and ad-free.
+						<a class="pink-text text-darken-2">Free trial</a>.</p>
+					</div>
+					<div class="col s6">
+						<h5 class="brown-text text-brown">Links</h5>
+							<a id="linkbutton" class="waves-effect waves-light btn grey darken-4 white-text">Facebook</a></li>
+							<a id="linkbutton" class="waves-effect waves-light btn grey darken-4 white-text">Twitter</a></li>
+							<a id="linkbutton" class="waves-effect waves-light btn grey darken-4 white-text">Instagram</a></li>
+					</div>
+				</div>
+			</div>
+
+			<div class="footer-copyright grey lighten-2">
+				<div class="row">
+					<div class="col s6 offset-s5">
+						<p class="black-text">All Rights Reserved <a class="pink-text text-darken-2">SPOTIFY</a> 2015.</p>
+					</div>
+				</div>
+			</div>
+
+			</footer>
+
+
+<!-- =============================================================================================================================== -->
+<!-- ================================================THESE ARE THE SCRIPTS========================================================== -->
+<!-- =============================================================================================================================== -->
+	
+
+
 		<script src="/javascripts/angular.min.js"></script>
 		<script src="/javascripts/angular-route.min.js"></script>
-		<script src="/javascripts/spotifyApp.js"></script>
 		<script src="/javascripts/jquery.min.js"></script>
 		<script src="/javascripts/materialize.min.js"></script>
 		<script src="/javascripts/script.js"></script>
-
 		<script src="/partials/home/home.controller.js"></script>
 		<script src="/partials/home/home.service.js"></script>
 	</body>
