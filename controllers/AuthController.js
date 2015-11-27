@@ -41,7 +41,7 @@ exports.create = function(req, res) {
                 // res.send(data.rows[0].count);
                 if(data.rows[0].count === '0') {
                     client.query("insert into users(fname, lname, username, password, picture, email,isApproved,isAdmin,dateApproved)" +
-                        "VALUES($1, $2, $3, $4, $5, $6, false, false, now())", 
+                        "VALUES($1, $2, $3, $4, $5, $6, false, false, null)", 
                         [req.body.fname, req.body.lname, req.body.username, createHash(req.body.password), req.body.picture, req.body.email],
                         function(err, data) {
                         if(err) {
@@ -82,7 +82,7 @@ exports.login = function(req, res){
                 onDone(err, data);
                 return;
             }
-            if(data.rows.length >= 1 && isValidPassword(req.body.password, data.rows[0].password)) {
+            if(data.rows.length === 1 && isValidPassword(req.body.password, data.rows[0].password)) {
             	var user = {};
             	user.fname = data.rows[0].fname;
             	user.lname = data.rows[0].lname;
