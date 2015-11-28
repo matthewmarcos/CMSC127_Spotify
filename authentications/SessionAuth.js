@@ -17,7 +17,7 @@ exports.isLoggedInPage = function(req, res, next){
 
 exports.isLoggedIn = function(req, res, next){
   // Kailangan approved account
-  if(req.session.user.isapproved) next();
+  if(!!req.session.user && !!req.session.user.isapproved) next();
   else res.sendStatus(403);
 };
 
