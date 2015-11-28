@@ -12,6 +12,10 @@
     background-color: #795548;
 }
 
+.transparent{
+  opacity: 0.4;
+}
+
 #normal-banner{
   min-height: 132px;
   max-height: 264px;
@@ -183,7 +187,6 @@ nav ul a {
         opacity: 0;
     }
 }
-
 
 /* Preloader */
 #preloader {
