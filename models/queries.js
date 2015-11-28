@@ -9,7 +9,7 @@ var adminPassword = bcrypt.hashSync('admin');
 exports.adminPassword = adminPassword;
 
 exports.users = "CREATE TABLE IF NOT EXISTS users( users_id serial PRIMARY KEY, fname varchar(25), lname varchar(25), username varchar(25) UNIQUE, password varchar(125), picture varchar(225), email varchar(225) UNIQUE, isApproved boolean DEFAULT false, isAdmin boolean DEFAULT false, dateApproved date)";
-exports.users_name = "CREATE TABLE IF NOT EXISTS users_name (Users_id integer REFERENCES users(users_id), fname varchar(25) NOT NULL, lname varchar(25) NOT NULL)";
+// exports.users_name = "CREATE TABLE IF NOT EXISTS users_name (Users_id integer REFERENCES users(users_id), fname varchar(25) NOT NULL, lname varchar(25) NOT NULL)";
 exports.playlist = "CREATE TABLE IF NOT EXISTS playlist(playlist_id serial PRIMARY KEY, users_id integer REFERENCES users(users_id), playlist_pic varchar(225) UNIQUE, playlistname varchar(25) NOT NULL,date_created date NOT NULL default now())";
 exports.playlist_tags = "CREATE TABLE IF NOT EXISTS playlist_tag(playlist_id int REFERENCES playlist(playlist_id), tags varchar(25))";
 exports.music = "CREATE TABLE IF NOT EXISTS music(file_id varchar(225) PRIMARY KEY, music_title varchar(225), music_length integer NOT NULL, times_played integer DEFAULT 0, views integer DEFAULT 0)";

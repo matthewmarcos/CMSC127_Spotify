@@ -27,10 +27,6 @@ module.exports = function() {
             // create usrs table
             queryThis(queryString.users, callback);
 		},
-        function(callback) {
-            //Create users_name table
-            queryThis(queryString.users_name, callback);
-        },
 		function(callback) {
             // Playlist
             queryThis(queryString.playlist, callback);

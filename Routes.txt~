@@ -14,7 +14,7 @@
 		If non-existent combination in database
 			-> 403
 
-/auth/signup (post)
+/auth/create (post)
 	Send: 
 		1) User object 
 
