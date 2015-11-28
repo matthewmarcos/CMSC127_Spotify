@@ -6,18 +6,10 @@ var SessionAuth = require('./../authentications/SessionAuth');
 
 // Return logged in user's own profile
 router.route('/')
-	.get(SessionAuth.isNotLoggedIn, function(){});
+	.get(SessionAuth.isLoggedIn, ProfileController.getMine);
 
 // Approve a user
 router.route('/approve/:id')
 	.put(SessionAuth.isAdmin, ProfileController.approve); 
-
-router.get('/home', SessionAuth.isLoggedInPage, function(req, res, next) {
-	res.render('home');
-});
-
-router.get('*', SessionAuth.isLoggedInPage, function(req, res, next) {
-	res.redirect('/home');
-});
 
 module.exports = router;
