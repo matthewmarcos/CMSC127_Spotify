@@ -56,10 +56,7 @@
 /profile/:userid (put)
 	Admin editing account if approved or not
 	Send:
-		1) username (one attached in rootscope)
-		2) isAdmin (one attached in rootscope)
-		3) userid
-		4) update user data
+		Nothing
 	Receive:
 		If success
 			get request of unapproved users
