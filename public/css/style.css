@@ -7,8 +7,13 @@
 }
 
 #intro, #work, #team {padding-top: 4rem;}
+
 #index-banner {
     background-color: #795548;
+}
+
+.transparent{
+  opacity: 0.4;
 }
 
 #normal-banner{
@@ -182,7 +187,6 @@ nav ul a {
         opacity: 0;
     }
 }
-
 
 /* Preloader */
 #preloader {
