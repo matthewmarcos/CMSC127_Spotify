@@ -8,12 +8,10 @@ var MusicController = require('./../controllers/MusicController');
 /* GET home page. */
 router.route('/')
 	.get(SessionAuth.isLoggedIn, MusicController.getMine)
-	.post();
+	.post(SessionAuth.isLoggedIn, MusicController.addMusic);
 
 router.route('/:id')
-	.get(function(req, res, next) {
-		res.send(req.params.id);
-	});
+	.get(SessionAuth.isLoggedIn, function(req, res){});
 
 router.route('*')
 	.get(function(req, res, next) {
