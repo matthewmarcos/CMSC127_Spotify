@@ -7,7 +7,8 @@ var SessionAuth = require('./../authentications/SessionAuth');
 // Return logged in user's own profile
 router.route('/')
 	.get(SessionAuth.isLoggedIn, ProfileController.getMine);
-
+router.route('/pending')
+	.get(SessionAuth.isAdmin, ProfileController.getPending);
 // Approve a user
 router.route('/approve/:id')
 	.put(SessionAuth.isAdmin, ProfileController.approve); 

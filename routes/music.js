@@ -1,18 +1,16 @@
 var express = require('express');
 var router = express.Router();
-var tokenizer = require('./../controllers/AuthController');
 var SessionAuth = require('./../authentications/SessionAuth');
+var MusicController = require('./../controllers/MusicController');
 
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.send(
-  		"I am a matt"
-  	);
-});
+router.route('/')
+	.get(SessionAuth.isLoggedIn, MusicController.getMine)
+	.post();
 
-router.route('/something/:id')
+router.route('/:id')
 	.get(function(req, res, next) {
 		res.send(req.params.id);
 	});

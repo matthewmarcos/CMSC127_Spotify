@@ -9,6 +9,6 @@ router.route('/login')
 router.route('/create')
 	.post(SessionAuth.isNotLoggedIn, AuthController.create);
 router.route('/logout')
-	.post(AuthController.logout)
+	.post(SessionAuth.isLoggedIn, AuthController.logout)
 module.exports = router;
 

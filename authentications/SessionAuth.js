@@ -24,6 +24,6 @@ exports.isLoggedIn = function(req, res, next){
 
 // Checks if isAdmin variable in session is true
 exports.isAdmin = function(req, res, next){
-  if(req.session.user.isadmin) next();
-  else res.sendStatus('Log in as admin furst');
+  if(!!req.session.user && !!req.session.user.isadmin) next();
+  else res.sendStatus(403 + ': Log in as admin first');
 };
