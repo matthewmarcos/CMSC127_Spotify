@@ -84,8 +84,6 @@
 			-> 500
 		No such thing as conflict error
 
-
-
 /playlist/:id (get)
 	Retrieving list of music in playlist with id
 	Send: (inside $http.get config object)

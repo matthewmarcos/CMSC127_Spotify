@@ -11,23 +11,6 @@ var fakeQuery = function(string, callback) {
 	callback(null, string);
 };
 
-	// queries.forEach(function(queryString) {
-	//     pg.connect(dbUrl, function(err, client) {
-	//         if(err) {
-	//             return console.error('Client cannot connect to PG');
-	//         }
-	//         // res.send('Updating at ' + req.params.id);
-	//         client.query(queryString, function(err, data){
-	//             client.end();
-	//             if(err) {
-	//                 console.log('Error');
-	//                 return;
-	//             }
-	//         });
-	//     });  
-
-	// });
-
 	async.eachSeries(queries, 
 	function(queryString, callback) {
 		i++;
