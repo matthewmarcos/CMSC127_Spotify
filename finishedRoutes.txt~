@@ -85,21 +85,6 @@
 		No such thing as conflict error
 
 
-/playlist (post)
-	For creating a new playlist
-	Send:
-		1) User object (rootscope from login)
-		2) 
-		3) users_id
-		4) array of file_ids to add to playlist (music table)
-		5) array of playlist tags
-		6) playlistname
-	Receive:
-		If successful creation
-			-> Newly inserted playlist (push it to array of user's playlist)
-		Insertion Error
-			-> 500
-		No such thing as conflict error
 
 /playlist/:id (get)
 	Retrieving list of music in playlist with id
