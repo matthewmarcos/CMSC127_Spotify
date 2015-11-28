@@ -1,18 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var SessionAuth = require('./../authentications/SessionAuth');
+var playlist = require('./../controllers/PlaylistController');
+
 /* GET home page. */
 
-router.get('/', SessionAuth.isNotLoggedIn, function(req, res, next) {
-  res.render('index');
-});
-
-router.get('/home', SessionAuth.isLoggedInPage, function(req, res, next) {
-	res.render('home');
-});
-
-router.get('*', SessionAuth.isLoggedInPage, function(req, res, next) {
-	res.redirect('/home');
-});
+router.route('/')
+	.get(SessionAuth.isLoggedIn, playlist.getMine);
 
 module.exports = router;

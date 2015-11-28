@@ -73,7 +73,7 @@ exports.login = function(req, res){
         if(err) {
             return console.error('Client cannot connect to PG');
         }
-        client.query("SELECT * FROM users WHERE username = $1", 
+        client.query("SELECT * FROM users WHERE username = $1 AND isapproved = true", 
         			[req.body.username], function(err, data){
             client.end();
             if(err) {
@@ -91,6 +91,7 @@ exports.login = function(req, res){
             	user.isapproved = data.rows[0].isapproved;
             	user.isadmin = data.rows[0].isadmin;
             	user.dateapproved = data.rows[0].dateapproved;
+                user.users_id = data.rows[0].users_id;
             	req.session.user = user;
             	res.send(req.session);
 
@@ -101,7 +102,6 @@ exports.login = function(req, res){
     });
 
 };
-
 
 exports.logout = function(req, res, next){
 	//destroy session, scram.

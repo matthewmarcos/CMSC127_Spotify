@@ -41,17 +41,6 @@
 		1) User object (rootscope from login)
 	Receive: redirect to index.?
 
-/profile/:userid (get)
-	For viewing a userid's profile
-	Send:
-		1) User object (rootscope from login)
-	Receive:
-		If success
-			-> row sa users_name and users
-			-> array of playlists
-			-> array of songs
-		Fail
-			-> 403
 
 /profile/:userid (put)
 	Admin editing account if approved or not
@@ -73,11 +62,15 @@
 		If not found
 			-> 404
 
-
-/profile (put)
-	For editing own profile
+/profile/pending (get)
+	For admin account looking for pending accounts
 	Send: 
-		1) User object (rootscope from login)
+		
+	Recieve:
+		If found
+			users_id, username of pending accounts
+		If not found
+			-> 404
 
 /playlists (get)
 	For getting playlists owned by user.

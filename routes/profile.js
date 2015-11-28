@@ -1,18 +1,16 @@
 var express = require('express');
 var router = express.Router();
+var ProfileController = require('./../controllers/ProfileController');
 var SessionAuth = require('./../authentications/SessionAuth');
 /* GET home page. */
 
-router.get('/', SessionAuth.isNotLoggedIn, function(req, res, next) {
-  res.render('index');
-});
-
-router.get('/home', SessionAuth.isLoggedInPage, function(req, res, next) {
-	res.render('home');
-});
-
-router.get('*', SessionAuth.isLoggedInPage, function(req, res, next) {
-	res.redirect('/home');
-});
+// Return logged in user's own profile
+router.route('/')
+	.get(SessionAuth.isLoggedIn, ProfileController.getMine);
+router.route('/pending')
+	.get(SessionAuth.isAdmin, ProfileController.getPending);
+// Approve a user
+router.route('/approve/:id')
+	.put(SessionAuth.isAdmin, ProfileController.approve); 
 
 module.exports = router;
