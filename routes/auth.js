@@ -5,9 +5,9 @@ var SessionAuth = require('./../authentications/SessionAuth');
 
 /* GET home page. */
 router.route('/login')
-	.post(/*SessionAuth.isNotLoggedIn, */AuthController.login);
+	.post(SessionAuth.isNotLoggedIn, AuthController.login);
 router.route('/create')
-	.post(/*SessionAuth.isNotLoggedIn, */AuthController.create);
+	.post(SessionAuth.isNotLoggedIn, AuthController.create);
 router.route('/logout')
 	.post(AuthController.logout)
 module.exports = router;

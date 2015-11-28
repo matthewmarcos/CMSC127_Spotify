@@ -81,7 +81,20 @@
 	Send: 
 		1) User object (rootscope from login)
 
-/api/playlist (post)
+/playlists (get)
+	For getting playlists owned by user.
+		Send:
+		1) User object (rootscope from login)
+		
+	Receive:
+		If successful
+			-> Array of playlists
+		Insertion Error
+			-> 500
+		No such thing as conflict error
+
+
+/playlist (post)
 	For creating a new playlist
 	Send:
 		1) User object (rootscope from login)
@@ -97,7 +110,7 @@
 			-> 500
 		No such thing as conflict error
 
-/api/playlist/:id (get)
+/playlist/:id (get)
 	Retrieving list of music in playlist with id
 	Send: (inside $http.get config object)
 		1) User object (rootscope from login)
@@ -108,7 +121,7 @@
 		Else
 			-> 404
 
-/api/playlist/:id (put)
+/playlist/:id (put)
 	Update playlist with id
 	Send:
 		1) User object (rootscope from login)
@@ -123,13 +136,13 @@
 		No such thing as conflict error
 
 
-/api/playlist/:id (delete)
+/playlist/:id (delete)
 	delete playlist with id
 	Send:
 		1) User object (rootscope from login)
 	Receive:
 		If successful creation
-			-> get request for /api/playlist
+			-> get request for /playlist
 		Delete Error
 			-> 500
 		No such thing as conflict error
@@ -138,7 +151,7 @@
 
 
 
-/api/music (post)
+/music (post)
 	For uploading new music
 	Send:
 		1) User object (rootscope from login)
@@ -151,7 +164,7 @@
 			-> 500
 		No such thing as conflict error
 
-/api/music (get)
+/music (get)
 	For getting a list of all available music.
 	Send:
 		1) username (one attached in rootscope)
@@ -168,7 +181,7 @@
 					views
 				}
 
-/api/music/:id (put)
+/music/:id (put)
 	edit playlist with id
 		Send:
 			1) username (one attached in rootscope)
@@ -183,7 +196,7 @@
 			Not found
 				-> 404
 
-/api/music/:id (delete)
+/music/:id (delete)
 	delete playlist with id
 		Send:
 			1) username (one attached in rootscope)
@@ -199,7 +212,7 @@
 				-> 404
 
 
-/api/music/:id (get)
+/music/:id (get)
 	download playlist with id
 		Send:
 			1) username (one attached in rootscope)
@@ -213,7 +226,7 @@
 				-> 404
 
 
-/api/search/:parameter (get)
+/search/:parameter (get)
 	(For searching)
 	Retrieving list of:
 	music with name like parameter,

@@ -16,13 +16,14 @@ exports.isLoggedInPage = function(req, res, next){
 
 
 exports.isLoggedIn = function(req, res, next){
-  if(req.session.user) next();
+  // Kailangan approved account
+  if(req.session.user.isapproved) next();
   else res.sendStatus(403);
 };
 
 
 // Checks if isAdmin variable in session is true
 exports.isAdmin = function(req, res, next){
-  if(req.session.user.isAdmin) next();
-  else res.sendStatus(403);
+  if(req.session.user.isadmin) next();
+  else res.sendStatus('Log in as admin furst');
 };
