@@ -1,102 +1,322 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	<meta charset="UTF-8">
-	<title>Spotify</title>
-	<link rel="stylesheet" href="/stylesheets/reset.css">
-	<link rel="stylesheet" href="/stylesheets/materialize.min.css">
-	<link rel="stylesheet" href="/stylesheets/style.css">
-	</head>
-	
-	<body  class="brown">
-<!-- =============================================================================================================================== -->
-<!-- =================================================THIS IS THE HEADER============================================================ -->
-<!-- =============================================================================================================================== -->
+<head>
 
-	<nav class="grey lighten-4">
-    <div class="nav-wrapper row">
-		<div class="col s12">
-			<a href="#" id="bold" class="brand-logo brown-text">Spotify</a>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-	        <a class="waves-effect waves-light btn brown white-text" href="/login">LOGIN</a>
-			<li><a class="grey-text text-darken-4">Premium</a></li>
-			<li><a class="grey-text text-darken-4">Help</a></li>
-			<li id="navmargin"><a class="grey-text text-darken-4">Download</a></li>
-			<li><a class="grey-text text-darken-4">SIGN UP</a></li>
-			</ul>
-		</div>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="theme-color" content="#2196F3">
+
+    <title>Spotify</title>
+
+    <!-- ==========================CSS===================================  -->
+    <link href="stylesheets/min/plugin-min.css" type="text/css" rel="stylesheet">
+    <link href="stylesheets/min/custom-min.css" type="text/css" rel="stylesheet" >
+</head>
+
+<body id="top" class="scrollspy">
+
+<!--===========================PRE-LOADER==================================-->
+<div id="loader-wrapper">
+    <div id="loader"></div>
+
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+
+</div>
+
+<!--======================================NAVIGATION============================================-->
+ <div class="navbar-fixed">
+    <nav id="nav_f" class="brown darken-4" role="navigation">
+        <div class="container">
+            <div class="nav-wrapper">
+            <a href="#" id="logo-container" class="brand-logo">Spotify</a>
+                <ul class="right hide-on-med-and-down">
+
+                    <li><a href="#intro">Login</a></li>
+                    <li><a href="#work">Sign Up</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<!--================================HOME PAGE==========================================-->
+<div class="section no-pad-bot brown" id="index-banner">
+    <div class="container">
+      <div style="margin-top:60px;" class="mamer_style center">
+        <img src="img/image.png"></img>
+      </div>
+        <h1 style="margin-bottom:0px;margin-top:0px;padding-top:0px;padding-bottom:0px;" class="text_h center header cd-headline letters type">
+            <span>Music</span>
+            <span class="cd-words-wrapper">
+                <b class="is-visible brown-text text-lighten-3">is joy</b>
+                <b class="brown-text text-lighten-3">is an escape</b>
+                <b class="brown-text text-lighten-3">is love</b>
+            </span>
+        </h1>
     </div>
- 	</nav>
-	
-<!-- =============================================================================================================================== -->
-<!-- ===================================================THIS IS THE BODY/CONTENT==================================================== -->
-<!-- =============================================================================================================================== -->
 
-	<div class="container">
-		<div class="row">
-			<div class="valign-wrapper">
-				<div>
-					<img id="iconimg" class="responsive-img" src="/images/icon.png">
-			 	</div>
+</div>
 
-				 <div>
-					 <h4 id="bold" class="grey-text text-lighten-4">THIS IS index.html </h4>
-					 <h5 id="homeh5" class="grey-text text-lighten-4">this is basically what you see at localhost:5000</h5>
-					 <a id="bodyButton" class="waves-effect waves-light btn grey"></i>Start</a>
-					 <hr>
-					 <h6 class="grey-text text-lighten-5">By clicking <a class="pink-text text-lighten-4">Start
-					 </a> you agree to Spotify's <a class="pink-text text-lighten-4">Condition of use.</a></h6>
-				 </div>
-			</div>
-		</div>
-	</div>
-	
-<!-- =============================================================================================================================== -->
-<!-- =================================================THIS IS THE FOOTER============================================================ -->
-<!-- =============================================================================================================================== -->
+<!--===================================LOGIN==============================================-->
+<div id="intro" class="section scrollspy">
+    <div class="container">
+        <div class="row">
+            <div  class="col s12">
+                <h2 class="center header text_h2"> Spotify: Music for everyone. </h2>
+            </div>
 
-			<footer class="page-footer grey lighten-4">
-			<div class="container">
-				<div class="row">
-					<div class="col s6">
-						<h5 class="brown-text text-brown">Music for now.</h5>
-						<p class="grey-text text-darken-1">Spotify is all the music you'll ever need. Listen free or subscribe to
-						<a class="pink-text text-darken-2">Spotify Premium</a>.
-							Play on-demand, offline and ad-free.
-						<a class="pink-text text-darken-2">Free trial</a>.</p>
-					</div>
-					<div class="col s6">
-						<h5 class="brown-text text-brown">Links</h5>
-							<a id="linkbutton" class="waves-effect waves-light btn grey darken-4 white-text">Facebook</a></li>
-							<a id="linkbutton" class="waves-effect waves-light btn grey darken-4 white-text">Twitter</a></li>
-							<a id="linkbutton" class="waves-effect waves-light btn grey darken-4 white-text">Instagram</a></li>
-					</div>
-				</div>
-			</div>
+        <div class="row">
+          <form class="col s6 offset-s3">
+            <div class="row">
+              <div class="input-field">
+                <i class="mdi-action-account-circle prefix brown-text"></i>
+                <input id="icon_prefix" name="username" type="text" class="validate brown-text">
+                <label for="icon_prefix" class="brown-text">Username</label>
+              </div>
+              <div class="input-field">
+                <i class="mdi-action-settings prefix brown-text"></i>
+                <input id="icon_settings" name="name" type="password" class="validate brown-text">
+                <label for="icon_settings" class="brown-text">Password</label>
+              </div>
+              <div class="center">
+                <button class="btn waves-effect waves-light brown darken-1" type="submit">Login
+                    <i class="mdi-content-send right white-text"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        </div>
+    </div>
+</div>
 
-			<div class="footer-copyright grey lighten-2">
-				<div class="row">
-					<div class="col s6 offset-s5">
-						<p class="black-text">All Rights Reserved <a class="pink-text text-darken-2">SPOTIFY</a> 2015.</p>
-					</div>
-				</div>
-			</div>
+<!--===========================SIGN UP==================================-->
+<div class="section scrollspy" id="work">
+    <div class="container">
+        <h2 class="header text_b brown-text">Sign Up</h2>
+        <div class="row">
 
-			</footer>
+          <div class="col s6">
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="first_name" type="text" class="validate">
+                <label for="first_name" class="brown-text">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="last_name" type="text" class="validate">
+                <label for="last_name" class="brown-text">Last Name</label>
+              </div>
+              </div>
+              <div>
+                <input id="password" type="password" class="validate">
+                <label for="password" class="brown-text">Password</label>
+              </div>
+              <div>
+                <input id="c_password" type="password" class="validate">
+                <label for="c_password" class="brown-text">Confirm Password</label>
+              </div>
+          </div>
+
+          <div class="col s6">
+            <div class="input-field">
+              <input id="user_name" type="text" class="validate">
+              <label for="user_name" class="brown-text">User Name</label>
+            </div>
+            <div>
+              <input id="email" type="email" class="validate">
+              <label for="email">Email</label>
+            </div>
+            <form action="#">
+              <div class="file-field input-field">
+                <div class="btn brown">
+                  <span>File</span>
+                  <input type="file" />
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+        <div class="center">
+          <button class="btn waves-effect waves-light brown darken-1" type="submit">Sign Up
+              <i class="mdi-content-send right white-text"></i>
+          </button>
+        </div>
+        <div class="center">
+          <p class="brown-text">
+            By clicking sign up, you agree to Spotify's <a class="brown-text text-darken-4">Terms of use</a>.
+          </p>
+        </div>
+    </div>
+</div>
+
+<!--==========================PARALLAX=================================-->
+<div class="parallax-container">
+    <div class="parallax"><img src="img/parallax1.png"></div>
+</div>
+
+<!--===============================TEAM=======================================-->
+<div class="section scrollspy" id="team">
+    <div class="container">
+        <h2 class="header text_b brown-text"> Our Team </h2>
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="card card-avatar">
+                    <div class="waves-effect waves-block waves-light">
+                        <img class="activator" src="img/matt.jpg">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Matthew Marcos<br/>
+                            <small><em><a class="red-text text-darken-1" href="#">CEO</a></em></small></span>
+                        <p>
+                            <a class="brown-text text-lighten-2" href="facebook.com/">
+                                <i class="fa fa-facebook-square"></i>
+                            </a>
+                            <a class="brown-text text-lighten-2" href="twitter.com">
+                                <i class="fa fa-twitter-square"></i>
+                            </a>
+                            <a class="brown-text text-lighten-2" href="https://plus.google.com">
+                                <i class="fa fa-google-plus-square"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="card card-avatar">
+                    <div class="waves-effect waves-block waves-light">
+                        <img src="img/geeca.jpg">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Angelica Ware<br/>
+                            <small><em><a class="red-text text-darken-1" href="#">Designer</a></em></small>
+                        </span>
+                        <p>
+                            <a class="brown-text text-lighten-2" href="https://www.facebook.com/WareAngelica">
+                                <i class="fa fa-facebook-square"></i>
+                            </a>
+                            <a class="brown-text text-lighten-2" href="https://twitter.com/WareAnj">
+                                <i class="fa fa-twitter-square"></i>
+                            </a>
+                            <a class="brown-text text-lighten-2" href="google.com/">
+                                <i class="fa fa-google-plus-square"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="card card-avatar">
+                    <div class="waves-effect waves-block waves-light">
+                        <img class="activator" src="img/homer.jpg">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">
+                            Homer Malijan<br/>
+                            <small><em><a class="red-text text-darken-1" href="#">Developer</a></em></small></span>
+                        <p>
+                          <a class="brown-text text-lighten-2" href="https://www.facebook.com/WareAngelica">
+                              <i class="fa fa-facebook-square"></i>
+                          </a>
+                          <a class="brown-text text-lighten-2" href="https://twitter.com/WareAnj">
+                              <i class="fa fa-twitter-square"></i>
+                          </a>
+                          <a class="brown-text text-lighten-2" href="google.com/">
+                              <i class="fa fa-google-plus-square"></i>
+                          </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--=================================FOOTER===============================================-->
+<footer id="contact" class="page-footer brown scrollspy">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <form class="col s12" action="contact.php" method="post">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="mdi-action-account-circle prefix white-text"></i>
+                            <input id="icon_prefix" name="name" type="text" class="validate white-text">
+                            <label for="icon_prefix" class="white-text">First Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="mdi-communication-email prefix white-text"></i>
+                            <input id="icon_email" name="email" type="email" class="validate white-text">
+                            <label for="icon_email" class="white-text">Email-id</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="mdi-editor-mode-edit prefix white-text"></i>
+                            <textarea id="icon_prefix2" name="message" class="materialize-textarea white-text"></textarea>
+                            <label for="icon_prefix2" class="white-text">Message</label>
+                        </div>
+                        <div class="col offset-s7 s5">
+                            <button class="btn waves-effect waves-light red darken-1" type="submit">Submit
+                                <i class="mdi-content-send right white-text"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Spotify.com</h5>
+                <ul>
+                    <li><a class="white-text" href="http://play.spotify.com/">Home</a></li>
+                    <li><a class="white-text" href="http://www.joashpereira.com/blog">Blog</a></li>
+                </ul>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Social</h5>
+                <ul>
+                    <li>
+                        <a class="white-text" href="https://www.facebook.com">
+                            <i class="small fa fa-facebook-square white-text"></i> Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="https://github.com">
+                            <i class="small fa fa-github-square white-text"></i> Github
+                        </a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="https://www.linkedin.com">
+                            <i class="small fa fa-linkedin-square white-text"></i> Linkedin
+                        </a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="https://www.twitter.com">
+                            <i class="small fa fa-twitter-square white-text"></i> Twitter
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright brown darken-4">
+        <div class="container center">
+            All Rights Reserved <a class="white-text">Spotify 2015</a>
+        </div>
+    </div>
+</footer>
 
 
-<!-- =============================================================================================================================== -->
-<!-- ================================================THESE ARE THE SCRIPTS========================================================== -->
-<!-- =============================================================================================================================== -->
-	
+    <!--==========================================SCRIPTS============================================= -->
+    <script src="stylesheets/min/plugin-min.js"></script>
+    <script src="stylesheets/min/custom-min.js"></script>
 
-
-		<script src="/javascripts/angular.min.js"></script>
-		<script src="/javascripts/angular-route.min.js"></script>
-		<script src="/javascripts/jquery.min.js"></script>
-		<script src="/javascripts/materialize.min.js"></script>
-		<script src="/javascripts/script.js"></script>
-		<script src="/partials/home/home.controller.js"></script>
-		<script src="/partials/home/home.service.js"></script>
-	</body>
+    </body>
 </html>
