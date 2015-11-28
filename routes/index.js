@@ -7,10 +7,8 @@ router.get('/', SessionAuth.isNotLoggedIn, function(req, res, next) {
   res.render('index');
 });
 
-router.get('/login', SessionAuth.isNotLoggedIn, function(req, res, next) {
-  res.render('login');
+router.get('/home', function(req, res, next) {
+  res.render('home');
 });
 
 module.exports = router;
-
-
