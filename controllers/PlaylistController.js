@@ -14,7 +14,22 @@ var createHash = function(password){
 
 
 exports.getMine = function(req, res) {
-	res.send([{name: "iPlaylist"}, {name: "iPlaylist2"}, {name: "iPlaylist3"}]);
+    pg.connect(dbUrl, function(err, client) {
+        if(err) {
+            return console.error('Client cannot connect to PG');
+        }
+        // res.send('Updating at ' + req.params.id);
+        client.query("SELECT * FROM playlist WHERE users_id = $1",
+        	[req.session.user.users_id],
+        	function(err, data){
+            client.end();
+            if(err) {
+                console.log('Error');
+                return;
+            }
+            res.send(data.rows);
+        });
+    });  
 }
 
 exports.login = function(req, res){

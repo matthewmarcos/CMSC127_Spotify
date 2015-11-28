@@ -51,7 +51,7 @@ exports.approve = function(req, res) {
 };
 
 exports.getPending = function(req, res) {
-  pg.connect(dbUrl, function(err, client) {
+    pg.connect(dbUrl, function(err, client) {
         if(err) {
             return console.error('Client cannot connect to PG');
         }
