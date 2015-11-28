@@ -1,9 +1,9 @@
 //$rootscope use for login
 
 
-/*app.controller('authController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+app.controller('authController', ['$rootscope','$scope', '$http', '$location', function($rootscope, $scope, $http, $location) {
 
-	$scope.user = {
+	$rootscope.user = {
 		lastName : '',
 		firstName : '',
 		userName : '',
@@ -17,10 +17,10 @@
 		//escape strings
 	};
 
-}]);*/
+}]);
 
 
-
+/*
 	(function(){
 		angular
 			.module("spotifyApp", ["ngRoute"])
@@ -48,3 +48,4 @@
 				});
 		}
 	}());
+	*/

@@ -4,6 +4,8 @@
 // createdb -O cmsc127spotify spotify
 // psql -U cmsc127spotify -W spotify
 
+//psql cmsc127spotify -h 127.0.0.1 -d spotify
+
 // Dropping database:
 // dropdb spotify
 // createdb -O cmsc127spotify spotify
