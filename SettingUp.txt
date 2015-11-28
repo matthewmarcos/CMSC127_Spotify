@@ -21,7 +21,7 @@ For linux users:
 createuser -P cmsc127spotify
 password: cmsc127
 createdb -O cmsc127spotify spotify
-psql -U cmsc127spotify -W spotify
+	psql -U cmsc127spotify -W spotify
 
 Dropping database:
 dropdb spotify
