@@ -4,16 +4,17 @@
 		.module("spotifyApp")
 		.controller("ProfileCtrl", ProfileCtrl);
 
-		ProfileCtrl.$inject["$scope","$http"];
+		ProfileCtrl.$inject = ["$scope","$http"];
 
 		function ProfileCtrl($scope,$http){
 			$scope.username = '';
 			$scope.picture = '';
 	
 			$http.get('/profile').then(function(data){
-				alert('getinfo');
-				$scope.username = data.username;
-				$scope.picture = data.picture;
+				// alert('getinfo');
+				// console.log(data.data.username);
+				$scope.username = data.data.username;
+				$scope.picture = data.data.picture;
 			}, function(err) {
 				console.log(err);
 			});

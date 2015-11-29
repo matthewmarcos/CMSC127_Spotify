@@ -4,14 +4,25 @@
 */
 
 exports.isNotLoggedIn = function(req, res, next){
-  if(!req.session.user) next();
-  else res.redirect('/home');
+  if(!req.session.user) {
+    console.log("Not logged in!");
+    next();
+  } else { 
+    console.log("logged in!");
+
+    res.redirect('/home');
+  }
 };
 
 
 exports.isLoggedInPage = function(req, res, next){
-  if(!!req.session.user) next();
-  else res.redirect('/');
+  if(!!req.session.user) {
+    console.log("logged in!");
+    next();
+  } else {
+      console.log("not logged in!");
+  res.redirect('/');
+  }
 };
 
 
