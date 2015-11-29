@@ -67,6 +67,9 @@ module.exports = function() {
             queryThis(queryString.users_subscribes_playlist, callback);
         },
         function(callback) {
+            queryThis(queryString.users_recommends_music, callback);
+        },
+        function(callback) {
             searchAdmin(callback);
         }
 	],

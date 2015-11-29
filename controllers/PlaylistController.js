@@ -41,7 +41,8 @@ exports.getThis = function(req, res) {
 
 exports.create = function(req, res) {
     // Create a new playlist for users_id
-    // Add songs
+    // Add songs eachSeries
+    var songs = req.body.songs;
 };
 
 

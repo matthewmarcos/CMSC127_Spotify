@@ -19,6 +19,7 @@ exports.playlist_has_music = "CREATE TABLE IF NOT EXISTS playlist_has_music(play
 exports.artist_create_album = "CREATE TABLE IF NOT EXISTS artist_create_album(artist_id integer REFERENCES artist(artist_id), album_id integer REFERENCES album(album_id))";
 exports.album_contains_music = "CREATE TABLE IF NOT EXISTS album_contains_music(album_id integer REFERENCES album(album_id), music_id int REFERENCES music(music_id))";
 exports.users_subscribes_playlist = "CREATE TABLE IF NOT EXISTS users_subscribes_playlist(users_id integer REFERENCES users(users_id), playlist_id integer REFERENCES playlist(playlist_id))";
+exports.users_recommends_music = "CREATE TABLE IF NOT EXISTS users_recommends_music (users_id integer REFERENCES users(users_id), music_id integer REFERENCES music(music_id))";
 
 exports.insert_admin = "insert into users(fname, lname, username,password, picture, email,isApproved,isAdmin,dateApproved)VALUES('admin', 'admin', 'admin', '" + adminPassword + "', 'empty', 'matthewmarcos94@gmail.com',true,true,now())";
 // exports.insert_admin_name = "INSERT INTO users_name( User_id, fname, lname) VALUES (1, 'admin', 'admin')";
