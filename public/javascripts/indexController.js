@@ -1,12 +1,6 @@
 (function(){
 	angular
 		.module("spotifyApp", ["ngRoute"])
-		/*
-		.run(function($rootScope) {
-			//console.log('lol');
-			$rootScope.username = '';
-		});
-		*/	
 		.controller('IndexCtrl', IndexCtrl);
 		
 	IndexCtrl.$inject =["$scope", "$http", "$window","$rootScope"];
@@ -39,15 +33,10 @@
 				username: $scope.inputUsername,
 				password: $scope.inputPassword
 			}).then(function(data){
-				console.log("Successful login")
-				console.log(data);
-							alert('HAHA');
 				//attach data to rootscope
-//				$rootScope.username = $scope.inputUsername;
-				// $window.location.href = 'home';
+				console.log('received data: ' + data);
+				$window.location.href = 'home';
 				//redirect to (/home)
-				window.location = '/home';
-
 			}, function(err) {
 				console.log(err);
 				alert("Invalid Username/password combo.. or your account has not yet been approved!");
@@ -58,13 +47,9 @@
 			$http.post('/auth/logout', {}).then(function(data){
 				console.log("Successful logout");
 				console.log(data);
-				//delete data in rootscope
-				alert('huhu');
-//				$rootScope.username = "";
 				// $window.location.href = 'home';
 				//redirect to (/home)
 				window.location = '/';
-
 			}, function(err) {
 				console.log("Not logged in");
 			});
@@ -79,10 +64,10 @@
 				picture: 'NULL',
 				email: $scope.inputEmail
 			}).then(function(data){
-				console.log("Successful SignUp")
+				console.log("Successful SignUp");
 				console.log(data);
 				alert('HAHA');
-				window.location = '/home';
+				//window.location = '/home';
 			}, function(err) {
 				console.log(err);
 				alert("Invalid input");
