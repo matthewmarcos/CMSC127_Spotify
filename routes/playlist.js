@@ -7,5 +7,7 @@ var playlist = require('./../controllers/PlaylistController');
 
 router.route('/')
 	.get(SessionAuth.isLoggedIn, playlist.getMine);
+router.route('/:id')
+	.get(SessionAuth.isLoggedIn, playlist.getMine);
 
 module.exports = router;

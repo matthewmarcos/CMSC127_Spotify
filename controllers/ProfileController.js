@@ -12,17 +12,18 @@ var createHash = function(password){
     return bCrypt.hashSync(password);
 };
 
+//Get current user information
 exports.getMine = function(req, res) {
     pg.connect(dbUrl, function(err, client) {
         if(err) {
             return console.error('Client cannot connect to PG');
         }
         // res.send('Updating at ' + req.params.id);
-        client.query("SELECT * FROM music WHERE users_id = $1", 
+        client.query("SELECT users_id, fname, lname, username, email, picture, isadmin, isapproved, dateapproved FROM users WHERE users_id = $1", 
                     [req.session.user.users_id], function(err, data){
             client.end();
             if(err) {
-                res.sendStatus(500);
+                res.sendStatus(404);
                 return;
             }
             res.send(data.rows[0]);
@@ -30,7 +31,7 @@ exports.getMine = function(req, res) {
     });
 }
 
-//Approve a user
+//Approve a user 
 exports.approve = function(req, res) {
     pg.connect(dbUrl, function(err, client) {
         if(err) {
@@ -50,6 +51,7 @@ exports.approve = function(req, res) {
     });
 };
 
+//Get list of pending users
 exports.getPending = function(req, res) {
     pg.connect(dbUrl, function(err, client) {
         if(err) {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="spotifyApp">
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -13,7 +13,7 @@
     <link href="stylesheets/min/custom-min.css" type="text/css" rel="stylesheet" >
 </head>
 
-<body id="top" class="scrollspy">
+<body id="top" class="scrollspy" ng-controller="IndexCtrl">
 
 <!--===========================PRE-LOADER==================================-->
 <div id="loader-wrapper">
@@ -73,16 +73,16 @@
             <div class="row">
               <div class="input-field">
                 <i class="mdi-action-account-circle prefix brown-text"></i>
-                <input id="icon_prefix" name="username" type="text" class="validate brown-text">
+                <input id="icon_prefix" name="username" type="text" class="validate brown-text" ng-model="inputUsername">
                 <label for="icon_prefix" class="brown-text">Username</label>
               </div>
               <div class="input-field">
                 <i class="mdi-action-settings prefix brown-text"></i>
-                <input id="icon_settings" name="name" type="password" class="validate brown-text">
+                <input id="icon_settings" name="name" type="password" class="validate brown-text" ng-model="inputPassword">
                 <label for="icon_settings" class="brown-text">Password</label>
               </div>
               <div class="center">
-                <button class="btn waves-effect waves-light brown darken-1" type="submit" href="/home.html">Login
+                <button class="btn waves-effect waves-light brown darken-1" type="submit" href="/home.html" ng-click="login()">Login
                     <i class="mdi-content-send right white-text"></i>
                 </button>
               </div>
@@ -102,31 +102,31 @@
           <div class="col s6">
             <div class="row">
               <div class="input-field col s6">
-                <input id="first_name" type="text" class="validate">
+                <input id="first_name" type="text" class="validate" ng-model="inputFName">
                 <label for="first_name" class="brown-text">First Name</label>
               </div>
               <div class="input-field col s6">
-                <input id="last_name" type="text" class="validate">
+                <input id="last_name" type="text" class="validate" ng-model="inputLName">
                 <label for="last_name" class="brown-text">Last Name</label>
               </div>
               </div>
               <div>
-                <input id="password" type="password" class="validate">
+                <input id="password" type="password" class="validate" ng-model="inputPasswordSignUp">
                 <label for="password" class="brown-text">Password</label>
               </div>
               <div>
-                <input id="c_password" type="password" class="validate">
+                <input id="c_password" type="password" class="validate" ng-model="inputConfirmPassword">
                 <label for="c_password" class="brown-text">Confirm Password</label>
               </div>
           </div>
 
           <div class="col s6">
             <div class="input-field">
-              <input id="user_name" type="text" class="validate">
+              <input id="user_name" type="text" class="validate" ng-model="inputUsernameSignUp">
               <label for="user_name" class="brown-text">User Name</label>
             </div>
             <div>
-              <input id="email" type="email" class="validate">
+              <input id="email" type="email" class="validate" ng-model="inputEmail">
               <label for="email">Email</label>
             </div>
             <form action="#">
@@ -145,7 +145,7 @@
         </div>
 
         <div class="center">
-          <button class="btn waves-effect waves-light brown darken-1" type="submit">Sign Up
+          <button class="btn waves-effect waves-light brown darken-1" type="submit" ng-click="signup()">Sign Up
               <i class="mdi-content-send right white-text"></i>
           </button>
         </div>
@@ -313,10 +313,12 @@
     </div>
 </footer>
     <!--==========================================SCRIPTS============================================= -->
+    <script src="javascripts/angular.min.js"></script>
+    <script src="javascripts/angular-route.min.js"></script>
     <script src="stylesheets/min/plugin-min.js"></script>
     <script src="stylesheets/min/custom-min.js"></script>
-    <script src="javascipts/spotifyApp.js"></script>
-    
+    <!--    <script src="javascripts/spotifyApp.js"></script>   -->
+    <script src="javascripts/indexController.js"></script>
 
     </body>
 </html>
