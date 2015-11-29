@@ -29,6 +29,10 @@
 				controller: 'ProfileCtrl',
 				templateUrl: '/public/partials/profile/profile.view.html'
 			})
+			.when('/subscriptions', {
+				controller: 'SubscriptionsCtrl',
+				templateUrl: '/public/partials/subscriptions/subscriptions.view.html'
+			})
 			.otherwise({
 				controller: 'HomeCtrl',
 				templateUrl: '/partials/home/home.view.html'
