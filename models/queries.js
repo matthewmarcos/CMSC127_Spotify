@@ -36,6 +36,6 @@ exports.drop_users_recommends_music = "DROP TABLE users_recommends_music cascade
 
 
 
-exports.insert_admin = "insert into users(fname, lname, username,password, picture, email,isApproved,isAdmin,dateApproved)VALUES('admin', 'admin', 'admin', '" + adminPassword + "', 'img/avatar3.png', 'matthewmarcos94@gmail.com',true,true,now())";
+exports.insert_admin = "insert into users(fname, lname, username,password, picture, email,isApproved,isAdmin,dateApproved)VALUES('admin', 'admin', 'admin', '" + adminPassword + "', '/img/avatar3.png', 'matthewmarcos94@gmail.com',true,true,now())";
 // exports.insert_admin_name = "INSERT INTO users_name( User_id, fname, lname) VALUES (1, 'admin', 'admin')";
 exports.get_admin_count = "SELECT COUNT(*) FROM users where username = 'admin'";

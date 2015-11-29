@@ -2,9 +2,9 @@
 (function(){
 	angular
 		.module("spotifyApp")
-		.factory("SearchService", DegreeProgramsService);
+		.factory("SearchService", DegreeProgramsService)
 
-	SearchService.$inject=["$http", "$q"];
+	HomeService.$inject=["$http", "$q"];
  	}
 
 })();
