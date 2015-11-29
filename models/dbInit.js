@@ -1,14 +1,16 @@
-// http://stackful-dev.com/setting-up-nodejs-and-postgresql-on-ubuntu-servers.html
-// createuser -P cmsc127spotify
-// password: cmsc127
-// createdb -O cmsc127spotify spotify
-// psql -U cmsc127spotify -W spotify
+//http://stackful-dev.com/setting-up-nodejs-and-postgresql-on-ubuntu-servers.html
+//createuser -P cmsc127spotify
+//password: cmsc127
+//createdb -O cmsc127spotify spotify
+//psql -U cmsc127spotify -W spotify
 
-// Dropping database:
-// dropdb spotify
-// createdb -O cmsc127spotify spotify
-// psql -U cmsc127spotify -W spotify
-// password: cmsc127
+//psql cmsc127spotify -h 127.0.0.1 -d spotify
+
+//Dropping database:
+//dropdb spotify
+//createdb -O cmsc127spotify spotify
+//psql -U cmsc127spotify -W spotify
+//password: cmsc127
 /*
 	dbInit:
 		Create tables if does not exist in schema.
