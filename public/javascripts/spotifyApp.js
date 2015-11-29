@@ -9,7 +9,27 @@
 				controller: 'HomeCtrl',
 				templateUrl: '/public/partials/home/home.view.html'
 			})
-			.otherwise({});
-	}
+			.when('/pending', {
+				controller: 'PendingCtrl',
+				templateUrl: '/public/partials/home/pending.view.html'
+			})
+			.when('/music', {
+				controller: 'PendingCtrl',
+				templateUrl: '/public/partials/home/pending.view.html'
+			})
+			.when('/playlist', {
+				controller: 'PendingCtrl',
+				templateUrl: '/public/partials/home/pending.view.html'
+			})
+			.when('/artist', {
+				controller: 'PendingCtrl',
+				templateUrl: '/public/partials/home/pending.view.html'
+			})
+
+			.otherwise({
+				controller: 'HomeCtrl',
+				templateUrl: '/public/partials/home/home.view.html'
+			});
+	};
 }());
 
