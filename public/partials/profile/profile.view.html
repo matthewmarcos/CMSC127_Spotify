@@ -1,3 +1,9 @@
 <h1>Profile goes here!</h1>
-username: {{username}}
-<!-- dateApproved: {{dateApproved}} -->
+
+<img ng-src="{{user.picture}}"></img>
+
+<p>username: {{ user.username }}</p>
+<p>fname: {{ user.fname }}</p>
+<p>lname: {{ user.lname }}</p>
+<p>email: {{ user.email }}</p>
+<p>dateapproved: {{ user.datepproved | date:'medium' }}</p>
