@@ -3,9 +3,9 @@
 		.module("spotifyApp", ["ngRoute"])
 		.controller('IndexCtrl', IndexCtrl);
 		
-	IndexCtrl.$inject =["$scope", "$http", "$window","$rootScope"];
+	IndexCtrl.$inject =["$scope", "$http", "$window"];
 	
-	function IndexCtrl($scope, $http, $window, $rootScope) {
+	function IndexCtrl($scope, $http, $window) {
 		$scope.newUser = {
 			"username": "",
 			"password": "",

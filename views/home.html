@@ -59,6 +59,11 @@
 			<li>
 				<a href="#" class="mdi-action-reorder prefix brown-text text-darken-4">Discover</a>				
 			</li>
+			<div ng-controller="ProfileCtrl">
+				<li ng-if="isadmin">
+					<a href="#" class="mdi-action-reorder prefix brown-text text-darken-4">Pending Accounts</a>	
+				</li>	
+			</div>
 
 			<hr>
 
