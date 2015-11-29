@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "seed": "node ./bin/seed"
+    "seed": "node ./bin/seed",
+    "drop" : "node ./bin/tableDeleter"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
