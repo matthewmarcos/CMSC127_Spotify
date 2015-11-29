@@ -1,22 +1,22 @@
 //$rootscope use for login
 
-app.controller('authController', ['$rootscope','$scope', '$http', '$location', function($rootscope, $scope, $http, $location) {
+// agnular..controller('authController', ['$rootscope','$scope', '$http', '$location', function($rootscope, $scope, $http, $location) {
 
-	$rootscope.user = {
-		lastName : '',
-		firstName : '',
-		userName : '',
-		email : '',
-		confirmEmail: '',
-		password : '',
-		confirmPassword : ''
-	};
+// 	$rootscope.user = {
+// 		lastName : '',
+// 		firstName : '',
+// 		userName : '',
+// 		email : '',
+// 		confirmEmail: '',
+// 		password : '',
+// 		confirmPassword : ''
+// 	};
 
-	$scope.showMe = function() {
-		//escape strings
-	};
+// 	$scope.showMe = function() {
+// 		//escape strings
+// 	};
 
-}]);
+// }]);
 
 
 /*
