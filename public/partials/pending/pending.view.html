@@ -1,29 +1,64 @@
-<h1>Pending Accounts!</h1>
+<div class="row">
+	<div class="col s6">
+		<h3>Pending Accounts!</h3>
 
-<table class="highlight centered striped">
-	<thead>
-		<tr class="row">
-			<td class="col m3">Username</td>
-			<td class="col m3">First Name</td>
-			<td class="col m3">Last Name</td>
-			<td class="col m3">Action</td>
-		</tr>
-	</thead>
-	<tbody>
-		<!-- <tr>
-			<td>BSCS</td>
-			<td>BSCMSC</td>
-		</tr> -->
-		<tr ng-repeat="account in pendingAccounts" class="row">
-			<td class="col m3">{{ account.username }}</td>
-			<td class="col m3">{{ account.fname }}</td>
-			<td class="col m3">{{ account.lname }}</td>
-			<td class="col m3">
-				<div class="row">
-					<input class="btn btn-default col m6" type="button" value="Approve" ng-click="approve( account.users_id)">
-				</div>
-			</td>
-		</tr>
-	</tbody>
-<!-- 	{{programs}} -->
-</table>
+		<table class="highlight centered striped">
+			<thead>
+				<tr class="row">
+					<td class="col m3">Username</td>
+					<td class="col m3">First Name</td>
+					<td class="col m3">Last Name</td>
+					<td class="col m3">Action</td>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- <tr>
+					<td>BSCS</td>
+					<td>BSCMSC</td>
+				</tr> -->
+				<tr ng-repeat="account in pendingAccounts" class="row">
+					<td class="col m3">{{ account.username }}</td>
+					<td class="col m3">{{ account.fname }}</td>
+					<td class="col m3">{{ account.lname }}</td>
+					<td class="col m3">
+						<div class="row">
+							<input class="btn btn-default col m6" type="button" value="Approve" ng-click="approve( account.users_id)">
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		<!-- 	{{programs}} -->
+		</table>
+	</div>
+	<div class="col s6">
+		<h3>View user accounts by date</h3>
+		<input type="date" name="" id="">
+		<table class="highlight centered striped">
+			<thead>
+				<tr class="row">
+					<td class="col m3">Username</td>
+					<td class="col m3">First Name</td>
+					<td class="col m3">Last Name</td>
+					<td class="col m3">Action</td>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- <tr>
+					<td>BSCS</td>
+					<td>BSCMSC</td>
+				</tr> -->
+				<tr ng-repeat="account in pendingAccounts" class="row">
+					<td class="col m3">{{ account.username }}</td>
+					<td class="col m3">{{ account.fname }}</td>
+					<td class="col m3">{{ account.lname }}</td>
+					<td class="col m3">
+						<div class="row">
+							<input class="btn btn-default col m6" type="button" value="Approve" ng-click="approve( account.users_id)">
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		<!-- 	{{programs}} -->
+		</table>
+	</div>
+</div>

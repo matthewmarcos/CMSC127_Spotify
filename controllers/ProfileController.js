@@ -68,3 +68,20 @@ exports.getPending = function(req, res) {
         });
     });  
 };
+
+exports.getApproved = function(req, res) {
+    pg.connect(dbUrl, function(err, client) {
+        if(err) {
+            return console.error('Client cannot connect to PG');
+        }
+        // res.send('Updating at ' + req.params.id);
+        client.query("SELECT users_id, username, fname, lname, dateapproved FROM users WHERE isapproved = true", function(err, data){
+            client.end();
+            if(err) {
+                console.log('Error');
+                return;
+            }
+            res.send(data.rows);
+        });
+    });  
+};

@@ -11,7 +11,7 @@
 	
 			$http.get('/profile').then(function(data){
 				// alert('getinfo');
-				// console.log(data.data.username);
+				console.log(data.data);
 				$scope.user = data.data;
 
 			}, function(err) {
