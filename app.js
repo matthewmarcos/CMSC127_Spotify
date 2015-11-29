@@ -13,6 +13,7 @@ var auth = require('./routes/auth');
 var music = require('./routes/music');
 var playlist = require('./routes/playlist');
 var profile = require('./routes/profile');
+var artist = require('./routes/artist');
 
 
 var sessionMiddleware = session({
@@ -37,6 +38,7 @@ app.use(cookieParser());
 app.use(sessionMiddleware);
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.use('/', routes);
 app.use('/auth', auth);
@@ -45,7 +47,7 @@ app.use('/playlist', playlist);
 app.use('/profile', profile);
 
 app.get('*', function(req, res, next) {
-  res.sendStatus(404);
+  res.redirect('/');
 });
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

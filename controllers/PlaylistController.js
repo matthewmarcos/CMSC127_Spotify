@@ -31,3 +31,23 @@ exports.getMine = function(req, res) {
         });
     });  
 };
+
+
+exports.getThis = function(req, res) {
+    // Get list of songs in playlist_id
+    // Select * from music natural join playlist_has_music where playlist_id = Number(req.params.id);
+}
+
+
+exports.create = function(req, res) {
+    // Create a new playlist for users_id
+    // Add songs
+};
+
+
+exports.edit = function(req, res) {
+    // Edit playlist of users_id with playlist_id
+    // delete from playlist_has_songs with playlist_id
+    // add again to playlist_has_songs
+    // async.EachSeries
+};

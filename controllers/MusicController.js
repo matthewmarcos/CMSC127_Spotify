@@ -6,11 +6,8 @@
 var pg = require('pg');
 var dbUrl = "postgres://cmsc127spotify:cmsc127@localhost/spotify";
 var async = require('async');
+var multer = require('multer');
 
-// Generates hash using bCrypt
-var createHash = function(password){
-    return bCrypt.hashSync(password);
-};
 
 //Get all music details of all music current user uploaded
 exports.getMine = function(req, res) {
@@ -29,7 +26,8 @@ exports.getMine = function(req, res) {
             res.send(data.rows);
         });
     });
-}
+};
+
 
 //Retrieve a particular song given a music_id
 exports.getThis = function(req, res) {
@@ -41,23 +39,23 @@ exports.getThis = function(req, res) {
         async.waterfall([
             function(callback) {
                 client.query("SELECT file_path from music where music_id = $1", 
-                            [req.body.music_id], function(err, data){
+                            [Number(req.params.id)], function(err, data){
                     client.end();
                     if(err) {
                         callback(err, null);                        
                         return;
                     }
-                    callback(null, data.rows[0]);
+                    callback(null, data);
                 });
-            }, function(callback, data) {
-
+            }, function(data, callback) {
+                // Use multer to send music on that filepath
+                // res.send(data.rows);            
+                res.send(data.rows[0]);
             }
         ], function(err, data) {
             if(err) {
                 res.sendStatus(404);
             }
-            // Use multer to send music on that filepath
-            res.send(data.rows);            
         });
         
     });
@@ -81,7 +79,6 @@ exports.addMusic = function(req, res) {
                 res.sendStatus(409);
                 return;
             }
-
             res.send(data);
         });
     });
