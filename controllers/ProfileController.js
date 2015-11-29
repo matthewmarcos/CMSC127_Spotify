@@ -58,7 +58,7 @@ exports.getPending = function(req, res) {
             return console.error('Client cannot connect to PG');
         }
         // res.send('Updating at ' + req.params.id);
-        client.query("SELECT users_id, username FROM users WHERE isapproved = false", function(err, data){
+        client.query("SELECT users_id, username, fname, lname FROM users WHERE isapproved = false", function(err, data){
             client.end();
             if(err) {
                 console.log('Error');

@@ -46,6 +46,7 @@
 				console.log("Successful logout");
 				window.location = '/';
 			}, function(err) {
+				window.location = '/';
 				console.log("Not logged in");
 			});
 		}
