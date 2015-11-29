@@ -7,9 +7,8 @@
 		PendingCtrl.$inject = ['$scope', '$http'];
 
 		function PendingCtrl ($scope, $http) {
-			$scope.pendingAccounts = [
-				
-  			];
+			$scope.pendingAccounts = [];
+			$scope.approvedAccounts = [];
 
 			$http.get('/profile/pending')
 				.then(function(data) {
@@ -18,6 +17,14 @@
 				}, function(err) {
 
 				});
+			$http.get('/profile/approved')
+				.then(function(data) {
+					console.log(data);
+					$scope.approvedAccounts = data.data;
+				}, function(err) {
+
+				});
+
 
 			$scope.approve = function(id) {
 				console.log('Approving user number ' + id);
