@@ -7,7 +7,7 @@
 	HomeCtrl.$inject = ['$scope', '$http'];
 
 	function HomeCtrl ($scope, $http) {
-		alert('Loaded!');
+		
 	}
 
 })();
