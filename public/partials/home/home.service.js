@@ -2,7 +2,7 @@
 (function(){
 	angular
 		.module("spotifyApp")
-		.factory("HomeService", DegreeProgramsService)
+		.factory("HomeService", HomeService);
 
 	HomeService.$inject=["$http", "$q"];
  	}

@@ -11,8 +11,6 @@
 			$scope.picture = '';
 	
 			$http.get('/profile').then(function(data){
-				// alert('getinfo');
-				// console.log(data.data.username);
 				$scope.username = data.data.username;
 				$scope.picture = data.data.picture;
 			}, function(err) {
