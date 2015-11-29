@@ -36,6 +36,22 @@ exports.getMine = function(req, res) {
 exports.getThis = function(req, res) {
     // Get list of songs in playlist_id
     // Select * from music natural join playlist_has_music where playlist_id = Number(req.params.id);
+     pg.connect(dbUrl, function(err, client) {
+        if(err) {
+            return console.error('Client cannot connect to PG');
+        }
+        // res.send('Updating at ' + req.params.id);
+        client.query("SELECT * from music NATURAL JOIN playlist_has_music where playlist_id = $1",
+            [req.params.id],
+            function(err, data){
+            client.end();
+            if(err) {
+                console.log('Error');
+                return;
+            }
+            res.send(data.rows);
+        });
+    });  
 }
 
 
