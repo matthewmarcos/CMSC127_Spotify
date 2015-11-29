@@ -62,7 +62,7 @@
 			}).then(function(data){
 				console.log("Successful SignUp");
 				console.log(data);
-				window.location = '/home';
+				window.location = '/home/';
 			}, function(err) {
 				console.log(err);
 				alert("Invalid input");
