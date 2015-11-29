@@ -57,15 +57,15 @@
 
 	function config($routeProvider){
 		$routeProvider
-			.when('login/home', {
+			.when('/playlist', {
 				'controller': "HomeCtrl",
 				'templateUrl' : "/partials/home/home.view.html"
 			})
-			.when('login/search', {
+			.when('/artist', {
 				'controller': "SearchCtrl",
 				'template' : "/partials/search/search.view.html"
 			})
-			.when('login/admin', {
+			.when('/music', {
 				'controller': "AdminCtrl",
 				'templateUrl' : "/partials/admin/admin.view.html"
 			})

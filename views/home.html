@@ -16,56 +16,47 @@
 <body id="top" class="scrollspy">
 
 <!--======================================NAVIGATION============================================-->
-<div class="row">
+<div class="row" ng-controller="RouteCtrl">
 	<div class="col s2">
 		<ul class="side-nav fixed brown lighten-2 white-text text-darken-4 z-depth-3" style="width: 20%;">
 		
 			<div ng-controller="ProfileCtrl">
 					<h5 class="center">Hello, {{username}}!</h5>
 				<div class="waves-effect waves-block waves-light card-avatar center">
-					<img class="z-depth-1" style="margin-top:10px" ng-src="picture">
+					<a href="#"mg class="z-depth-1" style="margin-top:10px" ng-src="picture">
 				</div>
 			</div>
 		
 			<hr>
 		
 			<li>
-				<i class="mdi-action-label prefix brown-text text-darken-4"></i>
-				Subscriptions
+				<a href="#" class="mdi-action-label prefix brown-text text-darken-4">Subscriptions</a>
 			</li>
 			<li>
-				<i class="mdi-action-label prefix brown-text text-darken-4"></i>
-				Songs
+				<a href="#" class="mdi-action-label prefix brown-text text-darken-4">Songs</a>
 			</li>
 			<li>
-				<i class="mdi-action-label prefix brown-text text-darken-4"></i>
-				Playlists
+				<a href="#" class="mdi-action-label prefix brown-text text-darken-4">Playlists</a>
 			</li>
 			<hr>
 			<li>
-				<i class="mdi-action-stars prefix brown-text text-darken-4"></i>
-				Popular Playlists
+				<a href="#" class="mdi-action-stars prefix brown-text text-darken-4">Popular Playlists</a>
 			</li>
 			<li>
-				<i class="mdi-action-stars prefix brown-text text-darken-4"></i>
-				Artists
+				<a href="#" class="mdi-action-stars prefix brown-text text-darken-4">Artists</a>
 			</li>
 			<li>
-				<i class="mdi-action-stars prefix brown-text text-darken-4"></i>
-				New Albums
+				<a href="#" class="mdi-action-stars prefix brown-text text-darken-4">New Albums</a>
 			</li>
 			<hr>
 			<li>
-				<i class="mdi-action-reorder prefix brown-text text-darken-4"></i>
-				Charts
+				<a href="#" class="mdi-action-reorder prefix brown-text text-darken-4">Charts</a>
 			</li>
 			<li>
-				<i class="mdi-action-reorder prefix brown-text text-darken-4"></i>
-				Genres
+				<a href="#" class="mdi-action-reorder prefix brown-text text-darken-4">Genres</a>
 			</li>
 			<li>
-				<i class="mdi-action-reorder prefix brown-text text-darken-4"></i>
-				Discover
+				<a href="#" class="mdi-action-reorder prefix brown-text text-darken-4">Discover</a>
 			</li>
 
 			<hr>
@@ -88,9 +79,8 @@
 		<p>Searchbar PlaceholderHere</p>
 		</div>
 		<div class="row">
-			<!-- NG-View goes here -->
+			<div ng-view> </div>
 		</div>
-
 	</div>
 </div>
 
@@ -104,5 +94,6 @@
 <script src="javascripts/angular-route.min.js"></script>
 <script src="javascripts/spotifyApp.js"></script>
 <script src="javascripts/indexController.js"></script>
+<script src="javascripts/routeController.js"></script>
 <script src="partials/profile/profile.controller.js"></script>
 </html>
