@@ -25,27 +25,81 @@
 </div>
 
 <!--======================================NAVIGATION============================================-->
-<ul class="side-nav fixed" style="width: 20%;" ng-controller="IndexCtrl">
+<!-- <<<<<<< HEAD -->
+<ul class="side-nav fixed" style="width: 20%;"ng-controller="IndexCtrl">
   <li><a href="typography.html" ng-click="logout()">Logout</a></li>
+<!-- ======= -->
+<ul class="side-nav fixed grey lighten-3 brown-text text-darken-4 transparent" style="width: 20%;">
+		<h5 class="center">Hello, WareAnj!</h5>
+		<div class="waves-effect waves-block waves-light card-avatar center">
+				<img style="margin-top:10px" src="img/geeca.jpg">
+		</div>
+		<div class="center">
+			<li>
+				<i class="mdi-action-assessment prefix brown-text"></i>
+				Settings
+			</li>
+			<li ng-click="logout()">
+				<i class="mdi-action-assessment prefix brown-text"></i>
+				Logout
+			</li>
+		</div>
+
+		<hr>
+		<li>
+			<i class="mdi-action-label prefix brown-text"></i>
+			Subscriptions
+		</li>
+		<li>
+			<i class="mdi-action-label prefix brown-text"></i>
+			Songs
+		</li>
+		<li>
+			<i class="mdi-action-label prefix brown-text"></i>
+			Playlists
+		</li>
+		<hr>
+		<li>
+			<i class="mdi-action-stars prefix brown-text"></i>
+			Popular Playlists
+		</li>
+		<li>
+			<i class="mdi-action-stars prefix brown-text"></i>
+			Artists
+		</li>
+		<li>
+			<i class="mdi-action-atars prefix brown-text"></i>
+			New Albums
+		</li>
+		<hr>
+		<li>
+			<i class="mdi-action-reorder prefix brown-text"></i>
+			Charts
+		</li>
+		<li>
+			<i class="mdi-action-reorder prefix brown-text"></i>
+			Genres
+		</li>
+		<li>
+			<i class="mdi-action-reorder prefix brown-text"></i>
+			Discover
+		</li>
+<!-- >>>>>>> 1f609fd279f7e1e5ec8f6d85a88cb5b715e752bd -->
 </ul>
 
 
 <div style="margin-left:20%">
-	<!--================================HOME PAGE==========================================-->
+	<!--================================BANNER==========================================-->
 	<div class="section brown" id="normal-banner">
-	    <div class="container">
-	        <h1 class="text_h center letters type">
-	            <span>Hello, </span>
-							<span>WareAnj</span> <!--insert name of the user in here-->
-	        </h1>
-	    </div>
+		<h4 style="marginLeft:10px; "class="center white-text">
+			Home
+		</h4> <!--Insert what page this is-->
 	</div>
-	</main>
 
 	<!--===================================FAVORITES==============================================-->
 	<div class="section scrollspy" id="intro">
 	    <div class="container">
-	        <h2 class="header text_b brown-text">SUBSCRIPTIONS</h2>
+	        <h4 class="header text_b brown-text">SUBSCRIPTIONS</h4>
 	        <div class="row center">
 						<!--======================BEGIN: USE ng-repeat here======================-->
 	            <div class="col s12 m3">

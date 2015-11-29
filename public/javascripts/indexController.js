@@ -33,6 +33,7 @@
 
 			}, function(err) {
 				console.log(err);
+				alert("Invalid Username/password combo.. or your account has not yet been approved!");
 				
 				
 			});

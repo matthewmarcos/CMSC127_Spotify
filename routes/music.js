@@ -11,7 +11,7 @@ router.route('/')
 	.post(SessionAuth.isLoggedIn, MusicController.addMusic);
 
 router.route('/:id')
-	.get(SessionAuth.isLoggedIn, function(req, res){});
+	.get(SessionAuth.isLoggedIn, MusicController.getThis);
 
 router.route('*')
 	.get(function(req, res, next) {

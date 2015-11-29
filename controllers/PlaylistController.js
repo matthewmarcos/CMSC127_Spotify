@@ -30,13 +30,4 @@ exports.getMine = function(req, res) {
             res.send(data.rows);
         });
     });  
-}
-
-exports.login = function(req, res){
-	
-};
-
-
-exports.logout = function(req, res, next){
-	
 };
