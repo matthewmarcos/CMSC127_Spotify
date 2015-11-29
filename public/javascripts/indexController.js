@@ -13,7 +13,6 @@
 			"lname": "",
 			"email": "",
 		};
-
 		$scope.inputUsername = '';
 		$scope.inputPassword = '';
 
@@ -47,6 +46,7 @@
 			$http.post('/auth/logout', {}).then(function(data){
 				console.log("Successful logout");
 				console.log(data);
+				alert('logout');
 				// $window.location.href = 'home';
 				//redirect to (/home)
 				window.location = '/';
@@ -66,8 +66,7 @@
 			}).then(function(data){
 				console.log("Successful SignUp");
 				console.log(data);
-				alert('HAHA');
-				//window.location = '/home';
+				window.location = '/home';
 			}, function(err) {
 				console.log(err);
 				alert("Invalid input");

@@ -12,7 +12,6 @@ var isValidPassword = function(userInput, password){
 	return bCrypt.compareSync(userInput, password);
 };
 
-
 // Generates hash using bCrypt
 var createHash = function(password){
 	return bCrypt.hashSync(password);
