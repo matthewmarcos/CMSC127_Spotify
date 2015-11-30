@@ -61,7 +61,7 @@ exports.getThis = function(req, res) {
     });
 };
 
-//Approve a user
+
 exports.addMusic = function(req, res) {
     pg.connect(dbUrl, function(err, client) {
         if(err) {
@@ -79,7 +79,7 @@ exports.addMusic = function(req, res) {
                 res.sendStatus(409);
                 return;
             }
-            res.send(data);
+            res.send({"msg":"hi"});
         });
     });
 };
