@@ -17,35 +17,52 @@
 
 <!--======================================NAVIGATION============================================-->
 
-<div class="row">
-	<div class="col s2">
-		<ul class="side-nav fixed brown lighten-2 white-text text-darken-4 z-depth-3" style="width: 20%;">
-		    <h3 class="">SPOTIFY</h2>
-			  <div ng-controller="ProfileCtrl" >
-					<h2 class="white-text center header text_h2">Hello, {{user.username}}!</h5>
-				<div class="waves-effect waves-block waves-light card-avatar center">
-					<img class="z-depth-1" style="margin-top:10px" ng-src="{{user.picture}}">
-				</div>
+<!--navbar starts here-->
+<div>
+	<ul class="side-nav fixed brown lighten-2 white-text text-darken-4 z-depth-3" style="width:20%">
+		 <div ng-controller="ProfileCtrl" >
+				<!-- <h6 class="white-text center header text_h2">Hello, {{user.username}}!</h6> -->
+				<h2 class="center header text_h2">SPOTIFY</h2>
+			<div class="waves-effect waves-block waves-light card-avatar center">
+				<img class="z-depth-1 white" ng-src="{{user.picture}}">
 			</div>
+		</div>
 
-			<hr>
+		<hr>
+		<li>
+			<a href="#/subscriptions" class="mdi-action-label prefix brown-text text-darken-4">My Subscriptions</a>
+		</li>
+		<li>
+			<a href="#/music" class="mdi-action-label prefix brown-text text-darken-4">My Music</a>
+		</li>
+		<li>
+			<a href="#/playlist" class="mdi-action-label prefix brown-text text-darken-4">My Playlists</a>
+		</li>
+		<hr>
+		<li>
+			<!-- popular songs nalang please -->
+			<a href="#" class="mdi-action-stars prefix brown-text text-darken-4">Popular Songs</a>
+		</li>
+		<li>
+			<a href="#/artist" class="mdi-action-stars prefix brown-text text-darken-4">Artists</a>
+		</li>
+		<hr>
+		<div ng-controller="ProfileCtrl">
+			<li ng-if="user.isadmin">
+				<a href="#/pending" class="mdi-action-reorder prefix brown-text text-darken-4">Pending Accounts</a>
+			</li>
+		</div>
+
+		<hr>
+
+		<div ng-controller="IndexCtrl">
 			<li>
-				<a href="#/subscriptions" class="mdi-action-label prefix brown-text text-darken-4">My Subscriptions</a>
+				<a href="#/profile" class="mdi-action-assessment prefix brown-text text-darken-4">Settings</a>
 			</li>
 			<li>
-				<a href="#/music" class="mdi-action-label prefix brown-text text-darken-4">My Music</a>
+				<a href="#" class="mdi-action-assessment prefix brown-text text-darken-4" ng-click="logout()">Logout</a>
 			</li>
-			<li>
-				<a href="#/playlist" class="mdi-action-label prefix brown-text text-darken-4">My Playlists</a>
-			</li>
-			<hr>
-			<li>
-				<!-- popular songs nalang please -->
-				<a href="#" class="mdi-action-stars prefix brown-text text-darken-4">Popular Songs</a>
-			</li>
-			<li>
-				<a href="#/artist" class="mdi-action-stars prefix brown-text text-darken-4">Artists</a>
-			</li>
+
 			<hr>
 			<div ng-controller="ProfileCtrl">
 				<div ng-if="user.isadmin">
@@ -54,7 +71,9 @@
 					</li>
 					<hr>
 				</div>
+
 			</div>
+		</div>
 
 
 			<div ng-controller="IndexCtrl">
@@ -65,19 +84,24 @@
 					<a href="#" class="mdi-action-assessment prefix brown-text text-darken-4" ng-click="logout()">Logout</a>
 				</li>
 			</div>
-		</ul>
-		<!-- End Navigation Here! -->
-	</div>
-	<!-- End Left sidebar Here! -->
+	</ul>
+	<!-- End Navigation Here! -->
+</div>
+<!-- End Left sidebar Here! -->
 
 	<!-- Main Div to change -->
-	<div class="col s9 offset-s3">
+	<div style="margin-left:20%">
 		<!-- Search bar goes here -->
 		<div class="row">
-			<!-- Please create SearchBarController -->
-			<p>Searchbar PlaceholderHere</p>
+			<!-- bar in for user name @TODO: Insert search something ob the left -->
+			<div class="section brown" id="normal-banner">
+				<div ng-controller="ProfileCtrl" >
+					<h4 class="white-text center header">Hello, {{user.username}}!</h4>
+				</div>
+			</div>
+
 		</div>
-		<!-- End of search bar -->
+		<!-- End of main navbar -->
 
 		<!-- Start of main div -->
 		<div class="row">
@@ -85,8 +109,80 @@
 			<!-- ng-view goes here -->
 		</div>
 		<!-- End of main Div -->
+
+		<!--=================================FOOTER===============================================-->
+		<footer id="contact" class="page-footer brown scrollspy">
+		    <div class="container">
+		        <div class="row">
+		            <div class="col l6 s12">
+		                <form class="col s12" action="contact.php" method="post">
+		                    <div class="row">
+		                        <div class="input-field col s6">
+		                            <i class="mdi-action-account-circle prefix white-text"></i>
+		                            <input id="icon_prefix" name="name" type="text" class="validate white-text">
+		                            <label for="icon_prefix" class="white-text">First Name</label>
+		                        </div>
+		                        <div class="input-field col s6">
+		                            <i class="mdi-communication-email prefix white-text"></i>
+		                            <input id="icon_email" name="email" type="email" class="validate white-text">
+		                            <label for="icon_email" class="white-text">Email-id</label>
+		                        </div>
+		                        <div class="input-field col s12">
+		                            <i class="mdi-editor-mode-edit prefix white-text"></i>
+		                            <textarea id="icon_prefix2" name="message" class="materialize-textarea white-text"></textarea>
+		                            <label for="icon_prefix2" class="white-text">Message</label>
+		                        </div>
+		                        <div class="col offset-s7 s5">
+		                            <button class="btn waves-effect waves-light red darken-1" type="submit">Submit
+		                                <i class="mdi-content-send right white-text"></i>
+		                            </button>
+		                        </div>
+		                    </div>
+		                </form>
+		            </div>
+		            <div class="col l3 s12">
+		                <h5 class="white-text">Spotify.com</h5>
+		                <ul>
+		                    <li><a class="white-text" href="http://play.spotify.com/">Home</a></li>
+		                    <li><a class="white-text" href="http://www.joashpereira.com/blog">Blog</a></li>
+		                </ul>
+		            </div>
+		            <div class="col l3 s12">
+		                <h5 class="white-text">Social</h5>
+		                <ul>
+		                    <li>
+		                        <a class="white-text" href="https://www.facebook.com">
+		                            <i class="small fa fa-facebook-square white-text"></i> Facebook
+		                        </a>
+		                    </li>
+		                    <li>
+		                        <a class="white-text" href="https://github.com">
+		                            <i class="small fa fa-github-square white-text"></i> Github
+		                        </a>
+		                    </li>
+		                    <li>
+		                        <a class="white-text" href="https://www.linkedin.com">
+		                            <i class="small fa fa-linkedin-square white-text"></i> Linkedin
+		                        </a>
+		                    </li>
+		                    <li>
+		                        <a class="white-text" href="https://www.twitter.com">
+		                            <i class="small fa fa-twitter-square white-text"></i> Twitter
+		                        </a>
+		                    </li>
+		                </ul>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="footer-copyright brown darken-4">
+		        <div class="container center">
+		            All Rights Reserved <a class="white-text">Spotify 2015</a>
+		        </div>
+		    </div>
+		</footer>
+
 	</div>
-</div>
+<!--  end of main div -->
 </body>
 <!--==========================================SCRIPTS============================================= -->
 <script src="/public/stylesheets/min/plugin-min.js"></script>
