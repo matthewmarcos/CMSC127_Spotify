@@ -9,8 +9,9 @@
     <title>Spotify</title>
 
     <!-- ==========================CSS===================================  -->
+    <link rel="stylesheet" type="text/css" href="/public/sylesheets/min/style.css">
     <link href="/public/stylesheets/min/plugin-min.css" type="text/css" rel="stylesheet">
-    <link href="/public/stylesheets/min/custom-min.css" type="text/css" rel="stylesheet">
+    <link href="/public/stylesheets/min/custom-min.css" type="text/css" rel="stylesheet">	
 </head>
 
 <body id="top" class="scrollspy" ng-app="spotifyApp">
@@ -54,14 +55,6 @@
 				</li>
 				<hr>
 			</div>
-		</div>
-		<div ng-controller="ProfileCtrl">
-			<div ng-if="user.isadmin">
-				<li>
-					<a href="#/admin" class="mdi-action-reorder prefix brown-text text-darken-4">Pending Accounts</a>
-				</li>
-				<hr>
-			</div>
 
 		</div>
 
@@ -73,16 +66,6 @@
 				<a href="#" class="mdi-action-assessment prefix brown-text text-darken-4" ng-click="logout()">Logout</a>
 			</li>
 
-		</div>
-
-		<hr>
-		<div ng-controller="ProfileCtrl">
-			<div ng-if="user.isadmin">
-				<li>
-					<a href="#/admin" class="mdi-action-reorder prefix brown-text text-darken-4">Pending Accounts</a>
-				</li>
-				<hr>
-			</div>
 		</div>
 	</ul>
 	<!-- End Navigation Here! -->
