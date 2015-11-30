@@ -7,7 +7,7 @@ router.get('/', SessionAuth.isNotLoggedIn, function(req, res, next) {
   res.render('index');
 });
 
-router.get('/home', function(req, res, next) {
+router.get('/home/', SessionAuth.isLoggedInPage, function(req, res, next) {
   res.render('home');
 });
 

@@ -19,7 +19,23 @@ exports.playlist_has_music = "CREATE TABLE IF NOT EXISTS playlist_has_music(play
 exports.artist_create_album = "CREATE TABLE IF NOT EXISTS artist_create_album(artist_id integer REFERENCES artist(artist_id), album_id integer REFERENCES album(album_id))";
 exports.album_contains_music = "CREATE TABLE IF NOT EXISTS album_contains_music(album_id integer REFERENCES album(album_id), music_id int REFERENCES music(music_id))";
 exports.users_subscribes_playlist = "CREATE TABLE IF NOT EXISTS users_subscribes_playlist(users_id integer REFERENCES users(users_id), playlist_id integer REFERENCES playlist(playlist_id))";
+exports.users_recommends_music = "CREATE TABLE IF NOT EXISTS users_recommends_music (users_id integer REFERENCES users(users_id), music_id integer REFERENCES music(music_id))";
 
-exports.insert_admin = "insert into users(fname, lname, username,password, picture, email,isApproved,isAdmin,dateApproved)VALUES('admin', 'admin', 'admin', '" + adminPassword + "', 'empty', 'matthewmarcos94@gmail.com',true,true,now())";
+exports.drop_users = "DROP TABLE users cascade";
+exports.drop_playlist = "DROP TABLE playlist cascade";
+exports.drop_playlist_tags = "DROP TABLE playlist_tag cascade";
+exports.drop_music = "DROP TABLE music cascade";
+exports.drop_artist = "DROP TABLE artist cascade";
+exports.drop_album = "DROP TABLE album cascade";
+exports.drop_artist_create_music = "DROP TABLE artist_create_music cascade";
+exports.drop_playlist_has_music = "DROP TABLE playlist_has_music cascade";
+exports.drop_artist_create_album = "DROP TABLE artist_create_album cascade";
+exports.drop_album_contains_music = "DROP TABLE album_contains_music cascade";
+exports.drop_users_subscribes_playlist = "DROP TABLE users_subscribes_playlist cascade";
+exports.drop_users_recommends_music = "DROP TABLE users_recommends_music cascade";
+
+
+
+exports.insert_admin = "insert into users(fname, lname, username,password, picture, email,isApproved,isAdmin,dateApproved)VALUES('admin', 'admin', 'admin', '" + adminPassword + "', '/img/avatar3.png', 'matthewmarcos94@gmail.com',true,true,now())";
 // exports.insert_admin_name = "INSERT INTO users_name( User_id, fname, lname) VALUES (1, 'admin', 'admin')";
 exports.get_admin_count = "SELECT COUNT(*) FROM users where username = 'admin'";

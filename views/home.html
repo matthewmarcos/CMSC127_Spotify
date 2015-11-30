@@ -9,242 +9,97 @@
     <title>Spotify</title>
 
     <!-- ==========================CSS===================================  -->
-    <link href="stylesheets/min/plugin-min.css" type="text/css" rel="stylesheet">
-    <link href="stylesheets/min/custom-min.css" type="text/css" rel="stylesheet" >
+    <link href="/public/stylesheets/min/plugin-min.css" type="text/css" rel="stylesheet">
+    <link href="/public/stylesheets/min/custom-min.css" type="text/css" rel="stylesheet">
 </head>
 
-<body id="top" class="scrollspy">
-
-<!--===========================PRE-LOADER==================================-->
-<div id="loader-wrapper">
-    <div id="loader"></div>
-
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
-
-</div>
+<body id="top" class="scrollspy" ng-app="spotifyApp">
 
 <!--======================================NAVIGATION============================================-->
-<ul class="side-nav fixed brown lighten-2 white-text text-darken-4 z-depth-3" style="width: 20%;">
-    <h3 class="white-text center header text_h2">SPOTIFY</h2>
-    <div class="waves-effect waves-block waves-light card-avatar center">
-				<img class="z-depth-1" src="img/matt.jpg">
-		</div>
-    <hr>
-		<div class="center">
-			<li>
-				<i class="mdi-action-assessment prefix brown-text text-darken-4"></i>
-				Settings
-			</li>
-			<li>
-				<i class="mdi-action-assessment prefix brown-text text-darken-4"></i>
-				Logout
-			</li>
-		</div>
 
-		<hr>
-		<li>
-			<i class="mdi-action-label prefix brown-text text-darken-4"></i>
-			Subscriptions
-		</li>
-		<li>
-			<i class="mdi-action-label prefix brown-text text-darken-4"></i>
-			Songs
-		</li>
-		<li>
-			<i class="mdi-action-label prefix brown-text text-darken-4"></i>
-			Playlists
-		</li>
-		<hr>
-		<li>
-			<i class="mdi-action-stars prefix brown-text text-darken-4"></i>
-			Popular Playlists
-		</li>
-		<li>
-			<i class="mdi-action-stars prefix brown-text text-darken-4"></i>
-			Artists
-		</li>
-		<li>
-			<i class="mdi-action-stars prefix brown-text text-darken-4"></i>
-			New Albums
-		</li>
-		<hr>
-		<li>
-			<i class="mdi-action-reorder prefix brown-text text-darken-4"></i>
-			Charts
-		</li>
-		<li>
-			<i class="mdi-action-reorder prefix brown-text text-darken-4"></i>
-			Genres
-		</li>
-		<li>
-			<i class="mdi-action-reorder prefix brown-text text-darken-4"></i>
-			Discover
-		</li>
-		<hr>
-</ul>
-
-
-<div style="margin-left:20%">
-	<!--================================BANNER==========================================-->
-	<div class="section brown" id="normal-banner">
-		<h4 style="marginLeft:10px; "class="center white-text">
-			Home
-		</h4> <!--Insert what page this is-->
-	</div>
-
-	<!--===================================FAVORITES==============================================-->
-	<div class="section scrollspy" id="intro">
-	    <div class="container">
-	        <h4 class="header text_b brown-text">SUBSCRIPTIONS</h4>
-	        <div class="row center">
-						<!--======================BEGIN: USE ng-repeat here======================-->
-	            <div class="col s12 m3">
-	                <div class="card">
-	                    <div class="card-image waves-effect waves-block waves-light">
-	                        <img class="activator" src="img/project1.jpg">
-	                    </div>
-	                    <div class="card-content">
-	                        <span class="card-title activator grey-text text-darken-4">PLAYLIST 1<i class="mdi-navigation-more-vert right"></i></span>
-	                        <p><a href="#">Playlist link</a></p>
-	                    </div>
-	                    <div class="card-reveal">
-	                        <span class="card-title grey-text text-darken-4">OWNER NAME 1<i class="mdi-navigation-close right"></i></span>
-	                        <p>Simple description of the playlist</p>
-	                    </div>
-	                </div>
-	            </div>
-								<!--======================END: USE ng-repeat here======================-->
-
-				<!--==========For illutration only. Can be deleted after using ng-repeat======================-->
-	            <div class="col s12 m3">
-	                <div class="card">
-	                    <div class="card-image waves-effect waves-block waves-light">
-	                        <img class="activator" src="img/project2.jpeg">
-	                    </div>
-	                    <div class="card-content">
-	                        <span class="card-title activator grey-text text-darken-4">PLAYLIST 2<i class="mdi-navigation-more-vert right"></i></span>
-	                        <p><a href="#">Playlist link</a></p>
-	                    </div>
-	                    <div class="card-reveal">
-	                        <span class="card-title grey-text text-darken-4">OWNER NAME 2<i class="mdi-navigation-close right"></i></span>
-	                        <p>Simple description of the playlist</p>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col s12 m3">
-	                <div class="card">
-	                    <div class="card-image waves-effect waves-block waves-light">
-	                        <img class="activator" src="img/project3.png">
-	                    </div>
-	                    <div class="card-content">
-	                        <span class="card-title activator grey-text text-darken-4">PLAYLIST 3<i class="mdi-navigation-more-vert right"></i></span>
-	                        <p><a href="#">Playlist link</a></p>
-	                    </div>
-	                    <div class="card-reveal">
-	                        <span class="card-title grey-text text-darken-4">OWNER NAME 3<i class="mdi-navigation-close right"></i></span>
-	                        <p>Simple description of the playlist</p>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col s12 m3">
-	                <div class="card">
-	                    <div class="card-image waves-effect waves-block waves-light">
-	                        <img class="activator" src="img/project4.jpg">
-	                    </div>
-	                    <div class="card-content">
-	                        <span class="card-title activator grey-text text-darken-4">PLAYLIST 4<i class="mdi-navigation-more-vert right"></i></span>
-	                        <p><a href="#">Playlist link</a></p>
-	                    </div>
-	                    <div class="card-reveal">
-	                        <span class="card-title grey-text text-darken-4">OWNER NAME 4<i class="mdi-navigation-close right"></i></span>
-	                        <p>Simple description of the playlist.</p>
-	                    </div>
-	                </div>
-	            </div>
-				<!--==========For illutration only. Can be deleted after using ng-repeat======================-->
-
-					</div>
-	    	</div>
+<div class="row">
+	<div class="col s2">
+		<ul class="side-nav fixed brown lighten-2 white-text text-darken-4 z-depth-3" style="width: 20%;">
+		    <h3 class="">SPOTIFY</h2>
+			  <div ng-controller="ProfileCtrl" >
+					<h2 class="white-text center header text_h2">Hello, {{user.username}}!</h5>
+				<div class="waves-effect waves-block waves-light card-avatar center">
+					<img class="z-depth-1" style="margin-top:10px" ng-src="{{user.picture}}">
+				</div>
 			</div>
+
+			<hr>
+			<li>
+				<a href="#/subscriptions" class="mdi-action-label prefix brown-text text-darken-4">My Subscriptions</a>
+			</li>
+			<li>
+				<a href="#/music" class="mdi-action-label prefix brown-text text-darken-4">My Music</a>
+			</li>
+			<li>
+				<a href="#/playlist" class="mdi-action-label prefix brown-text text-darken-4">My Playlists</a>
+			</li>
+			<hr>
+			<li>
+				<!-- popular songs nalang please -->
+				<a href="#" class="mdi-action-stars prefix brown-text text-darken-4">Popular Songs</a>
+			</li>
+			<li>
+				<a href="#/artist" class="mdi-action-stars prefix brown-text text-darken-4">Artists</a>
+			</li>
+			<hr>
+			<div ng-controller="ProfileCtrl">
+				<li ng-if="user.isadmin">
+					<a href="#/pending" class="mdi-action-reorder prefix brown-text text-darken-4">Pending Accounts</a>
+				</li>
+			</div>
+
+			<hr>
+
+			<div ng-controller="IndexCtrl">
+				<li>
+					<a href="#/profile" class="mdi-action-assessment prefix brown-text text-darken-4">Settings</a>
+				</li>
+				<li>
+					<a href="#" class="mdi-action-assessment prefix brown-text text-darken-4" ng-click="logout()">Logout</a>
+				</li>
+			</div>
+		</ul>
+		<!-- End Navigation Here! -->
 	</div>
+	<!-- End Left sidebar Here! -->
 
-	<!--=================================FOOTER===============================================-->
-	<footer style="margin-left:20%" id="contact" class="page-footer brown scrollspy">
-	    <div class="container">
-	        <div class="row">
-	            <div class="col l6 s12">
-	                <form class="col s12" action="contact.php" method="post">
-	                    <div class="row">
-	                        <div class="input-field col s6">
-	                            <i class="mdi-action-account-circle prefix white-text"></i>
-	                            <input id="icon_prefix" name="name" type="text" class="validate white-text">
-	                            <label for="icon_prefix" class="white-text">First Name</label>
-	                        </div>
-	                        <div class="input-field col s6">
-	                            <i class="mdi-communication-email prefix white-text"></i>
-	                            <input id="icon_email" name="email" type="email" class="validate white-text">
-	                            <label for="icon_email" class="white-text">Email-id</label>
-	                        </div>
-	                        <div class="input-field col s12">
-	                            <i class="mdi-editor-mode-edit prefix white-text"></i>
-	                            <textarea id="icon_prefix2" name="message" class="materialize-textarea white-text"></textarea>
-	                            <label for="icon_prefix2" class="white-text">Message</label>
-	                        </div>
-	                        <div class="col offset-s7 s5">
-	                            <button class="btn waves-effect waves-light red darken-1" type="submit">Submit
-	                                <i class="mdi-content-send right white-text"></i>
-	                            </button>
-	                        </div>
-	                    </div>
-	                </form>
-	            </div>
-	            <div class="col l3 s12">
-	                <h5 class="white-text">Spotify.com</h5>
-	                <ul>
-	                    <li><a class="white-text" href="http://play.spotify.com/">Home</a></li>
-	                    <li><a class="white-text" href="http://www.joashpereira.com/blog">Blog</a></li>
-	                </ul>
-	            </div>
-	            <div class="col l3 s12">
-	                <h5 class="white-text">Social</h5>
-	                <ul>
-	                    <li>
-	                        <a class="white-text" href="https://www.facebook.com">
-	                            <i class="small fa fa-facebook-square white-text"></i> Facebook
-	                        </a>
-	                    </li>
-	                    <li>
-	                        <a class="white-text" href="https://github.com">
-	                            <i class="small fa fa-github-square white-text"></i> Github
-	                        </a>
-	                    </li>
-	                    <li>
-	                        <a class="white-text" href="https://www.linkedin.com">
-	                            <i class="small fa fa-linkedin-square white-text"></i> Linkedin
-	                        </a>
-	                    </li>
-	                    <li>
-	                        <a class="white-text" href="https://www.twitter.com">
-	                            <i class="small fa fa-twitter-square white-text"></i> Twitter
-	                        </a>
-	                    </li>
-	                </ul>
-	            </div>
-	        </div>
-	    </div>
-	    <div class="footer-copyright brown darken-4">
-	        <div class="container center">
-	            All Rights Reserved <a class="white-text">Spotify 2015</a>
-	        </div>
-	    </div>
-	</footer>
+	<!-- Main Div to change -->
+	<div class="col s9 offset-s3">
+		<!-- Search bar goes here -->
+		<div class="row">
+			<!-- Please create SearchBarController -->
+			<p>Searchbar PlaceholderHere</p>
+		</div>
+		<!-- End of search bar -->
+
+		<!-- Start of main div -->
+		<div class="row">
+			<div ng-view></div>
+			<!-- ng-view goes here -->
+		</div>
+		<!-- End of main Div -->
+	</div>
 </div>
+</body>
+<!--==========================================SCRIPTS============================================= -->
+<script src="/public/stylesheets/min/plugin-min.js"></script>
+<script src="/public/javascripts/script.js"></script>
+<script src="/public/stylesheets/min/custom-min.js"></script>
+<script src="/public/javascripts/angular.min.js"></script>
+<script src="/public/javascripts/angular-route.min.js"></script>
+<script src="/public/javascripts/spotifyApp.js"></script>
+<script src="/public/javascripts/indexController.js"></script>
+<script src="/public/partials/artist/artist.controller.js"></script>
+<script src="/public/partials/home/home.controller.js"></script>
+<script src="/public/partials/music/music.controller.js"></script>
+<script src="/public/partials/pending/pending.controller.js"></script>
+<script src="/public/partials/playlist/playlist.controller.js"></script>
+<script src="/public/partials/profile/profile.controller.js"></script>
+<script src="/public/partials/search/search.controller.js"></script>
 
-    <!--==========================================SCRIPTS============================================= -->
-		<script src="stylesheets/min/plugin-min.js"></script>
-		<script src="javascripts/script.js" type="text/javascript"></script>
-    <script src="stylesheets/min/custom-min.js"></script>
-
-    </body>
 </html>

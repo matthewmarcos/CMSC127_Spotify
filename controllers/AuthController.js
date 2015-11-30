@@ -12,7 +12,6 @@ var isValidPassword = function(userInput, password){
 	return bCrypt.compareSync(userInput, password);
 };
 
-
 // Generates hash using bCrypt
 var createHash = function(password){
 	return bCrypt.hashSync(password);
@@ -94,7 +93,6 @@ exports.login = function(req, res){
                 user.users_id = data.rows[0].users_id;
             	req.session.user = user;
             	res.send(req.session);
-
             } else {
             	res.sendStatus(404);
             }
@@ -107,8 +105,10 @@ exports.logout = function(req, res, next){
 	//destroy session, scram.
 	req.session.destroy(function(err) {
         if(err) {
-            throw err;
+            return console.error(err);
         }
-	  	res.redirect('/');
+	  	res.send({
+            message: 'Successfully Logged out'
+        });
 	});
 };

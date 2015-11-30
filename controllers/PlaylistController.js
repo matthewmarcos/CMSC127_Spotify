@@ -30,13 +30,41 @@ exports.getMine = function(req, res) {
             res.send(data.rows);
         });
     });  
-}
-
-exports.login = function(req, res){
-	
 };
 
 
-exports.logout = function(req, res, next){
-	
+exports.getThis = function(req, res) {
+    // Get list of songs in playlist_id
+    // Select * from music natural join playlist_has_music where playlist_id = Number(req.params.id);
+     pg.connect(dbUrl, function(err, client) {
+        if(err) {
+            return console.error('Client cannot connect to PG');
+        }
+        // res.send('Updating at ' + req.params.id);
+        client.query("SELECT * from music NATURAL JOIN playlist_has_music where playlist_id = $1",
+            [req.params.id],
+            function(err, data){
+            client.end();
+            if(err) {
+                console.log('Error');
+                return;
+            }
+            res.send(data.rows);
+        });
+    });  
+}
+
+
+exports.create = function(req, res) {
+    // Create a new playlist for users_id
+    // Add songs eachSeries
+    var songs = req.body.songs;
+};
+
+
+exports.edit = function(req, res) {
+    // Edit playlist of users_id with playlist_id
+    // delete from playlist_has_songs with playlist_id
+    // add again to playlist_has_songs
+    // async.EachSeries
 };

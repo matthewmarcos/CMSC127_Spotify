@@ -1,50 +1,42 @@
-//$rootscope use for login
+(function(){
+	angular.module('spotifyApp', ['ngRoute'])
+	.config(config);
 
+	config.$inject = ['$routeProvider', '$locationProvider'];
+	function config($routeProvider, $locationProvider) {
+		$routeProvider
+			.when('/', {
+				controller: 'HomeCtrl',
+				templateUrl: '/public/partials/home/home.view.html'
+			})
+			.when('/artist', {
+				controller: 'ArtistCtrl',
+				templateUrl: '/public/partials/artist/artist.view.html'
+			})
+			.when('/music', {
+				controller: 'MusicCtrl',
+				templateUrl: '/public/partials/music/music.view.html'
+			})
+			.when('/pending', {
+				controller: 'PendingCtrl',
+				templateUrl: '/public/partials/pending/pending.view.html'
+			})
+			.when('/playlist', {
+				controller: 'PlaylistCtrl',
+				templateUrl: '/public/partials/playlist/playlist.view.html'
+			})
+			.when('/profile', {
+				controller: 'ProfileCtrl',
+				templateUrl: '/public/partials/profile/profile.view.html'
+			})
+			.when('/subscriptions', {
+				controller: 'SubscriptionsCtrl',
+				templateUrl: '/public/partials/subscriptions/subscriptions.view.html'
+			})
+			.otherwise({
+				controller: 'HomeCtrl',
+				templateUrl: '/partials/home/home.view.html'
+			});
+	}
+}());
 
-/*app.controller('authController', ['$scope', '$http', '$location', function($scope, $http, $location) {
-
-	$scope.user = {
-		lastName : '',
-		firstName : '',
-		userName : '',
-		email : '',
-		confirmEmail: '',
-		password : '',
-		confirmPassword : ''
-	};
-
-	$scope.showMe = function() {
-		//escape strings
-	};
-
-}]);*/
-
-
-
-	(function(){
-		angular
-			.module("spotifyApp", ["ngRoute"])
-			.config(config);
-
-		config.$inject =["$routeProvider"];
-
-		function config($routeProvider){
-			$routeProvider
-				.when('login/home', {
-					'controller': "HomeCtrl",
-					'templateUrl' : "/partials/home/home.view.html"
-				})
-				.when('login/search', {
-					'controller': "SearchCtrl",
-					'template' : "/partials/search/search.view.html"
-				})
-				.when('login/admin', {
-					'controller': "AdminCtrl",
-					'templateUrl' : "/partials/admin/admin.view.html"
-				})
-				.otherwise({
-					'controller' : "HomeCtrl",
-					'templateUrl' : "/partials/home/home.view.html"
-				});
-		}
-	}());
