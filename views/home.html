@@ -72,6 +72,17 @@
 			<li>
 				<a href="#" class="mdi-action-assessment prefix brown-text text-darken-4" ng-click="logout()">Logout</a>
 			</li>
+
+		</div>
+
+		<hr>
+		<div ng-controller="ProfileCtrl">
+			<div ng-if="user.isadmin">
+				<li>
+					<a href="#/admin" class="mdi-action-reorder prefix brown-text text-darken-4">Pending Accounts</a>
+				</li>
+				<hr>
+			</div>
 		</div>
 	</ul>
 	<!-- End Navigation Here! -->
