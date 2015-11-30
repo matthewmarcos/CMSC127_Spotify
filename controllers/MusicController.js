@@ -6,8 +6,6 @@
 var pg = require('pg');
 var dbUrl = "postgres://cmsc127spotify:cmsc127@localhost/spotify";
 var async = require('async');
-var multer = require('multer');
-
 
 //Get all music details of all music current user uploaded
 exports.getMine = function(req, res) {
@@ -161,5 +159,6 @@ exports.incrementViews = function(req, res) {
     // Check if it exists
     // Get current Views
     // Increment then update (music_id)
+
 };
 

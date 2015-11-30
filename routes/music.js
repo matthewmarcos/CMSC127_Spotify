@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var SessionAuth = require('./../authentications/SessionAuth');
 var MusicController = require('./../controllers/MusicController');
+var multer = require('multer');
+var upload = multer({dest: 'uploads/'});
 
 
 
@@ -10,7 +12,7 @@ router.route('/')
 	// Get list of your music
 	.get(SessionAuth.isLoggedIn, MusicController.getMine)
 	// Upload new music
-	.post(SessionAuth.isLoggedIn, MusicController.addMusic);
+	.post(SessionAuth.isLoggedIn/*, upload.single('music')*/,MusicController.addMusic);
 
 router.route('/popular')
 	//Get top 10 music with most views

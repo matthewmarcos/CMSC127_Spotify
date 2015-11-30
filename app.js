@@ -7,6 +7,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+// var upload = multer({ dest: 'uploads/' })
 
 var routes = require('./routes/index');
 var auth = require('./routes/auth');
@@ -46,6 +47,7 @@ app.use('/auth', auth);
 app.use('/music', music);
 app.use('/playlist', playlist);
 app.use('/profile', profile);
+
 
 app.get('*', function(req, res, next) {
   res.redirect('/');
