@@ -76,7 +76,10 @@ module.exports = function() {
         }
 	],
 	function(err, results) {
-		disconnectAll();
+		if(err){
+            console.error(err);
+        }
+        disconnectAll();
 	});
 };
 
