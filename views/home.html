@@ -9,7 +9,6 @@
     <title>Spotify</title>
 
     <!-- ==========================CSS===================================  -->
-    <link rel="stylesheet" type="text/css" href="/public/sylesheets/min/style.css">
     <link href="/public/stylesheets/min/plugin-min.css" type="text/css" rel="stylesheet">
     <link href="/public/stylesheets/min/custom-min.css" type="text/css" rel="stylesheet">	
 </head>
@@ -19,26 +18,28 @@
 <!--======================================NAVIGATION============================================-->
 
 <!--navbar starts here-->
-<div>
-	<ul class="side-nav fixed brown lighten-2 white-text text-darken-4 z-depth-3" style="width:20%">
-		 <div ng-controller="ProfileCtrl" >
-				<!-- <h6 class="white-text center header text_h2">Hello, {{user.username}}!</h6> -->
+
+	<ul class="side-nav fixed brown lighten-2 z-depth-3 white-text" style="width:20%">
+		<div ng-controller="ProfileCtrl" >
 				<h2 class="center header text_h2">SPOTIFY</h2>
 			<div class="waves-effect waves-block waves-light card-avatar center">
 				<img class="z-depth-1 white" ng-src="{{user.picture}}">
 			</div>
-		</div>
+		</div><hr>
 
-		<hr>
-		<li>
-			<a href="#/subscriptions" class="mdi-action-label prefix brown-text text-darken-4">My Subscriptions</a>
+		<li style="height:20px">
+			<!-- <a href="" class="mdi-action-label prefix">My Subscriptions</a> -->
+			<a href="#/subscriptions" class="waves-effect waves-light btn brown white-text">Subscriptions</a>
 		</li>
+
 		<li>
 			<a href="#/music" class="mdi-action-label prefix brown-text text-darken-4">My Music</a>
 		</li>
+
 		<li>
 			<a href="#/playlist" class="mdi-action-label prefix brown-text text-darken-4">My Playlists</a>
 		</li>
+
 		<hr>
 		<li>
 			<!-- popular songs nalang please -->
@@ -69,7 +70,6 @@
 		</div>
 	</ul>
 	<!-- End Navigation Here! -->
-</div>
 <!-- End Left sidebar Here! -->
 
 	<!-- Main Div to change -->
@@ -77,12 +77,22 @@
 		<!-- Search bar goes here -->
 		<div class="row">
 			<!-- bar in for user name @TODO: Insert search something ob the left -->
-			<div class="section brown" id="normal-banner">
-				<div ng-controller="ProfileCtrl" >
-					<h4 class="white-text center header">Hello, {{user.username}}!</h4>
+				<div class="section brown" id="normal-banner">
+					<div ng-controller="ProfileCtrl" >
+						<h4 class="white-text center header">Hello, {{user.username}}!</h4>
+					</div>
 				</div>
+			<div>
+				    <div class="nav-wrapper">
+				      <form>
+				        <div class="input-field">
+				          <input id="search" type="search" required>
+				          <label for="search"><i class="material-icons">search</i></label>
+				          <i class="material-icons">close</i>
+				        </div>
+				      </form>
+				    </div>
 			</div>
-
 		</div>
 		<!-- End of main navbar -->
 
