@@ -15,6 +15,11 @@ router.route('/:id')
 	.get(SessionAuth.isLoggedIn, playlist.getThis)
 	// Edit playlist with playlist_id
 	.put(/*SessionAuth.isLoggedIn, */playlist.edit);
+router.route('/subscribe/:playlist_id')
+	// Subscribe to playlist with id
+	.post(SessionAuth.isLoggedIn, playlist.subscribe)
+	// Unsubscribe to playlist with id
+	.delete(/*SessionAuth.isLoggedIn, */playlist.unsubscribe);
 
 
 module.exports = router;
