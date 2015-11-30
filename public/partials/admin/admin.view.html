@@ -16,7 +16,7 @@
 					<td>BSCS</td>
 					<td>BSCMSC</td>
 				</tr> -->
-				<tr ng-repeat="account in pendingAccounts" class="row">
+				<tr ng-repeat="account in adminAccounts" class="row">
 					<td class="col m3">{{ account.username }}</td>
 					<td class="col m3">{{ account.fname }}</td>
 					<td class="col m3">{{ account.lname }}</td>
@@ -43,18 +43,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<!-- <tr>
-					<td>BSCS</td>
-					<td>BSCMSC</td>
-				</tr> -->
 				<tr ng-repeat="account in approvedAccounts" class="row">
 					<td class="col m3">{{ account.username }}</td>
 					<td class="col m3">{{ account.fname }}</td>
 					<td class="col m3">{{ account.lname }}</td>
-					<td class="col m3">{{ account.dateapproved }}</td>
+					<td class="col m3">{{ account.dateapproved | date:'MMMM dd, yyyy' }}</td>
 				</tr>
 			</tbody>
-		<!-- 	{{programs}} -->
 		</table>
 	</div>
 </div>
