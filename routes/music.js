@@ -12,16 +12,21 @@ router.route('/')
 	// Upload new music
 	.post(SessionAuth.isLoggedIn, MusicController.addMusic);
 
-router.route('/:id')
-	//Download music with music_id
-	.get(SessionAuth.isLoggedIn, MusicController.getThis);
+router.route('/popular')
+	//Get top 10 music with most views
+	.get(SessionAuth.isLoggedIn, MusicController.popular);
 router.route('/recommend/:music_id')
 	//Download music with music_id
 	.post(SessionAuth.isLoggedIn, MusicController.recommend);
+router.route('/:id')
+	//Download music with music_id
+	.get(SessionAuth.isLoggedIn, MusicController.getThis);
+
+
 
 router.route('*')
 	.get(function(req, res, next) {
-		res.sendStatus(404);
+		res.sendStatus(403);
 	});
 
 module.exports = router;

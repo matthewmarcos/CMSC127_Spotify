@@ -124,7 +124,7 @@ exports.recommend = function(req, res) {
                 }
             }
         ], function(err, data) {
-            client.end();
+             client.end();
             if(err) {
                 res.sendStatus(err);
             } else {
@@ -133,3 +133,25 @@ exports.recommend = function(req, res) {
         });
     });  
 };
+
+
+exports.popular = function(req, res) {
+// select * from music order by times_played desc LIMIT 10
+    console.log('Getting the popular shizz');
+    pg.connect(dbUrl, function(err, client) {
+        if(err) {
+            return console.error('Client cannot connect to PG');
+        }
+        // res.send('Updating at ' + req.params.id);
+        client.query("select * from music order by times_played desc LIMIT 10", 
+            function(err, data){
+                client.end();
+                if(err) {
+                    res.sendStatus(500);
+                    return;
+            }
+            res.send(data.rows);
+        });
+    });
+};
+
