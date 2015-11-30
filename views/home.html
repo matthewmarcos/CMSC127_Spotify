@@ -49,12 +49,14 @@
 		</li>
 		<hr>
 		<div ng-controller="ProfileCtrl">
-			<li ng-if="user.isadmin">
-				<a href="#/pending" class="mdi-action-reorder prefix brown-text text-darken-4">Pending Accounts</a>
-			</li>
-		</div>
+			<div ng-if="user.isadmin">
+				<li>
+					<a href="#/admin" class="mdi-action-reorder prefix brown-text text-darken-4">Pending Accounts</a>
+				</li>
+				<hr>
+			</div>
 
-		<hr>
+		</div>
 
 		<div ng-controller="IndexCtrl">
 			<li>
@@ -65,8 +67,6 @@
 			</li>
 
 		</div>
-
-		<hr>
 	</ul>
 	<!-- End Navigation Here! -->
 </div>
