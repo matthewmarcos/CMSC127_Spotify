@@ -83,3 +83,53 @@ exports.addMusic = function(req, res) {
         });
     });
 };
+
+
+exports.recommend = function(req, res) {
+    pg.connect(dbUrl, function(err, client) {
+        if(err) {
+            return console.error('Client cannot connect to PG');
+        }
+
+        async.waterfall([
+            function(callback) {
+                client.query("SELECT COUNT(*) FROM users_recommends_music where music_id = $1 AND users_id = $2",
+                    [req.params.music_id, req.session.user.users_id],
+                    function(err, data){
+                    if(err) {
+                        console.log('Error');
+                        callback(err, null);
+                        return;
+                    }
+                    callback(null, data);
+                });
+            },
+            function(data, callback) {
+                // Check if the user is already subscribed
+                if(data.rows[0].count === '0') {
+                    client.query("INSERT INTO users_recommends_music (music_id, users_id) VALUES ($1, $2)",
+                        [req.params.music_id, req.session.user.users_id],
+                        function(err, data) {
+                        if(err) {
+                            console.log(err);
+                            console.log('Error recommending music ' + req.params.music_id);
+                            callback(err, null);
+                            return;
+                        }
+                        callback(null, data);
+                    })
+                } else {
+                    //User is already subscribed to playlist
+                    callback(409, null)
+                }
+            }
+        ], function(err, data) {
+            client.end();
+            if(err) {
+                res.sendStatus(err);
+            } else {
+                res.send(data);
+            }
+        });
+    });  
+};

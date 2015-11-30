@@ -15,6 +15,9 @@ router.route('/')
 router.route('/:id')
 	//Download music with music_id
 	.get(SessionAuth.isLoggedIn, MusicController.getThis);
+router.route('/recommend/:music_id')
+	//Download music with music_id
+	.post(SessionAuth.isLoggedIn, MusicController.recommend);
 
 router.route('*')
 	.get(function(req, res, next) {
