@@ -13,7 +13,9 @@
 				// alert('getinfo');
 				console.log(data.data);
 				$scope.user = data.data;
-
+				if($scope.user.picture === "NULL"){
+					$scope.user.picture = "/img/image.png";
+				}
 			}, function(err) {
 				console.log(err);
 			});

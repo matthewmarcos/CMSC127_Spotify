@@ -38,7 +38,7 @@ exports.approve = function(req, res) {
             return console.error('Client cannot connect to PG');
         }
         // res.send('Updating at ' + req.params.id);
-        client.query("UPDATE users SET isapproved = true WHERE users_id = $1", 
+        client.query("UPDATE users SET isapproved = true , dateapproved = now() WHERE users_id = $1", 
                     [req.params.id], function(err, data){
             client.end();
             if(err) {
