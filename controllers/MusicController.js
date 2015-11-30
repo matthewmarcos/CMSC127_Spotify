@@ -39,7 +39,7 @@ exports.getThis = function(req, res) {
         async.waterfall([
             function(callback) {
                 client.query("SELECT file_path from music where music_id = $1", 
-                            [Number(req.params.id)], function(err, data){
+                            [Number(req.params.music_id)], function(err, data){
                     client.end();
                     if(err) {
                         callback(err, null);                        
@@ -153,5 +153,13 @@ exports.popular = function(req, res) {
             res.send(data.rows);
         });
     });
+};
+
+
+exports.incrementViews = function(req, res) {
+    // Waterfall
+    // Check if it exists
+    // Get current Views
+    // Increment then update (music_id)
 };
 

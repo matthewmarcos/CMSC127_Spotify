@@ -18,9 +18,11 @@ router.route('/popular')
 router.route('/recommend/:music_id')
 	//Download music with music_id
 	.post(SessionAuth.isLoggedIn, MusicController.recommend);
-router.route('/:id')
+router.route('/:music_id')
 	//Download music with music_id
-	.get(SessionAuth.isLoggedIn, MusicController.getThis);
+	.get(SessionAuth.isLoggedIn, MusicController.getThis)
+	// Add 1 to views of song with id
+	.put(SessionAuth.isLoggedIn, MusicController.incrementViews);
 
 
 
