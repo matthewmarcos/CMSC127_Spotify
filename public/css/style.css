@@ -1,4 +1,11 @@
+body{
+    padding: 0;
+    margin: 0;
+}
 
+li{
+    margin: 0;
+}
 
 .default_color{background-color: #795548 !important}
 
@@ -19,7 +26,7 @@
 }
 
 #normal-banner{
-  min-height: 132px;
+  min-height: 132px
   max-height: 264px;
   position: relative;
   background-color: #795548;
@@ -270,8 +277,4 @@ footer.page-footer {
   margin-top: 10px;
   position: relative;
   display: inline;
-}
-
-ul.side-nav.fixed li {
-    line-height: 44px;
 }
