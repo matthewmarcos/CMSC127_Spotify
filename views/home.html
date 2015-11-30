@@ -48,12 +48,22 @@
 		</li>
 		<hr>
 		<div ng-controller="ProfileCtrl">
-			<li ng-if="user.isadmin">
-				<a href="#/pending" class="mdi-action-reorder prefix brown-text text-darken-4">Pending Accounts</a>
-			</li>
+			<div ng-if="user.isadmin">
+				<li>
+					<a href="#/admin" class="mdi-action-reorder prefix brown-text text-darken-4">Pending Accounts</a>
+				</li>
+				<hr>
+			</div>
 		</div>
+		<div ng-controller="ProfileCtrl">
+			<div ng-if="user.isadmin">
+				<li>
+					<a href="#/admin" class="mdi-action-reorder prefix brown-text text-darken-4">Pending Accounts</a>
+				</li>
+				<hr>
+			</div>
 
-		<hr>
+		</div>
 
 		<div ng-controller="IndexCtrl">
 			<li>
@@ -62,28 +72,7 @@
 			<li>
 				<a href="#" class="mdi-action-assessment prefix brown-text text-darken-4" ng-click="logout()">Logout</a>
 			</li>
-
-			<hr>
-			<div ng-controller="ProfileCtrl">
-				<div ng-if="user.isadmin">
-					<li>
-						<a href="#/admin" class="mdi-action-reorder prefix brown-text text-darken-4">Pending Accounts</a>
-					</li>
-					<hr>
-				</div>
-
-			</div>
 		</div>
-
-
-			<div ng-controller="IndexCtrl">
-				<li>
-					<a href="#/profile" class="mdi-action-assessment prefix brown-text text-darken-4">Settings</a>
-				</li>
-				<li>
-					<a href="#" class="mdi-action-assessment prefix brown-text text-darken-4" ng-click="logout()">Logout</a>
-				</li>
-			</div>
 	</ul>
 	<!-- End Navigation Here! -->
 </div>
