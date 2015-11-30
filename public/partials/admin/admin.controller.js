@@ -2,18 +2,18 @@
 (function(){
 	angular
 		.module("spotifyApp")
-		.controller("PendingCtrl", PendingCtrl);
+		.controller("AdminCtrl", AdminCtrl);
 
-		PendingCtrl.$inject = ['$scope', '$http'];
+		AdminCtrl.$inject = ['$scope', '$http'];
 
-		function PendingCtrl ($scope, $http) {
-			$scope.pendingAccounts = [];
+		function AdminCtrl ($scope, $http) {
+			$scope.adminAccounts = [];
 			$scope.approvedAccounts = [];
 
 			$http.get('/profile/pending')
 				.then(function(data) {
 					console.log(data);
-					$scope.pendingAccounts = data.data;
+					$scope.adminAccounts = data.data;
 				}, function(err) {
 
 				});
@@ -36,7 +36,7 @@
 						$http.get('/profile/pending')
 							.then(function(data) {
 								console.log(data);
-								$scope.pendingAccounts = data.data;
+								$scope.adminAccounts = data.data;
 							}, function(err) {
 
 							});

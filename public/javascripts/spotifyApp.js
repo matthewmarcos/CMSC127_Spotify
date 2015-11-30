@@ -17,9 +17,9 @@
 				controller: 'MusicCtrl',
 				templateUrl: '/public/partials/music/music.view.html'
 			})
-			.when('/pending', {
-				controller: 'PendingCtrl',
-				templateUrl: '/public/partials/pending/pending.view.html'
+			.when('/admin', {
+				controller: 'AdminCtrl',
+				templateUrl: '/public/partials/admin/admin.view.html'
 			})
 			.when('/playlist', {
 				controller: 'PlaylistCtrl',
