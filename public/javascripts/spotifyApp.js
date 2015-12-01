@@ -13,6 +13,10 @@
 				controller: 'ArtistCtrl',
 				templateUrl: '/public/partials/artist/artist.view.html'
 			})
+			.when('/artistView/:artist_id', {
+				controller: 'ArtistViewCtrl',
+				templateUrl: '/public/partials/ArtistView/artistView.view.html'
+			})
 			.when('/music', {
 				controller: 'MusicCtrl',
 				templateUrl: '/public/partials/music/music.view.html'
