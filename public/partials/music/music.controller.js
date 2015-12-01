@@ -24,12 +24,16 @@
 			$scope.addTrackTitle = '';
 			$scope.addTrackArtist = '';
 			$scope.addTrackLength = '';
-			
+			$scope.addTrackAlbum = '';
+
 			$scope.addMusic = function() {
 				var newTrack = {};
+				
 				newTrack.music_title = $scope.addTrackTitle;
 				newTrack.music_length = $scope.addTrackLength;
 				newTrack.artist_name = $scope.addTrackArtist;
+				newTrack.album_name = $scope.addTrackAlbum;
+
 				console.log('sending' + newTrack);
 				$http.post('/music', newTrack).then(function(data){
 					console.log('Successfully added ' + $scopeTrackTitle);
