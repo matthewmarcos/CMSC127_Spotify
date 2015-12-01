@@ -1,1 +1,22 @@
 <h1>Artists go here!</h1>
+
+<table class="highlight centered striped">
+			<thead>
+				<tr class="row">
+					<td class="col m3">Artist ID</td>
+					<td class="col m3">Artist Name</td>
+					<td class="col m3">Action</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="music in tracks" class="row">
+					<td class="col m3">{{ music.artist_id }}</td>
+					<td class="col m3">{{ music.artist_name }}</td>
+					<td class="col m3">
+						<div class="row">
+							<input class="btn btn-default col m6" type="button" value="Subscribe">
+						</div>
+					</td>
+				</tr>
+			</tbody>
+</table>
