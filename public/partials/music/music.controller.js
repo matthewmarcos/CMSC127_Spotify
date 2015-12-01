@@ -12,7 +12,6 @@
 				.then(function(data) {
 					$scope.tracks = data.data;
 					$scope.musicLength = data.data.length;
-					alert($scope.musicLength);
 				}, function(err) {
 					console.err(err);
 				});
@@ -31,16 +30,15 @@
 				newTrack.music_title = $scope.addTrackTitle;
 				newTrack.music_length = $scope.addTrackLength;
 				newTrack.artist_name = $scope.addTrackArtist;
-				alert('sending' + newTrack);
+				console.log('sending' + newTrack);
 				$http.post('/music', newTrack).then(function(data){
-					alert('Successfully Uploaded');
+					console.log('Successfully added ' + $scopeTrackTitle);
 					$scope.addTrackTitle = '';
 					$scope.addTrackArtist = '';
 					$scope.addTrackLength = '';
 					init();
 				}, function(err) {
 					console.log(err);
-					alert("Invalid");
 					$scope.addTrackTitle = '';
 					$scope.addTrackArtist = '';
 					$scope.addTrackLength = '';
