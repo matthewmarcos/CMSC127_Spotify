@@ -29,17 +29,19 @@
 			</div>
 		</div>
 
-			<div class="row">
-	        	<div class="input-field col s12">
-	          		<input id="search" type="text" class="validate brown-text text-darken-4">
-        	  		<label for="search">Search</label>
-        		</div>
-	      	</div>
+		<div class="row">
+        	<div class="input-field col s12">
+          		<input id="search" type="text" class="validate brown-text text-darken-4">
+    	  		<label for="search">Search</label>
+    		</div>
+      	</div>
+
 	    <div ng-controller="ProfileCtrl">
 	      	<li>
 				<a href="#/profile" class="smallify mdi-action-assessment prefix brown-text text-darken-4"> My Profile</a>
 			</li>
 		</div>
+
 		<div class="divider"></div>
 
 		<li>
@@ -60,16 +62,23 @@
 			<!-- popular songs nalang please -->
 			<a href="#/popular" class="smallify mdi-action-stars prefix brown-text text-darken-4"> Popular Songs</a>
 		</li>
+
 		<li>
 			<a href="#/artist" class="smallify mdi-action-stars prefix brown-text text-darken-4"> Artists</a>
 		</li>
+
 		<div class="divider"></div>
+
 		<div ng-controller="ProfileCtrl">
+			
 			<div ng-if="user.isadmin">
+				
 				<li>
 					<a href="#/admin" class="smallify mdi-action-reorder prefix brown-text text-darken-4"> Pending Accounts</a>
 				</li>
+				
 				<div class="divider"></div>
+
 			</div>
 
 		</div>
@@ -78,7 +87,6 @@
 			<li>
 				<a href="#" class="smallify mdi-action-assessment prefix brown-text text-darken-4" ng-click="logout()"> Logout</a>
 			</li>
-
 		</div>
 	</ul>
 	<!-- End Navigation Here! -->
@@ -87,11 +95,11 @@
 	<!-- Main Div to change -->
 	<div style="margin-left:20%">
 		<!-- Search bar goes here -->
-		<div class="row">
+		<div>
 			
-				<div class="section brown" id="normal-banner">
+				<div class="section brown darken-4" id="normal-banner">
 					<div ng-controller="ProfileCtrl" >
-						<h4 class="white-text rightify header">{{user.username}}</h4>
+						<h4  id="logo-container" class="white-text rightify header">{{user.username}}</h4>
 					</div>
 				</div>
 			
@@ -99,7 +107,7 @@
 		<!-- End of main navbar -->
 
 		<!-- Start of main div -->
-		<div class="row">
+		<div>
 			<div ng-view></div>
 			<!-- ng-view goes here -->
 		</div>
