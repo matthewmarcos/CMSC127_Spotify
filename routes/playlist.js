@@ -9,7 +9,7 @@ router.route('/')
 	// Get all playlists created by user
 	.get(SessionAuth.isLoggedIn, playlist.getMine)
 	// Create new playlist
-	.post(/*SessionAuth.isLoggedIn, */playlist.create);
+	.post(SessionAuth.isLoggedIn, playlist.create);
 router.route('/:id')
 	// Get all playlist with playlist_id
 	.get(SessionAuth.isLoggedIn, playlist.getThis)

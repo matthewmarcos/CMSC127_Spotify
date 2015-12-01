@@ -7,7 +7,7 @@ var artist = require('./../controllers/ArtistController');
 router.route('/')
 	.get(SessionAuth.isLoggedIn, artist.getAll);
 
-router.route('/:id')
-	.get(SessionAuth.isLoggedIn, artist.getAll);
+router.route('/music/:artist_id')
+	.get(/*SessionAuth.isLoggedIn,*/ artist.getAllByArtist);
 
 module.exports = router;
