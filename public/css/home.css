@@ -62,6 +62,10 @@
 	height:90px;
 }
 
+.card-image img{
+	position: inherit;
+}
+
 .card-content{
 	padding: 0px;
 }
@@ -76,5 +80,8 @@
 
 .container{
 	width: 80%;
+}
 
+#musiccard{
+	width:90px;
 }
