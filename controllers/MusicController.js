@@ -84,9 +84,6 @@ exports.addMusic = function(req, res) {
         if(err) {
             return console.error('Client cannot connect to PG');
         }
-        console.log('adding' + req.body);
-        // res.send('Updating at ' + req.params.id);
-        //Complicated query involving multer and file storage.
         client.query("INSERT INTO music (music_title, file_path, music_length, users_id) " +
             "VALUES($1, $2, $3, $4)", 
             [req.body.music_title, "tempPath", req.body.music_length, req.session.user.users_id], 
