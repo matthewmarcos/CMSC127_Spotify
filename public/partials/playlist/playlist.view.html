@@ -26,8 +26,8 @@
 					<th class="col s2">Options</th>
 				</div>
 			</thead>
-			<tbody ng-repeat="music in toCreate">				
-					<tr ng-repeat="music in toCreate track by $index">
+			<tbody>				
+				<tr ng-repeat="music in toCreate track by $index">
 					<td class="col s2" >{{ music.music_title }}</td>
 					<td class="col s2">{{ music.artist_name }}</td>
 					<td class="col s2">{{ music.username }}</td>
