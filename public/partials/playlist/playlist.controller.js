@@ -13,7 +13,7 @@
 			$scope.playlistName = '';
 			
 			$scope.create = function() {
-				if($scope.playlistName !== '' && toCreate.length > 0) {
+				if($scope.playlistName && $scope.toCreate.length > 0) {
 					console.log('Creating!');
 				} else {
 					alert('Please add a Song and a Playlist Name');
@@ -24,6 +24,7 @@
 
 			$scope.remove = function (music_id) {
 				console.log(music_id);
+				$scope.toCreate.splice(theIndexOf(music_id, $scope.toCreate), 1);
 			};
 
 			$scope.add = function(music_id) {
