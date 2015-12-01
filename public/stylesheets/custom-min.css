@@ -12,3 +12,10 @@ img{height:150px;width:150px;border-radius:75px}.card-avatar .card-content{text-
 p{margin:15px
 0px}.card-avatar .card-content
 i{font-size:1.5rem}.card-avatar .card-content .card-title{line-height:30px !important}.parallax-container{max-height:400px}footer.page-footer{margin-top:0px !important}
+
+
+.nav-avatar img {
+    height: 50px;
+    width: 50px;
+    border-radius: 75px;
+}

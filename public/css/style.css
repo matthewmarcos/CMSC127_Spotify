@@ -248,6 +248,13 @@ nav a.button-collapse {
     border-radius: 75px;
 }
 
+.nav-avatar img {
+    height: 50px;
+    width: 50px;
+    border-radius: 75px;
+}
+
+
 .card-avatar .card-content {
     text-align: center;
 }
