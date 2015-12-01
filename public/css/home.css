@@ -5,6 +5,19 @@
 	line-height: inherit !important;
 }
 
+.backgroundimage{
+	height:100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+}
+
+.thinify{
+	padding: 0;
+	margin: 0; 
+}
+
 /* label color */
 .input-field label {
  color: #795548;
