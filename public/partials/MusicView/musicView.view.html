@@ -1,22 +1,7 @@
 <h1>Music View Goes here!</h1>
 
-<table class="highlight centered striped">
-	<thead>
-		<tr class="row">
-			<td class="col m3">Title</td>
-			<td class="col m3">Artist</td>
-			<td class="col m3">Track Length</td>
-			<td class="col m3">Times Played</td>
-			<td class="col m3">Views</td>						
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="specificMusic in specificMusics" class="row">
-			<td class="col m3">{{ specificMusic.music_title }}</td>
-			<td class="col m3">{{ specificMusic.artist_name }}</td>
-			<td class="col m3">{{ specificMusic.music_length }}</td>
-			<td class="col m3">{{ specificMusic.times_played }}</td>
-			<td class="col m3">{{ specificMusic.views }}</td>
-		</tr>
-	</tbody>
-</table>
+			<p class="col m3">title: {{ specificMusic.music_title }}</p> 
+			<p class="col m3">artist: {{ specificMusic.artist_name }}</p>
+			<p class="col m3">length: {{ specificMusic.music_length }}</p>
+			<p class="col m3">times played: {{ specificMusic.times_played }}</p>
+			<p class="col m3">views: {{ specificMusic.views }}</p>
