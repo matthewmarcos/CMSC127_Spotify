@@ -82,3 +82,24 @@ pg.connect(dbUrl, function(err, client) {
 });
 
 };
+
+exports.findThis = function(req, res) {
+    var query = req.params.query;
+    var results = {};
+
+pg.connect(dbUrl, function(err, client) {
+    if(err) {
+        return console.error('Client cannot connect to PG');
+    }
+client.query("select * from artist natural join artist_create_music natural join music where artist_name like '%" + req.params.query +"%' or music_title like '%" + req.params.query +"%'",
+    function(err, data){
+    if(err) {
+        console.log('Error');
+        res.sendStatus(err);
+        return;
+    }
+    res.send(data.rows);
+});
+});
+
+};
