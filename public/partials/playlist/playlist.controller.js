@@ -27,10 +27,10 @@
 						.then(function(data) {
 							alert('success');
 						}, function(err) {
-							alert(err);
+							console.log(err);
 						});
 				} else {
-					alert('Please add a Song and a Playlist Name');
+					alert('Please add a Song and a Playlist Name first!');
 					return;
 				}
 				
@@ -42,8 +42,8 @@
 			};
 
 			$scope.add = function(music_id) {
-				console.log(music_id);
-				console.log($scope.musicList[theIndexOf(music_id, $scope.musicList)]);
+				// console.log(music_id);
+				// console.log($scope.musicList[theIndexOf(music_id, $scope.musicList)]);
 				$scope.toCreate.push($scope.musicList[theIndexOf(music_id, $scope.musicList)]);
 			};
 

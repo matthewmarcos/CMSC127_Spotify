@@ -18,4 +18,5 @@
 					alert('gg');
 					console.err(err);
 				});
+		}
 })();

@@ -17,12 +17,12 @@
 		<table>
 			<thead>	
 				<div>
-					<th>Music Title</th>
-					<th>Artist Name</th>
-					<th>Uploader</th>
-					<th>Album</th>
-					<th>Plays</th>
-					<th>Options</th>
+					<th class="col s2">Music Title</th>
+					<th class="col s2">Artist Name</th>
+					<th class="col s2">Uploader</th>
+					<th class="col s2">Album</th>
+					<th class="col s2">Plays</th>
+					<th class="col s2">Options</th>
 				</div>
 			</thead>
 			<tbody ng-repeat="music in toCreate">				
@@ -57,13 +57,13 @@
 				</div>
 			</thead>
 			<tbody>
-				<tr ng-repeat="music in musicList">
-					<td >{{ music.music_title }}</td>
-					<td >{{ music.artist_name }}</td>
-					<td >{{ music.username }}</td>
-					<td >{{ music.album_name }}</td>
-					<td >{{ music.times_played }}</td>
-					<td ><input type="button" value="Add" ng-click="add(music.music_id)"></td>
+				<tr ng-repeat="music in musicList track by $index">
+					<td class="col s2">{{ music.music_title }}</td>
+					<td class="col s2">{{ music.artist_name }}</td>
+					<td class="col s2">{{ music.username }}</td>
+					<td class="col s2">{{ music.album_name }}</td>
+					<td class="col s2">{{ music.times_played }}</td>
+					<td class="col s2"><input type="button" value="Add" ng-click="add(music.music_id)"></td>
 				</tr>
 			</tbody>
 		</table>

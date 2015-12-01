@@ -9,12 +9,13 @@ router.route('/')
 	// Get all playlists created by user
 	.get(SessionAuth.isLoggedIn, playlist.getMine)
 	// Create new playlist
-	.post(SessionAuth.isLoggedIn, playlist.create);
+	.post(SessionAuth.isLoggedIn, playlist.createPlaylist);
 router.route('/:id')
 	// Get all playlist with playlist_id
 	.get(SessionAuth.isLoggedIn, playlist.getThis)
 	// Edit playlist with playlist_id
-	.put(/*SessionAuth.isLoggedIn, */playlist.edit);
+	.put(/*SessionAuth.isLoggedIn, */playlist.editPlaylist)
+	.delete(/*SessionAuth.isLoggedIn, */playlist.deletePlaylist);
 router.route('/subscribe/:playlist_id')
 	// Subscribe to playlist with id
 	.post(SessionAuth.isLoggedIn, playlist.subscribe)

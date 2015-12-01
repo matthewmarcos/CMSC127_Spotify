@@ -55,11 +55,12 @@ exports.getThis = function(req, res) {
 }
 
 
-exports.create = function(req, res) {
+exports.createPlaylist = function(req, res) {
     // Create a new playlist for users_id
     // Add songs eachSeries]
-    console.log(req.body);
+    // console.log(req.body);
     var playlist_id;
+
     async.waterfall([
         function(callback) {
             client.query("INSERT INTO playlist (users_id, playlist_pic, playlistname, date_created) VALUES" +
@@ -68,7 +69,7 @@ exports.create = function(req, res) {
                 function(err, data){
                 if(err) {
                     console.log('Error1');
-                    console.error(err);
+                    console.error(  err);
                     callback(err, false);
                     return;
                 }
@@ -87,7 +88,7 @@ exports.create = function(req, res) {
                         return;
                     }
                     playlist_id = Number(data.rows[0].lastval);
-                    callback(null, true);
+                    callback(null, data);
                 });
             });  
              
@@ -112,7 +113,7 @@ exports.create = function(req, res) {
                         });
                     });  
                 }, function(err) {
-                    callback(null, true);
+                    callback(null, data);
                 }
             );
           }  
@@ -129,7 +130,11 @@ exports.create = function(req, res) {
 };
 
 
-exports.edit = function(req, res) {
+exports.deletePlaylist = function() {
+
+};
+
+exports.editPlaylist = function(req, res) {
     // Edit playlist of users_id with playlist_id
     // delete from playlist_has_songs with playlist_id
     // add again to playlist_has_songs
