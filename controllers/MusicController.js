@@ -93,11 +93,12 @@ exports.addMusic = function(req, res) {
             function(err, data){
             client.end();
             if(err) {
+                alert('wew');
                 console.error(err);
                 res.sendStatus(409);
                 return;
             }
-            res.send(true);
+            res.send(200);
         });
     });
 };
