@@ -8,14 +8,11 @@
 
 		function PopularCtrl ($scope, $http) {
 			$scope.populars = [];
-
-			$http.get('/popular')
+			$http.get('/music/popular')
 				.then(function(data) {
 					console.log(data);
-					alert('success!!!!');
 					$scope.populars = data.data;
 				}, function(err) {
-					alert('fail :(');
 					console.err(err);
 
 				});

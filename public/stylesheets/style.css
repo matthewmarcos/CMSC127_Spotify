@@ -98,3 +98,10 @@ h6{
 ul.side-nav.fixed li {
     line-height: 44px;
 }
+
+
+.nav-avatar img {
+    height: 50px;
+    width: 50px;
+    border-radius: 75px;
+}
