@@ -9,12 +9,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="music in tracks" class="row">
-					<td class="col m3">{{ music.artist_id }}</td>
-					<td class="col m3">{{ music.artist_name }}</td>
+				<tr ng-repeat="artist in artists" class="row">
+					<td class="col m3">{{ artist.artist_id }}</td>
+					<td class="col m3">{{ artist.artist_name }}</td>
 					<td class="col m3">
 						<div class="row">
-							<input class="btn btn-default col m6" type="button" value="Subscribe">
+							<input class="btn btn-default col m6" type="button" value="View">
 						</div>
 					</td>
 				</tr>
