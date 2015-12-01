@@ -8,9 +8,10 @@
 
 		function MusicViewCtrl ($scope, $http, $routeParams) {
 			$scope.specificMusic = {};
-
+alert('lol');
 			$http.get('/music/' + $routeParams.music_id)
 				.then(function(data) {
+					
 					console.log('successfully viewed music');
 					$scope.specificMusic.music_title = data.data.music_title;
 					$scope.specificMusic.artist_name = data.data.artist_name;
@@ -18,6 +19,7 @@
 					$scope.specificMusic.times_played = data.data.times_played;
 					$scope.specificMusic.views = data.data.views;					
 				}, function(err) {
+				alert('fail');
 					console.err(err);
 				});
 		}
