@@ -12,9 +12,9 @@
 </form>
 
 <h3>My Music</h3>
-<div ng-if="!musicLength">No music added yet</div>
+<div ng-if="tracks.length === 0">No music added yet</div>
 
-<table class="highlight centered striped" ng-if="musicLength">
+<table class="highlight centered striped" ng-if="tracks.length > 0">
 	<thead>
 		<tr class="row">
 			<td class="col m2">Title</td>

@@ -20,18 +20,17 @@
 				$scope.addTrackAlbum = '';
 			};
 			var init = function() {
+				console.log('init!');
 				$http.get('/music')
 					.then(function(data) {
 						$scope.tracks = data.data;
 					}, function(err) {
 						console.err(err);
 					});
-			};
-
+			};	
 
 			init();
-			resetFields();	
-			
+			resetFields();		
 
 			$scope.addMusic = function() {
 				var newTrack = {};
@@ -44,7 +43,7 @@
 				console.log('sending' + newTrack);
 				$http.post('/music', newTrack)
 					.then(function(data){
-						console.log('Successfully added ' + $scopeTrackTitle);
+						console.log('Successfully added ' + $scope.addTrackTitle);
 						resetFields();
 						init();
 					}, function(err) {

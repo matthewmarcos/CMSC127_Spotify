@@ -59,8 +59,8 @@ module.exports = function() {
         },
         function(callback) {
             // artist_create_album
-            // queryThis(queryString.artist_create_album, callback);
-            callback(null);
+            queryThis(queryString.artist_create_album, callback);
+            // callback(null);
         },
         function(callback) {
             // album_contains_music
