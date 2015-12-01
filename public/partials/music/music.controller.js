@@ -9,9 +9,10 @@
 		function MusicCtrl ($scope, $http) {
 			$scope.tracks = [];
 
-			$http.get('/music')
+			$http.get('/')
 				.then(function(data) {
 					console.log(data);
+					alert('yey');
 					$scope.tracks = data.data;
 				}, function(err) {
 					console.err(err);
