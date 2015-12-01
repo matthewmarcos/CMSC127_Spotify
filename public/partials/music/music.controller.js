@@ -24,7 +24,7 @@
 			
 			$scope.addMusic = function() {
 
-				$http.post('/', {
+				$http.post('/music', {
 					music_title: $scope.addTrackTitle,
 					music_length: $scope.addTrackLength
 				}).then(function(data){

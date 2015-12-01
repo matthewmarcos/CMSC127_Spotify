@@ -96,7 +96,7 @@ exports.addMusic = function(req, res) {
                 res.sendStatus(409);
                 return;
             }
-            res.send({"msg":"hi"});
+            res.send(true);
         });
     });
 };
