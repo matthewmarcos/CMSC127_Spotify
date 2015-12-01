@@ -18,34 +18,35 @@
 		<div class="col s8">
 			<h3>My Music</h3>
 			<div ng-if="tracks.length === 0">No music added yet</div>
-</form>
 
-
-<div ng-if="!musicLength">No music added yet</div>
-
-<table class="highlight centered striped" ng-if="musicLength">
-	<thead>
-		<tr class="row">
-			<td class="col m3">Title</td>
-			<td class="col m3">Artist</td>
-			<td class="col m3">Track Length</td>
-			<td class="col m3">Times Played</td>
-			<td class="col m3">Views</td>					
-			<td class="col m3">Action</td>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="music in tracks" class="row">
-			<td class="col m3">{{ music.music_title }}</td>
-			<td class="col m3">{{ music.artist_name }}</td>
-			<td class="col m3">{{ music.music_length }}</td>
-			<td class="col m3">{{ music.times_played }}</td>
-			<td class="col m3">{{ music.views }}</td>
-			<td class="col m3">
-				<div class="row">
-					<a  href="#/musicView/{{music.music_id}}" class="btn btn-default col m6"> View </a>
-				</div>
-			</td>
-		</tr>
-	</tbody>
-</table>
+			<table class="highlight centered striped" ng-if="tracks.length > 0">
+				<thead>
+					<tr class="row">
+						<td class="col m2">Title</td>
+						<td class="col m2">Artist</td>
+						<td class="col m2">Track Length</td>
+						<td class="col m2">Times Played</td>
+						<td class="col m2">Album Name</td>
+						<td class="col m1">Views</td>					
+						<td class="col m1">Action</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="music in tracks" class="row">
+						<td class="col m2">{{ music.music_title }}</td>
+						<td class="col m2">{{ music.artist_name }}</td>
+						<td class="col m2">{{ music.music_length }}</td>
+						<td class="col m2">{{ music.times_played }}</td>
+						<td class="col m2">{{ music.album_name }}</td>
+						<td class="col m1">{{ music.views }}</td>
+						<td class="col m2">
+							<div class="row">
+								<a href="#/musicView/{{music.music_id}}" class="btn btn-default col m6">Download</a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
