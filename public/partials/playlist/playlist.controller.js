@@ -21,7 +21,7 @@
 						indeces.push(music.music_id);
 					});
 					data.playlist_name = $scope.playlistName;
-					data.playlist_ids = indeces;
+					data.music_ids = indeces;
 					console.log(data);
 					$http.post('/playlist', data)
 						.then(function(data) {

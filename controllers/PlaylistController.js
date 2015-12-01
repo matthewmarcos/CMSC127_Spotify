@@ -58,41 +58,41 @@ exports.getThis = function(req, res) {
 exports.create = function(req, res) {
     // Create a new playlist for users_id
     // Add songs eachSeries]
-    // console.log(req.body);
-    var ids = req.body.playlist_ids;
+    console.log(req.body);
     var playlist_id;
     async.waterfall([
-            function(callback) {
-                client.query("INSERT INTO playlist (users_id, playlist_pic, playlistname, date_created) VALUES" +
-                    "($1, $2, $3, now())",
-                    [req.session.user.users_id, "img/project4.jpg", req.body.playlist_name],
+        function(callback) {
+            client.query("INSERT INTO playlist (users_id, playlist_pic, playlistname, date_created) VALUES" +
+                "($1, $2, $3, now())",
+                [req.session.user.users_id, "img/project4.jpg", req.body.playlist_name],
+                function(err, data){
+                if(err) {
+                    console.log('Error1');
+                    console.error(err);
+                    callback(err, false);
+                    return;
+                }
+                callback(null, data);
+            });
+        },
+        function(data, callback){
+            console.log('here2');
+            pg.connect(dbUrl, function(err, client) {
+                client.query("SELECT lastval()", 
                     function(err, data){
                     if(err) {
-                        console.log('Error1');
+                        console.log('Error2');
                         console.error(err);
-                        callback(err, null);
+                        callback(err, null)
                         return;
                     }
-                    callback(null, data);
+                    playlist_id = Number(data.rows[0].lastval);
+                    callback(null, true);
                 });
-            },
-            function(data, callback){
-                pg.connect(dbUrl, function(err, client) {
-                    client.query("SELECT lastval()", 
-                        function(err, data){
-                        if(err) {
-                            console.log('Error2');
-                            console.error(err);
-                            callback(err, null)
-                            return;
-                        }
-                        playlist_id = Number(data.rows[0].lastval);
-                        callback(null, true);
-                    });
-                });  
-                 
-            }, function(err, callback) {
-                async.eachSeries(ids, 
+            });  
+             
+        }, function(err, callback) {
+            async.eachSeries(req.body.music_ids, 
                 function(music_id, cb) {
                     pg.connect(dbUrl, function(err, client) {
                         if(err) {
@@ -113,8 +113,9 @@ exports.create = function(req, res) {
                     });  
                 }, function(err) {
                     callback(null, true);
-                });
-            }
+                }
+            );
+          }  
         ], function(err, data) {
             client.end();
             if(err) {
