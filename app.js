@@ -47,7 +47,7 @@ app.use('/auth', auth);
 app.use('/music', music);
 app.use('/playlist', playlist);
 app.use('/profile', profile);
-
+app.use('/artist', artist);
 
 app.get('*', function(req, res, next) {
   res.redirect('/');
