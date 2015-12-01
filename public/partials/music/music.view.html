@@ -1,44 +1,52 @@
-<h1>Music</h1>
-<h3>Add Music</h3>
-<form>
+<div class="container">
+	<h2 class="text_h2 brown-text text-darken-4">Music</h2>
+	<div class="row">
+		<div class="col s4 offset8">
+			<h4 class="text_h2 brown-text text-darken-4">Add Music</h4>
+			<form>
 
-<input type="text" placeholder = "Track Title" ng-model="addTrackTitle"required>
-<input type="text" placeholder = "Track Artist" ng-model="addTrackArtist"required>
-<input type="text" placeholder = "Track Length" ng-model="addTrackLength"required>
-<input type="text" placeholder = "Album Name" ng-model="addTrackAlbum"required>
-<input type="button" value="Add Track" ng-click="addMusic()">
+			<input type="text" placeholder = "Track Title" ng-model="addTrackTitle"required>
+			<input type="text" placeholder = "Track Artist" ng-model="addTrackArtist"required>
+			<input type="text" placeholder = "Track Length" ng-model="addTrackLength"required>
+			<input type="text" placeholder = "Album Name" ng-model="addTrackAlbum"required>
+			<input type="button" value="Add Track" ng-click="addMusic()">
 
-<hr>
-</form>
+			<hr>
+			</form>
+		</div>
 
-<h3>My Music</h3>
-<div ng-if="tracks.length === 0">No music added yet</div>
+		<div class="col s8">
+			<h3>My Music</h3>
+			<div ng-if="tracks.length === 0">No music added yet</div>
 
-<table class="highlight centered striped" ng-if="tracks.length > 0">
-	<thead>
-		<tr class="row">
-			<td class="col m2">Title</td>
-			<td class="col m2">Artist</td>
-			<td class="col m2">Track Length</td>
-			<td class="col m2">Times Played</td>
-			<td class="col m2">Album Name</td>
-			<td class="col m1">Views</td>					
-			<td class="col m1">Action</td>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="music in tracks" class="row">
-			<td class="col m2">{{ music.music_title }}</td>
-			<td class="col m2">{{ music.artist_name }}</td>
-			<td class="col m2">{{ music.music_length }}</td>
-			<td class="col m2">{{ music.times_played }}</td>
-			<td class="col m2">{{ music.album_name }}</td>
-			<td class="col m1">{{ music.views }}</td>
-			<td class="col m2">
-				<div class="row">
-					<input class="btn btn-default col m6" type="button" value="Download">
-				</div>
-			</td>
-		</tr>
-	</tbody>
-</table>
+			<table class="highlight centered striped" ng-if="tracks.length > 0">
+				<thead>
+					<tr class="row">
+						<td class="col m2">Title</td>
+						<td class="col m2">Artist</td>
+						<td class="col m2">Track Length</td>
+						<td class="col m2">Times Played</td>
+						<td class="col m2">Album Name</td>
+						<td class="col m1">Views</td>					
+						<td class="col m1">Action</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="music in tracks" class="row">
+						<td class="col m2">{{ music.music_title }}</td>
+						<td class="col m2">{{ music.artist_name }}</td>
+						<td class="col m2">{{ music.music_length }}</td>
+						<td class="col m2">{{ music.times_played }}</td>
+						<td class="col m2">{{ music.album_name }}</td>
+						<td class="col m1">{{ music.views }}</td>
+						<td class="col m2">
+							<div class="row">
+								<input class="btn btn-default col m6" type="button" value="Download">
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
