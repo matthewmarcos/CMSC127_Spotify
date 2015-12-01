@@ -11,7 +11,11 @@
 <hr>
 
 </form>
-<table class="highlight centered striped">
+
+
+<div ng-if="!musicLength">No music added yet</div>
+
+<table class="highlight centered striped" ng-if="musicLength">
 	<thead>
 		<tr class="row">
 			<td class="col m3">Track ID</td>

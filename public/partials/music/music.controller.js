@@ -11,11 +11,13 @@
 				$http.get('/music')
 				.then(function(data) {
 					$scope.tracks = data.data;
+					$scope.musicLength = data.data.length;
+					alert($scope.musicLength);
 				}, function(err) {
 					console.err(err);
 				});
 			};
-			
+
 			$scope.tracks = [];
 
 			init();
@@ -28,7 +30,7 @@
 				var newTrack = {};
 				newTrack.music_title = $scope.addTrackTitle;
 				newTrack.music_length = $scope.addTrackLength;
-				newTrack.artist_name = $scope.addTrackLength;
+				newTrack.artist_name = $scope.addTrackArtist;
 				alert('sending' + newTrack);
 				$http.post('/music', newTrack).then(function(data){
 					alert('Successfully Uploaded');
