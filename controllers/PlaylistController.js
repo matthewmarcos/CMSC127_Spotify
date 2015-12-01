@@ -69,7 +69,7 @@ exports.createPlaylist = function(req, res) {
             function(callback) {
                 client.query("INSERT INTO playlist (users_id, playlist_pic, playlistname, date_created) VALUES" +
                     "($1, $2, $3, now())",
-                    [1, "img/project4.jpg", req.body.playlist_name],
+                    [req.session.user.users_id, "img/project4.jpg", req.body.playlist_name],
                     function(err, data){
                     if(err) {
                         console.log('Error1');

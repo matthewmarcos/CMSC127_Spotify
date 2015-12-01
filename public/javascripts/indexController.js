@@ -54,7 +54,6 @@
 		}
 
 		$scope.signup = function() {
-			alert('signing up');
 			$http.post('/auth/create', {
 				fname: $scope.inputFName,
 				lname: $scope.inputLName,
@@ -63,7 +62,7 @@
 				picture: 'NULL',
 				email: $scope.inputEmail
 			}).then(function(data){
-				console.log("Successful SignUp");
+				alert('Success! Wait for an admin to accept.');
 				console.log(data);
 				window.location = '/home';
 			}, function(err) {
