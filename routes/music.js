@@ -22,9 +22,10 @@ router.route('/recommend/:music_id')
 	.post(SessionAuth.isLoggedIn, MusicController.recommend);
 router.route('/:music_id')
 	//Download music with music_id
-	.get(SessionAuth.isLoggedIn, MusicController.getThis)
+	.get(SessionAuth.isLoggedIn, MusicController.getThis);
+router.route('/views/:music_id')
 	// Add 1 to views of song with id
-	.put(SessionAuth.isLoggedIn, MusicController.incrementViews);
+	.put(SessionAuth.isLoggedIn, MusicController.incrementTimesPlayed);
 
 
 

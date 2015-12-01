@@ -154,11 +154,60 @@ exports.popular = function(req, res) {
 };
 
 
-exports.incrementViews = function(req, res) {
+exports.incrementTimesPlayed = function(req, res) {
     // Waterfall
     // Check if it exists
     // Get current Views
     // Increment then update (music_id)
+    pg.connect(dbUrl, function(err, client) {
+        if(err) {
+            return console.error('Client cannot connect to PG');
+        }
+
+        async.waterfall([
+            function(callback) {
+                client.query("SELECT * FROM music where music_id = $1",
+                    [req.params.music_id],
+                    function(err, data){
+                    if(err) {
+                        console.log('Error');
+                        callback(err, null);
+                        return;
+                    }
+                    callback(null, data);
+                });
+            },
+            function(data, callback) {
+                if(data.rows.length> 0) {
+                    var views = data.rows[0].times_played;
+                    views++;
+                    // console.log('Incrementing views of ' + data.rows[0].views);
+                    client.query("UPDATE music SET times_played = $1 where music_id = $2",
+                        [views, req.params.music_id],
+                        function(err, data) {
+                        if(err) {
+                            console.log(err);
+                            console.log('Error incrementing views music ' + req.params.music_id);
+                            callback(err, null);
+                            return;
+                        }
+                        callback(null, data);
+                    });
+                    // callback(null, data);
+                } else {
+                    //User is already subscribed to playlist
+                    callback(404, null)
+                }
+            }
+        ], function(err, data) {
+             client.end();
+            if(err) {
+                res.sendStatus(err);
+            } else {
+                res.send(data);
+            }
+        });
+    });  
 
 };
 
