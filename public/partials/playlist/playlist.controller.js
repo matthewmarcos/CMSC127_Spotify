@@ -16,16 +16,16 @@
 				var indeces = [];
 				var data = {};
 				if($scope.playlistName && $scope.toCreate.length > 0) {
-					console.log('Creating!');
+					// console.log('Creating!');
 					$scope.toCreate.forEach(function(music) {
 						indeces.push(music.music_id);
 					});
 					data.playlist_name = $scope.playlistName;
 					data.music_ids = indeces;
-					console.log(data);
+					// console.log(data);
 					$http.post('/playlist', data)
 						.then(function(data) {
-							alert('success');
+							// alert('success');
 						}, function(err) {
 							console.log(err);
 						});
@@ -42,12 +42,12 @@
 			};
 
 			$scope.add = function(music_id) {
-				console.log('id: ' + music_id);
-				console.log('index: ' + theIndexOf(music_id, $scope.musicList))
+				// console.log('id: ' + music_id);
+				// console.log('index: ' + theIndexOf(music_id, $scope.musicList))
 				// console.log($scope.musicList[theIndexOf(music_id, $scope.musicList)]);
 				var index = theIndexOf(music_id, $scope.musicList);
 				var music = $scope.musicList[index];
-				$scope.toCreate[index] = music;
+				$scope.toCreate[$scope.toCreate.length] = music;
 				// $scope.$apply();
 				console.log($scope.toCreate);
 			};
