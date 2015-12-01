@@ -14,7 +14,6 @@
 </head>
 
 <body id="top" class="scrollspy" ng-controller="IndexCtrl">
-
 <!--===========================PRE-LOADER==================================-->
 <div id="loader-wrapper">
     <div id="loader"></div>
@@ -94,66 +93,64 @@
 </div>
 
 <!--===========================SIGN UP==================================-->
-<form name = "signup" novalidate>
-<div class="section scrollspy" id="work">
-    <div class="container">
-        <h2 class="header text_b brown-text">Sign Up</h2>
-        <div class="row">
-
-          <div class="col s6">
+<form name="signup" ng-submit='signup()' novalidate>
+    <div class="section scrollspy" id="work">
+        <div class="container">
+            <h2 class="header text_b brown-text">Sign Up</h2>
             <div class="row">
-                <div class="input-field col s6">
-                    <input id="first_name" type="text" class="validate" ng-model="inputFName" required>
-                    <label for="first_name" class="brown-text">First Name</label>
+                <div class="col s6">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="first_name" type="text" class="validate" ng-model="inputFName" required>
+                            <label for="first_name" class="brown-text">First Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="last_name" type="text" class="validate" ng-model="inputLName" required>
+                            <label for="last_name" class="brown-text">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="password" name="pass1" type="password" class="validate" ng-model="inputPasswordSignUp" required>
+                            <label for="password" class="brown-text">Password</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="c_password" name="pass2" type="password" class="validate" ng-model="inputConfirmPassword" required>
+                            <label for="c_password" class="brown-text">Confirm Password</label>
+                            <span ng-show="angular.equals(inputPasswordSingUp,inputConfirmPassword)">password mismatch</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="input-field col s6">
-                    <input id="last_name" type="text" class="validate" ng-model="inputLName" required>
-                    <label for="last_name" class="brown-text">Last Name</label>
-                </div>
-            </div>
-             <div class="row">
-                <div class="input-field col s6">
-                   <input id="password" type="password" class="validate" ng-model="inputPasswordSignUp" required>
-                    <label for="password" class="brown-text">Password</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="c_password" type="password" class="validate" ng-model="inputConfirmPassword" required>
-                    <label for="c_password" class="brown-text">Confirm Password</label>
-                </div>
-            </div>
 
-          </div>
-
-          <div class="col s6">
-            <div class="input-field">
-              <input id="user_name" type="text" class="validate" ng-model="inputUsernameSignUp" required>
-              <label for="user_name" class="brown-text">User Name</label>
-            </div>
-            <div class="input-field">
-              <input id="email" type="email" name="signupemail" class="validate" ng-model="inputEmail"  required>
-              <label for="email">Email</label>
-               <span  span ng-show="signup.signupemail.$invalid && signup.signupemail.$dirty">invalid email</span>
-            </div>
-              <div class="file-field input-field">
-                <div class="btn brown">
-                  <span>Profile Picture</span>
-                  <input type="file" required>
+                <div class="col s6">
+                    <div class="input-field">
+                        <input id="user_name" type="text" class="validate" ng-model="inputUsernameSignUp" required>
+                        <label for="user_name" class="brown-text" >User Name</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="email" type="email" name = "signupemail"class="validate" ng-model="inputEmail" required>
+                        <label for="email">Email</label>
+                        <span ng-show="signup.signupemail.$invalid && signup.signupemail.$dirty">invalid email</span>
+                    </div>
+                        <div class="file-field input-field">
+                            <div class="btn brown">
+                                <span>Profile Picture</span>
+                                <input type="file"  required>
+                            </div>
+                                <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                            </div>
+                        </div>
                 </div>
-                <div class="file-path-wrapper">
-                  <input class="file-path validate" type="text">
-                </div>
-              </div>
-          </div>
-
+            </div>
         </div>
-
-        <div class="center">
-          <button class="btn waves-effect waves-light brown darken-1" type="submit" ng-disabled='signup.$invalid' ng-click="signup()">Sign Up
-              <i class="mdi-content-send right white-text"></i>
+    </div>
+    <div class="center">
+          <button ng-disabled='signup.$invalid' class="btn waves-effect waves-light brown darken-1" type="submit" ng-click="signup()">Sign Up
+            <i class="mdi-content-send right white-text"></i>
           </button>
-        </div>
-        </div>
-        </div>
+    </div>
+
 </form>
         <div class="center">
           <p class="brown-text">
