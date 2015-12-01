@@ -1,15 +1,23 @@
-<h1>Music Goes here!</h1>
+<div class="container">
+	<h2 class="text_h2 brown-text text-darken-4">Music</h2>
+	<div class="row">
+		<div class="col s4 offset8">
+			<h4 class="text_h2 brown-text text-darken-4">Add Music</h4>
+			<form>
 
-<form>
+			<input type="text" placeholder = "Track Title" ng-model="addTrackTitle"required>
+			<input type="text" placeholder = "Track Artist" ng-model="addTrackArtist"required>
+			<input type="text" placeholder = "Track Length" ng-model="addTrackLength"required>
+			<input type="text" placeholder = "Album Name" ng-model="addTrackAlbum"required>
+			<input type="button" value="Add Track" ng-click="addMusic()">
 
-<input type="text" placeholder = "Track Title" ng-model="addTrackTitle">
-<input type="text" placeholder = "Track Artist" ng-model="addTrackArtist">
-<input type="text" placeholder = "Track Length" ng-model="addTrackLength">
-<input type="button" value="Add Track" ng-click="addMusic()">
+			<hr>
+			</form>
+		</div>
 
-<hr>
-<hr>
-
+		<div class="col s8">
+			<h3>My Music</h3>
+			<div ng-if="tracks.length === 0">No music added yet</div>
 </form>
 
 

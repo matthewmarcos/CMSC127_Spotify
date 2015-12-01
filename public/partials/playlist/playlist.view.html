@@ -1,23 +1,41 @@
 <h2>Playlists</h2>
 <div class="row">
+	<h3>My Playlists</h3>
+</div>
+
+
+<div class="row">
 	<h3>Create a playlist</h3>
 	<div class="col s6">
+		<h4>Songs to add</h4>
+		<form class="row">
+			<div class="input-field">
+				<h4>Playlist Name</h4>
+				<input class="col s9" id="search" type="search" ng-model="playlistName" required>
+				<input type="button" value="Create!" ng-click="create()">
+			</div>
 		<table>
 			<thead>	
 				<div class="row">
-					<th class="col s5">Music Title</th>
-					<th class="col s5">Artist Name</th>
-					<th class="col s2">Length</th>
+					<th class="col s2">Music Title</th>
+					<th class="col s2">Artist Name</th>
+					<th class="col s2">Uploader</th>
+					<th class="col s2">Album</th>
+					<th class="col s1">Plays</th>
+					<th class="col s2">Options</th>
 				</div>
 			</thead>
-			<tbody class="row">
-				<div ng-repeat="music in toCreate">
-					<tr>
-						<td class="col s5" >{{ music.music_title }}</td>
-						<td class="col s5">{{ music.artist_name }}</td>
-						<td class="col s2">{{ music.music_length }}</td>
-					</tr>
-				</div>
+			<tbody class="row">				
+				<tr ng-repeat="music in toCreate">
+					<tr ng-repeat="music in toCreate track by $index">
+					<td class="col s2" >{{ music.music_title }}</td>
+					<td class="col s2">{{ music.artist_name }}</td>
+					<td class="col s2">{{ music.username }}</td>
+					<td class="col s2">{{ music.album_name }}</td>
+					<td class="col s1">{{ music.times_played }}</td>
+					<td class="col s2"><input type="button" value="Remove" ng-click="remove(music.music_id)"></td>
+				</tr>
+				</tr>
 			</tbody>
 		</table>
 	</div>
@@ -26,32 +44,34 @@
 		<form class="row">
 			<div class="input-field">
 				<input class="col s9" id="search" type="search" ng-model="query">
-				<label for="search"><i class="material-icons">search</i></label>
+				<label for="search"><i class="material-icons">Search</i></label>
 			</div>
 			<input class="col s3" type="button" value="Search" ng-click="search()">
 		</form>
 		<table>
 			<thead>	
 				<div class="row">
-					<th class="col s3">Music Title</th>
-					<th class="col s3">Artist Name</th>
-					<th class="col s3">Uploader</th>
+					<th class="col s2">Music Title</th>
+					<th class="col s2">Artist Name</th>
+					<th class="col s2">Uploader</th>
+					<th class="col s2">Album</th>
 					<th class="col s1">Plays</th>
 					<th class="col s2">Options</th>
 				</div>
 			</thead>
 			<tbody class="row">
 				<tr ng-repeat="music in musicList">
-					<td class="col s3" >{{ music.music_title }}</td>
-					<td class="col s3">{{ music.artist_name }}</td>
-					<td class="col s3">{{ music.username }}</td>
+					<td class="col s2" >{{ music.music_title }}</td>
+					<td class="col s2">{{ music.artist_name }}</td>
+					<td class="col s2">{{ music.username }}</td>
+					<td class="col s2">{{ music.album_name }}</td>
 					<td class="col s1">{{ music.times_played }}</td>
-					<td class="col s2"><input type="button" value="Add" ng-click="search()"></td>
+					<td class="col s2"><input type="button" value="Add" ng-click="add(music.music_id)"></td>
 				</tr>
 			</tbody>
 		</table>
 		<div ng-if="musicList.length === 0">
-			<p>No music available</p>
+			<p>Empty List</p>
 		</div>
 	</div>
 </div>
