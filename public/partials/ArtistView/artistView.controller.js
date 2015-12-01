@@ -7,6 +7,15 @@
 		ArtistViewCtrl.$inject = ['$scope', '$http', '$routeParams'];
 
 		function ArtistViewCtrl ($scope, $http, $routeParams) {
-			alert('you are now at artist vie wbut i still dont know what to render here huhu sorry');
-		}
+			alert('huehue');
+			$scope.artists = [];
+			$http.get('/artist/' + $routeParams.music_id)
+				.then(function(data) {
+					alert('yey');
+					console.log('successfully viewed artist');
+					$scope.artists = data.data;
+				}, function(err) {
+					alert('gg');
+					console.err(err);
+				});
 })();
