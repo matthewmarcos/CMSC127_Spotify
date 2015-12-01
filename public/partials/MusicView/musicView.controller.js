@@ -7,12 +7,19 @@
 		MusicViewCtrl.$inject = ['$scope', '$http', '$routeParams'];
 
 		function MusicViewCtrl ($scope, $http, $routeParams) {
-			$scope.specificMusics = [];
-
-			$http.get('/music/:music_id',$routeParams.music_id)
+			$scope.specificMusic = {};
+alert('lol');
+			$http.get('/music/' + $routeParams.music_id)
 				.then(function(data) {
-					$scope.specificMusics = data.data;
+					
+					console.log('successfully viewed music');
+					$scope.specificMusic.music_title = data.data.music_title;
+					$scope.specificMusic.artist_name = data.data.artist_name;
+					$scope.specificMusic.music_length = data.data.music_length;					
+					$scope.specificMusic.times_played = data.data.times_played;
+					$scope.specificMusic.views = data.data.views;					
 				}, function(err) {
+				alert('fail');
 					console.err(err);
 				});
 		}
