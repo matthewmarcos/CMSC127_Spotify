@@ -9,13 +9,13 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 // var upload = multer({ dest: 'uploads/' })
 
-var routes = require('./routes/index');
-var auth = require('./routes/auth');
-var music = require('./routes/music');
 var playlist = require('./routes/playlist');
 var profile = require('./routes/profile');
 var artist = require('./routes/artist');
-
+var routes = require('./routes/index');
+var album = require('./routes/album');
+var music = require('./routes/music');
+var auth = require('./routes/auth');
 
 var sessionMiddleware = session({
   secret: 'notKeyBoardCat',
@@ -48,6 +48,7 @@ app.use('/music', music);
 app.use('/playlist', playlist);
 app.use('/profile', profile);
 app.use('/artist', artist);
+app.use('/album', album);
 
 app.get('*', function(req, res, next) {
   res.redirect('/');

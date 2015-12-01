@@ -1,28 +1,30 @@
-<h1>Popular Songs</h1>
+<div class="container">
+	<h2 class="text_h2 brown-text text-darken-4">Popular Songs</h2>
 
-<table class="highlight centered striped">
-	<thead>
-		<tr class="row">
-			<td class="col m3">Track ID</td>
-			<td class="col m3">Title</td>
-			<td class="col m3">Track Length</td>
-			<td class="col m3">Times Played</td>
-			<td class="col m3">Views</td>					
-			<td class="col m3">Action</td>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="popular in populars" class="row">
-			<td class="col m3">{{ popular.music_id }}</td>
-			<td class="col m3">{{ popular.music_title }}</td>
-			<td class="col m3">{{ popular.music_length }}</td>
-			<td class="col m3">{{ popular.times_played }}</td>
-			<td class="col m3">{{ popular.views }}</td>
-			<td class="col m3">
-				<div class="row">
-					<input class="btn btn-default col m6" type="button" value="Download">
-				</div>
-			</td>
-		</tr>
-	</tbody>
-</table>
+	<table class="responsive-table hoverable centered bordered">
+		<thead>
+			<tr>
+				<th>Track ID</th>
+				<th>Title</th>
+				<th>Track Length</th>
+				<th>Times Played</th>
+				<th>Views</th>					
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="popular in populars" class="row">
+				<td>{{ popular.music_id }}</td>
+				<td>{{ popular.music_title }}</td>
+				<td>{{ popular.music_length }}</td>
+				<td>{{ popular.times_played }}</td>
+				<td>{{ popular.views }}</td>
+				<td>
+					<div class="center row">
+						<a href="#/musicView/{{music.music_id}}" class="btn waves-effect waves-light brown darken-1">Play</a>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

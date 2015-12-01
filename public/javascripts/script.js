@@ -8,3 +8,5 @@ $( "#target" ).click(function() {
   // Show sideNav
   $('.button-collapse').sideNav('show');
 });
+
+Materialize.toast('I am a toast!', 3000);

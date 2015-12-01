@@ -43,7 +43,8 @@
 				console.log('sending' + newTrack);
 				$http.post('/music', newTrack)
 					.then(function(data){
-						console.log('Successfully added ' + $scope.addTrackTitle);
+						// console.log('Successfully added ' + $scope.addTrackTitle);
+						Materialize.toast('Successfully added ' + newTrack.music_title + '!', 3000);
 						resetFields();
 						init();
 					}, function(err) {
