@@ -10,3 +10,7 @@ $( "#target" ).click(function() {
 });
 
 Materialize.toast('I am a toast!', 3000);
+
+  $(document).ready(function(){
+    $('.scrollspy').scrollSpy();
+  });
