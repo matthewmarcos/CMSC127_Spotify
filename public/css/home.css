@@ -52,3 +52,29 @@
 #profilecenter{
 	margin-top: 10%;
 }
+
+.incard{
+	height: 200px;
+	width: 220px;
+}
+
+.card-image{
+	height:90px;
+}
+
+.card-content{
+	padding: 0px;
+}
+
+.card-content p{
+	font-size: 9;
+	margin-right: 0px;
+}
+ .card-tile{
+ 	font-size: 10px;s
+ }
+
+.container{
+	width: 80%;
+
+}
