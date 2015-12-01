@@ -91,7 +91,7 @@ pg.connect(dbUrl, function(err, client) {
     if(err) {
         return console.error('Client cannot connect to PG');
     }
-client.query("select * from artist natural join artist_create_music natural join music where artist_name like '%" + req.params.query +"%' or music_title like '%" + req.params.query +"%'",
+client.query("select artist_photo, music_title, times_played, music_id, artist_id, users_id, username, artist_name, file_path from artist natural join artist_create_music natural join music natural join users where artist_name like '%" + req.params.query +"%' or music_title like '%" + req.params.query +"%'",
     function(err, data){
     if(err) {
         console.log('Error');

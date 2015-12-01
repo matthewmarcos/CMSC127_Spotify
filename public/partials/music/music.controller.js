@@ -7,47 +7,51 @@
 		MusicCtrl.$inject = ['$scope', '$http'];
 
 		function MusicCtrl ($scope, $http) {
-			var init = function() {
-				$http.get('/music')
-				.then(function(data) {
-					// console.log(data);
-					// console.log(data.data);
-					$scope.tracks = data.data;
-				}, function(err) {
-					console.err(err);
-				});
-			};
-			
 			$scope.tracks = [];
-
-			init();
-				
 			$scope.addTrackTitle = '';
 			$scope.addTrackArtist = '';
 			$scope.addTrackLength = '';
-			
+			$scope.addTrackAlbum = '';
+
+			var resetFields = function() {
+				$scope.addTrackTitle = '';
+				$scope.addTrackArtist = '';
+				$scope.addTrackLength = '';
+				$scope.addTrackAlbum = '';
+			};
+			var init = function() {
+				console.log('init!');
+				$http.get('/music')
+					.then(function(data) {
+						$scope.tracks = data.data;
+					}, function(err) {
+						console.err(err);
+					});
+			};	
+
+			init();
+			resetFields();		
+
 			$scope.addMusic = function() {
 				var newTrack = {};
+				
 				newTrack.music_title = $scope.addTrackTitle;
+				newTrack.artist_name = $scope.addTrackArtist;
 				newTrack.music_length = $scope.addTrackLength;
-				newTrack.artist_name = $scope.addTrackLength;
+				newTrack.album_name = $scope.addTrackAlbum;
+
 				console.log('sending' + newTrack);
-				$http.post('/music', newTrack).then(function(data){
-					alert('Successfully Uploaded');
-					$scope.addTrackTitle = '';
-					$scope.addTrackArtist = '';
-					$scope.addTrackLength = '';
-					init();
-				}, function(err) {
-					alert("Invalid");
-					$scope.addTrackTitle = '';
-					$scope.addTrackArtist = '';
-					$scope.addTrackLength = '';
-					init();
-				});
+				$http.post('/music', newTrack)
+					.then(function(data){
+						console.log('Successfully added ' + $scope.addTrackTitle);
+						resetFields();
+						init();
+					}, function(err) {
+						console.log(err);
+						resetFields();
+						init();
+					});
 			};
-
-
 			
 		}
 })();

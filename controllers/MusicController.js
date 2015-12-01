@@ -14,7 +14,7 @@ exports.getMine = function(req, res) {
             return console.error('Client cannot connect to PG');
         }
         // res.send('Updating at ' + req.params.id);
-        client.query("SELECT * from music where users_id = $1", 
+        client.query("SELECT * from music natural join artist_create_music natural join artist natural join album where users_id = $1", 
                     [req.session.user.users_id], function(err, data){
             client.end();
             if(err) {
@@ -80,26 +80,175 @@ exports.getThis = function(req, res) {
 
 
 exports.addMusic = function(req, res) {
+    var artist_id;
+    var music_id;
+    var album_id;
+
     pg.connect(dbUrl, function(err, client) {
         if(err) {
             return console.error('Client cannot connect to PG');
         }
-        console.log('adding' + req.body);
-        // res.send('Updating at ' + req.params.id);
-        //Complicated query involving multer and file storage.
-        client.query("INSERT INTO music (music_title, file_path, music_length, users_id) " +
-            "VALUES($1, $2, $3, $4)", 
-            [req.body.music_title, "tempPath", req.body.music_length, req.session.user.users_id], 
-            function(err, data){
-            client.end();
+
+        async.waterfall([
+            function(callback) {
+                console.log()
+                client.query("INSERT INTO music (music_title, file_path, music_length, users_id) " +
+                    "VALUES($1, $2, $3, $4)", 
+                    [req.body.music_title, "tempPath", req.body.music_length, 1], 
+                    function(err, data){
+                    if(err) {
+                        console.error(err);
+                        callback(1, null)
+                        return;
+                    }
+                    callback(null, data);
+                });
+            },
+            function(data, callback){
+                 client.query("SELECT lastval()", 
+                    function(err, data){
+                    if(err) {
+                        console.error(err);
+                        callback(2, null)
+                        return;
+                    }
+                    music_id = Number(data.rows[0].lastval);
+                    callback(null, true);
+                });
+            },
+            function(data, callback) {
+                // Check if the user is already subscribed
+               client.query("SELECT COUNT(*) from artist where artist_name = $1",
+                    [req.body.artist_name], 
+                    function(err, data){
+                    if(err) {
+                        console.error(err);
+                        console.log(err);
+                        callback(3, null);
+                        return;
+                    }
+                    callback(null, data);
+                });
+            }, 
+            function(data, callback) {
+                // Check if artist exists
+                if(Number(data.rows[0].count) === 0) {
+                    client.query("INSERT INTO artist (artist_name, artist_photo) VALUES ($1, 'img/avatar1.png')",
+                        [req.body.artist_name], 
+                        function(err, data){
+                        if(err) {
+                            console.error(err);
+                            callback(4, null);
+                            return;
+                        }
+                        callback(null, data);
+                    });               
+                } else {
+                    callback(null, data);
+                }
+            },
+            function(data, callback) {
+                client.query("SELECT artist_id from artist where artist_name = $1",
+                    [req.body.artist_name], 
+                    function(err, data){
+                    if(err) {
+                        console.error(err);
+                        console.log(err);
+                        callback(5, null);
+                        return;
+                    }
+                    callback(null, data);
+                });
+            },
+            function(data, callback) {
+                artist_id = data.rows[0].artist_id;
+                client.query("INSERT INTO artist_create_music (artist_id, music_id) VALUES ($1, $2)",
+                    [artist_id, music_id], 
+                    function(err, data){
+                    if(err) {
+                        console.error(err);
+                        console.log(err);
+                        callback(6, null);
+                        return;
+                    }
+                    callback(null, data);
+                });
+                
+            }, //start of modification
+            function(data, callback) {
+                client.query("SELECT COUNT(*) from album where album_name = $1 and artist_id = $2",
+                    [req.body.album_name, artist_id], 
+                    function(err, data){
+                    if(err) {
+                        console.error(err);
+                        console.log(err);
+                        callback(7, null);
+                        return;
+                    }
+                    callback(null, data);
+                });                
+            },
+            function(data, callback) {
+                // Check if artist exists
+                if(Number(data.rows[0].count) === 0) {
+                    client.query("INSERT INTO album (artist_id, year, album_name) VALUES ($1, $2, $3)",
+                        [artist_id, 2015, req.body.album_name], 
+                        function(err, data){
+                        if(err) {
+                            console.error(err);
+                            callback(8, null);
+                            return;
+                        }
+                        callback(null, data);
+                    });               
+                } else {
+                    callback(null, data);
+                }
+            },
+             function(data, callback){
+                client.query("SELECT album_id from album where album_name = $1 and artist_id = $2",
+                    [req.body.album_name, artist_id], 
+                    function(err, data){
+                    if(err) {
+                        console.error(err);
+                        console.log(err);
+                        callback(9, null);
+                        return;
+                    }
+                    callback(null, data);
+                });
+
+            },
+            function(data, callback) {
+                album_id = data.rows[0].album_id;
+                client.query("INSERT INTO album_contains_music (album_id, music_id) VALUES ($1, $2)",
+                    [album_id, music_id], 
+                    function(err, data){
+                    if(err) {
+                        console.error(err);
+                        console.log(err);
+                        callback(10, null);
+                        return;
+                    }
+                    callback(null, data);
+                });
+                
+            }     
+        ], function(err, data) {
+             client.end();
             if(err) {
-                console.error(err);
-                res.sendStatus(409);
-                return;
+                res.sendStatus(err);
+            } else {
+                res.send(data);
             }
-            res.send(true);
         });
     });
+
+/*
+
+    Note: each album can only be created by one artist for now.
+
+*/
 };
 
 
