@@ -4,6 +4,8 @@ var SessionAuth = require('./../authentications/SessionAuth');
 var artist = require('./../controllers/ArtistController');
 
 /* GET home page. */
+router.route('/')
+	.get(SessionAuth.isLoggedIn, artist.getAll);
 
 router.route('/:id')
 	.get(SessionAuth.isLoggedIn, artist.getAll);
