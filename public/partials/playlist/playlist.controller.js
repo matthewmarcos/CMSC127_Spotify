@@ -11,7 +11,15 @@
 			$scope.musicList = [];
 			$scope.toCreate = [];
 			$scope.playlistName = '';
-			
+			$scope.playlists = [];
+
+
+			$http.get('/playlist')
+				.then(function(data) {
+					$scope.playlists = data.data;
+				}, function(err) {
+					console.log(error);
+				});
 			$scope.create = function() {
 				var indeces = [];
 				var data = {};
@@ -25,7 +33,14 @@
 					// console.log(data);
 					$http.post('/playlist', data)
 						.then(function(data) {
-							// alert('success');
+							$http.get('/playlist')
+								.then(function(data) {
+									$scope.playlists = data.data;
+								}, function(err) {
+									console.log(error);
+								});
+							alert('Successfully created playlist');
+
 						}, function(err) {
 							console.log(err);
 						});
