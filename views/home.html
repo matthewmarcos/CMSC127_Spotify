@@ -11,6 +11,7 @@
     <!-- ==========================CSS===================================  -->
     <link href="/public/stylesheets/min/plugin-min.css" type="text/css" rel="stylesheet">
     <link href="/public/stylesheets/min/custom-min.css" type="text/css" rel="stylesheet">	
+    <link href="/css/home.css" type="text/css" rel="stylesheet">
 </head>
 
 <body id="top" class="scrollspy" ng-app="spotifyApp">
@@ -20,51 +21,63 @@
 <!--navbar starts here-->
 
 <div>
-	<ul class="side-nav fixed grey lighten-2 white-text text-darken-4 z-depth-3" style="width:20%">
+	<ul class="side-nav fixed white-text text-darken-4 z-depth-3" style="width:20%">
 		 <div ng-controller="ProfileCtrl" >
 				<h2 class="center header text_h2 brown-text">SPOTIFY</h2>
 			<div class="waves-effect waves-block waves-light card-avatar center">
 				<img class="z-depth-1 white" ng-src="{{user.picture}}">
 			</div>
-		</div><hr>
+		</div>
+
+			<div class="row">
+	        	<div class="input-field col s12">
+	          		<input id="search" type="text" class="validate brown-text text-darken-4">
+        	  		<label for="search">Search</label>
+        		</div>
+	      	</div>
+	    <div class="divider"></div>
+	    <div ng-controller="ProfileCtrl">
+	      	<li>
+				<a href="#/profile" class="smallify mdi-action-assessment prefix brown-text text-darken-4"> My Profile</a>
+			</li>
+		</div>
+		<div class="divider"></div>
 
 		<li>
-			<a href="#/subscriptions" class="mdi-action-label prefix brown-text text-darken-4">Subscriptions</a>
+			<a href="#/subscriptions" class="smallify mdi-action-label prefix brown-text text-darken-4"> Subscriptions</a>
 		</li>
 
 		<li>
-			<a href="#/music" class="mdi-action-label prefix brown-text text-darken-4">My Music</a>
+			<a href="#/music" class="smallify mdi-action-label prefix brown-text text-darken-4"> My Music</a>
 		</li>
 
 		<li>
-			<a href="#/playlist" class="mdi-action-label prefix brown-text text-darken-4">My Playlists</a>
+			<a href="#/playlist" class="smallify mdi-action-label prefix brown-text text-darken-4"> My Playlists</a>
 		</li>
 
-		<hr>
+		<div class="divider"></div>
+
 		<li>
 			<!-- popular songs nalang please -->
-			<a href="#" class="mdi-action-stars prefix brown-text text-darken-4">Popular Songs</a>
+			<a href="#" class="smallify mdi-action-stars prefix brown-text text-darken-4"> Popular Songs</a>
 		</li>
 		<li>
-			<a href="#/artist" class="mdi-action-stars prefix brown-text text-darken-4">Artists</a>
+			<a href="#/artist" class="smallify mdi-action-stars prefix brown-text text-darken-4"> Artists</a>
 		</li>
-		<hr>
+		<div class="divider"></div>
 		<div ng-controller="ProfileCtrl">
 			<div ng-if="user.isadmin">
 				<li>
-					<a href="#/admin" class="mdi-action-reorder prefix brown-text text-darken-4">Pending Accounts</a>
+					<a href="#/admin" class="smallify mdi-action-reorder prefix brown-text text-darken-4"> Pending Accounts</a>
 				</li>
-				<hr>
+				<div class="divider"></div>
 			</div>
 
 		</div>
 
 		<div ng-controller="IndexCtrl">
 			<li>
-				<a href="#/profile" class="mdi-action-assessment prefix brown-text text-darken-4">Settings</a>
-			</li>
-			<li>
-				<a href="#" class="mdi-action-assessment prefix brown-text text-darken-4" ng-click="logout()">Logout</a>
+				<a href="#" class="smallify mdi-action-assessment prefix brown-text text-darken-4" ng-click="logout()"> Logout</a>
 			</li>
 
 		</div>
@@ -79,20 +92,10 @@
 			<!-- bar in for user name @TODO: Insert search something ob the left -->
 				<div class="section brown" id="normal-banner">
 					<div ng-controller="ProfileCtrl" >
-						<h4 class="white-text center header">Hello, {{user.username}}!</h4>
+						<h4 class="white-text rightify header">{{user.username}}</h4>
 					</div>
 				</div>
-			<div>
-				    <div class="nav-wrapper">
-				      <form>
-				        <div class="input-field">
-				          <input id="search" type="search" required>
-				          <label for="search"><i class="material-icons">search</i></label>
-				          <i class="material-icons">close</i>
-				        </div>
-				      </form>
-				    </div>
-			</div>
+			
 		</div>
 		<!-- End of main navbar -->
 
@@ -102,13 +105,16 @@
 			<!-- ng-view goes here -->
 		</div>
 		<!-- End of main Div -->
+		
 	</div>
 <!--  end of main div -->
 </body>
 <!--==========================================SCRIPTS============================================= -->
-<script src="/public/stylesheets/min/plugin-min.js"></script>
+<!-- <script src="/public/stylesheets/min/plugin-min.js"></script> -->
 <script src="/public/javascripts/script.js"></script>
-<script src="/public/stylesheets/min/custom-min.js"></script>
+<!-- <script src="/public/stylesheets/min/custom-min.js"></script> -->
+<script src="/javascripts/jquery-2.1.1.min.js"></script>
+<script src="/javascripts/materialize.min.js"></script>
 <script src="/public/javascripts/angular.min.js"></script>
 <script src="/public/javascripts/angular-route.min.js"></script>
 <script src="/public/javascripts/spotifyApp.js"></script>
@@ -120,5 +126,4 @@
 <script src="/public/partials/playlist/playlist.controller.js"></script>
 <script src="/public/partials/profile/profile.controller.js"></script>
 <script src="/public/partials/search/search.controller.js"></script>
-
 </html>
