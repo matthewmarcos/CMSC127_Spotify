@@ -24,6 +24,8 @@
 		$scope.inputConfirmEmail = '';
 		$scope.inputConfirmPassword = '';
 		$scope.inputPassword = '';
+
+
 		$scope.login = function() {
 			console.log("username: " + $scope.inputUsername);
 			console.log("Password: " + $scope.inputPassword);
@@ -52,6 +54,7 @@
 		}
 
 		$scope.signup = function() {
+			alert('signing up');
 			$http.post('/auth/create', {
 				fname: $scope.inputFName,
 				lname: $scope.inputLName,

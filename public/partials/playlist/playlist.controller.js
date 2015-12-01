@@ -11,26 +11,41 @@
 			$scope.musicList = [];
 			$scope.toCreate = [];
 			$scope.playlistName = '';
-			
+			$scope.playlists = [];
+
+
+			$http.get('/playlist')
+				.then(function(data) {
+					$scope.playlists = data.data;
+				}, function(err) {
+					console.log(error);
+				});
 			$scope.create = function() {
 				var indeces = [];
 				var data = {};
 				if($scope.playlistName && $scope.toCreate.length > 0) {
-					console.log('Creating!');
+					// console.log('Creating!');
 					$scope.toCreate.forEach(function(music) {
 						indeces.push(music.music_id);
 					});
 					data.playlist_name = $scope.playlistName;
 					data.music_ids = indeces;
-					console.log(data);
+					// console.log(data);
 					$http.post('/playlist', data)
 						.then(function(data) {
-							alert('success');
+							$http.get('/playlist')
+								.then(function(data) {
+									$scope.playlists = data.data;
+								}, function(err) {
+									console.log(error);
+								});
+							alert('Successfully created playlist');
+
 						}, function(err) {
-							alert(err);
+							console.log(err);
 						});
 				} else {
-					alert('Please add a Song and a Playlist Name');
+					alert('Please add a Song and a Playlist Name first!');
 					return;
 				}
 				
@@ -42,9 +57,14 @@
 			};
 
 			$scope.add = function(music_id) {
-				console.log(music_id);
-				console.log($scope.musicList[theIndexOf(music_id, $scope.musicList)]);
-				$scope.toCreate.push($scope.musicList[theIndexOf(music_id, $scope.musicList)]);
+				// console.log('id: ' + music_id);
+				// console.log('index: ' + theIndexOf(music_id, $scope.musicList))
+				// console.log($scope.musicList[theIndexOf(music_id, $scope.musicList)]);
+				var index = theIndexOf(music_id, $scope.musicList);
+				var music = $scope.musicList[index];
+				$scope.toCreate[$scope.toCreate.length] = music;
+				// $scope.$apply();
+				console.log($scope.toCreate);
 			};
 
 			$scope.search = function() {

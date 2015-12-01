@@ -94,65 +94,64 @@
 </div>
 
 <!--===========================SIGN UP==================================-->
-<form name="signup" novalidate>
-    <div class="section scrollspy" id="work">
-        <div class="container">
-            <h2 class="header text_b brown-text">Sign Up</h2>
-            <div class="row">
-                <div class="col s6">
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="first_name" type="text" class="validate" ng-model="inputFName" ng-required>
-                            <label for="first_name" class="brown-text">First Name</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate" ng-model="inputLName" ng-required>
-                            <label for="last_name" class="brown-text">Last Name</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="password" type="password" class="validate" ng-model="inputPasswordSignUp">
-                            <label for="password" class="brown-text">Password</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input id="c_password" type="password" class="validate" ng-model="inputConfirmPassword">
-                            <label for="c_password" class="brown-text">Confirm Password</label>
-                        </div>
-                    </div>
-                </div>
+<div class="section scrollspy" id="work">
+    <div class="container">
+        <h2 class="header text_b brown-text">Sign Up</h2>
+        <div class="row">
 
-                <div class="col s6">
-                    <div class="input-field">
-                        <input id="user_name" type="text" class="validate" ng-model="inputUsernameSignUp">
-                        <label for="user_name" class="brown-text">User Name</label>
-                    </div>
-                    <div class="input-field">
-                        <input id="email" type="email" class="validate" ng-model="inputEmail">
-                        <label for="email">Email</label>
-                    </div>
-                    <form action="#">
-                        <div class="file-field input-field">
-                            <div class="btn brown">
-                                <span>Profile Picture</span>
-                                <input type="file" />
-                            </div>
-                                <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text">
-                            </div>
-                        </div>
-                    </form>
+          <div class="col s6">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="first_name" type="text" class="validate" ng-model="inputFName">
+                    <label for="first_name" class="brown-text">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate" ng-model="inputLName">
+                    <label for="last_name" class="brown-text">Last Name</label>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="center">
-          <button class="btn waves-effect waves-light brown darken-1" type="submit" ng-click="signup()">Sign Up
-            <i class="mdi-content-send right white-text"></i>
-          </button>
-    </div>
+             <div class="row">
+                <div class="input-field col s6">
+                   <input id="password" type="password" class="validate" ng-model="inputPasswordSignUp">
+                    <label for="password" class="brown-text">Password</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="c_password" type="password" class="validate" ng-model="inputConfirmPassword">
+                    <label for="c_password" class="brown-text">Confirm Password</label>
+                </div>
+            </div>
 
-</form>
+          </div>
+
+          <div class="col s6">
+            <div class="input-field">
+              <input id="user_name" type="text" class="validate" ng-model="inputUsernameSignUp">
+              <label for="user_name" class="brown-text">User Name</label>
+            </div>
+            <div class="input-field">
+              <input id="email" type="email" class="validate" ng-model="inputEmail">
+              <label for="email">Email</label>
+            </div>
+            <form action="#">
+              <div class="file-field input-field">
+                <div class="btn brown">
+                  <span>Profile Picture</span>
+                  <input type="file" />
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+        <div class="center">
+          <button class="btn waves-effect waves-light brown darken-1" type="submit" ng-click="signup()">Sign Up
+              <i class="mdi-content-send right white-text"></i>
+          </button>
+        </div>
         <div class="center">
           <p class="brown-text">
             By clicking sign up, you agree to Spotify's <a class="brown-text text-darken-4">Terms of use</a>.
