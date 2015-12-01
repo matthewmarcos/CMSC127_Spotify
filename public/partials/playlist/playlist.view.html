@@ -1,5 +1,10 @@
 <h2>Playlists</h2>
 <div class="row">
+	<h3>My Playlists</h3>
+</div>
+
+
+<div class="row">
 	<h3>Create a playlist</h3>
 	<div class="col s6">
 		<h4>Songs to add</h4>
@@ -12,18 +17,24 @@
 		<table>
 			<thead>	
 				<div class="row">
-					<th class="col s3">Music Title</th>
-					<th class="col s3">Artist Name</th>
-					<th class="col s3">Uploader</th>
+					<th class="col s2">Music Title</th>
+					<th class="col s2">Artist Name</th>
+					<th class="col s2">Uploader</th>
+					<th class="col s2">Album</th>
 					<th class="col s1">Plays</th>
+					<th class="col s2">Options</th>
 				</div>
 			</thead>
 			<tbody class="row">				
 				<tr ng-repeat="music in toCreate">
-					<td class="col s3" >{{ music.music_title }}</td>
-					<td class="col s3">{{ music.artist_name }}</td>
-					<td class="col s3">{{ music.username }}</td>
+					<tr ng-repeat="music in toCreate track by $index">
+					<td class="col s2" >{{ music.music_title }}</td>
+					<td class="col s2">{{ music.artist_name }}</td>
+					<td class="col s2">{{ music.username }}</td>
+					<td class="col s2">{{ music.album_name }}</td>
 					<td class="col s1">{{ music.times_played }}</td>
+					<td class="col s2"><input type="button" value="Remove" ng-click="remove(music.music_id)"></td>
+				</tr>
 				</tr>
 			</tbody>
 		</table>
