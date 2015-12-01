@@ -12,6 +12,7 @@
 			$http.get('/music')
 				.then(function(data) {
 					console.log(data);
+					console.log(data.data);
 					$scope.tracks = data.data;
 				}, function(err) {
 					console.err(err);
@@ -23,7 +24,7 @@
 			
 			$scope.addMusic = function() {
 
-				$http.post('/music', {
+				$http.post('/', {
 					music_title: $scope.addTrackTitle,
 					music_length: $scope.addTrackLength
 				}).then(function(data){
