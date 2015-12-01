@@ -57,8 +57,74 @@ exports.getThis = function(req, res) {
 
 exports.create = function(req, res) {
     // Create a new playlist for users_id
-    // Add songs eachSeries
-    var songs = req.body.songs;
+    // Add songs eachSeries]
+    // console.log(req.body);
+    var ids = req.body.playlist_ids;
+    var playlist_id;
+    async.waterfall([
+            function(callback) {
+                client.query("INSERT INTO playlist (users_id, playlist_pic, playlistname, date_created) VALUES" +
+                    "($1, $2, $3, now())",
+                    [req.session.user.users_id, "img/project4.jpg", req.body.playlist_name],
+                    function(err, data){
+                    if(err) {
+                        console.log('Error1');
+                        console.error(err);
+                        callback(err, null);
+                        return;
+                    }
+                    callback(null, data);
+                });
+            },
+            function(data, callback){
+                pg.connect(dbUrl, function(err, client) {
+                    client.query("SELECT lastval()", 
+                        function(err, data){
+                        if(err) {
+                            console.log('Error2');
+                            console.error(err);
+                            callback(err, null)
+                            return;
+                        }
+                        playlist_id = Number(data.rows[0].lastval);
+                        callback(null, true);
+                    });
+                });  
+                 
+            }, function(err, callback) {
+                async.eachSeries(ids, 
+                function(music_id, cb) {
+                    pg.connect(dbUrl, function(err, client) {
+                        if(err) {
+                            return console.error('Client cannot connect to PG');
+                        }
+                        // res.send('Updating at ' + req.params.id);
+                        client.query("INSERT INTO playlist_has_music (playlist_id, music_id) VALUES ($1, $2)", 
+                            [playlist_id, music_id],
+                            function(err, data){
+                            client.end();
+                            if(err) {
+                                console.log('Error: ' + music_id);
+                                cb(err);
+                                return;
+                            }
+                            cb(null);
+                        });
+                    });  
+                }, function(err) {
+                    callback(null, true);
+                });
+            }
+        ], function(err, data) {
+            client.end();
+            if(err) {
+                res.sendStatus(err);
+            } else {
+                res.send(data);
+            }
+        }
+    );
+
 };
 
 

@@ -13,8 +13,22 @@
 			$scope.playlistName = '';
 			
 			$scope.create = function() {
+				var indeces = [];
+				var data = {};
 				if($scope.playlistName && $scope.toCreate.length > 0) {
 					console.log('Creating!');
+					$scope.toCreate.forEach(function(music) {
+						indeces.push(music.music_id);
+					});
+					data.playlist_name = $scope.playlistName;
+					data.playlist_ids = indeces;
+					console.log(data);
+					$http.post('/playlist', data)
+						.then(function(data) {
+							alert('success');
+						}, function(err) {
+							alert(err);
+						});
 				} else {
 					alert('Please add a Song and a Playlist Name');
 					return;
