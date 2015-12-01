@@ -7,37 +7,47 @@
 		MusicCtrl.$inject = ['$scope', '$http'];
 
 		function MusicCtrl ($scope, $http) {
-			$scope.tracks = [];
-
-			$http.get('/music')
+			var init = function() {
+				$http.get('/music')
 				.then(function(data) {
-					console.log(data);
-					console.log(data.data);
+					// console.log(data);
+					// console.log(data.data);
 					$scope.tracks = data.data;
 				}, function(err) {
 					console.err(err);
 				});
+			};
+			
+			$scope.tracks = [];
+
+			init();
 				
 			$scope.addTrackTitle = '';
 			$scope.addTrackArtist = '';
 			$scope.addTrackLength = '';
 			
 			$scope.addMusic = function() {
-
-				$http.post('/', {
-					music_title: $scope.addTrackTitle,
-					music_length: $scope.addTrackLength
-				}).then(function(data){
+				var newTrack = {};
+				newTrack.music_title = $scope.addTrackTitle;
+				newTrack.music_length = $scope.addTrackLength;
+				newTrack.artist_name = $scope.addTrackLength;
+				console.log('sending' + newTrack);
+				$http.post('/music', newTrack).then(function(data){
 					alert('Successfully Uploaded');
 					$scope.addTrackTitle = '';
 					$scope.addTrackArtist = '';
 					$scope.addTrackLength = '';
+					init();
 				}, function(err) {
 					alert("Invalid");
 					$scope.addTrackTitle = '';
 					$scope.addTrackArtist = '';
 					$scope.addTrackLength = '';
+					init();
 				});
 			};
+
+
+			
 		}
 })();

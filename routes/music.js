@@ -12,7 +12,7 @@ router.route('/')
 	// Get list of your music
 	.get(SessionAuth.isLoggedIn, MusicController.getMine)
 	// Upload new music
-	.post(SessionAuth.isLoggedIn/*, upload.single('music')*/,MusicController.addMusic);
+	.post(SessionAuth.isLoggedIn/*, upload.single('music')*/, MusicController.addMusic);
 
 router.route('/popular')
 	//Get top 10 music with most views
