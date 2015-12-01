@@ -18,8 +18,8 @@
 <table class="highlight centered striped" ng-if="musicLength">
 	<thead>
 		<tr class="row">
-			<td class="col m3">Track ID</td>
 			<td class="col m3">Title</td>
+			<td class="col m3">Artist</td>
 			<td class="col m3">Track Length</td>
 			<td class="col m3">Times Played</td>
 			<td class="col m3">Views</td>					
@@ -28,8 +28,8 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="music in tracks" class="row">
-			<td class="col m3">{{ music.music_id }}</td>
 			<td class="col m3">{{ music.music_title }}</td>
+			<td class="col m3">{{ music.artist_name }}</td>
 			<td class="col m3">{{ music.music_length }}</td>
 			<td class="col m3">{{ music.times_played }}</td>
 			<td class="col m3">{{ music.views }}</td>
