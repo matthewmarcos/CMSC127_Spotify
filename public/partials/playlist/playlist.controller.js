@@ -13,7 +13,13 @@
 			$scope.playlistName = '';
 			
 			$scope.create = function() {
-				console.log('Creating!');
+				if($scope.playlistName !== '' && toCreate.length > 0) {
+					console.log('Creating!');
+				} else {
+					alert('Please add a Song and a Playlist Name');
+					return;
+				}
+				
 			}
 
 			$scope.add = function(music_id) {
