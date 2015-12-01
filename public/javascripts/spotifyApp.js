@@ -17,6 +17,10 @@
 				controller: 'MusicCtrl',
 				templateUrl: '/public/partials/music/music.view.html'
 			})
+			.when('/musicView/:music_id', {
+				controller: 'MusicViewCtrl',
+				templateUrl: '/public/partials/MusicView/musicView.view.html'
+			})
 			.when('/admin', {
 				controller: 'AdminCtrl',
 				templateUrl: '/public/partials/admin/admin.view.html'
