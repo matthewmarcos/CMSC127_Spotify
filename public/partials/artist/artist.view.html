@@ -1,22 +1,26 @@
-<h1>Artists go here!</h1>
+<div class="container">
 
-<table class="highlight centered striped">
-			<thead>
-				<tr class="row">
-					<td class="col m3">Artist ID</td>
-					<td class="col m3">Artist Name</td>
-					<td class="col m3">Action</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="artist in artists" class="row">
-					<td class="col m3">{{ artist.artist_id }}</td>
-					<td class="col m3">{{ artist.artist_name }}</td>
-					<td class="col m3">
-						<div class="row">
-							<a href="#/artistView/{{artist.artist_id}}" class="btn btn-default col m6">View</a>
-						</div>
-					</td>
-				</tr>
-			</tbody>
-</table>
+	<h2 class="text_h2 brown-text text-darken-4">Artists</h2>
+
+
+	<table class="responsive-table hoverable centered bordered">
+				<thead>
+					<tr>
+						<th>Artist ID</th>
+						<th>Artist Name</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="artist in artists" class="row">
+						<td>{{ artist.artist_id }}</td>
+						<td>{{ artist.artist_name }}</td>
+						<td>
+							<div class="center row">
+								<a href="#/musicView/{{popular.music_id}}" class="btn waves-effect waves-light brown darken-1">Play</a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+	</table>
+</div>
