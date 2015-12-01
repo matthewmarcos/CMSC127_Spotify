@@ -83,15 +83,15 @@
 					</div>
 				</div>
 			<div>
-				    <div class="nav-wrapper">
-				      <form>
-				        <div class="input-field">
-				          <input id="search" type="search" required>
-				          <label for="search"><i class="material-icons">search</i></label>
-				          <i class="material-icons">close</i>
-				        </div>
-				      </form>
-				    </div>
+			    <div class="nav-wrapper" ng-controller="SearchCtrl">
+					<form>
+						<div class="input-field">
+							<input id="search" type="search" ng-model="query" ng-keyup="search()">
+							<label for="search"><i class="material-icons">search</i></label>
+							<i class="material-icons">close</i>
+						</div>
+					</form>
+			    </div>
 			</div>
 		</div>
 		<!-- End of main navbar -->

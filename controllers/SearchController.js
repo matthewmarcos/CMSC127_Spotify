@@ -19,7 +19,7 @@ pg.connect(dbUrl, function(err, client) {
 
 	async.series([
 		function(callback) {
-			console.log('Searching music');
+			// console.log('Searching music');
 			client.query("SELECT * FROM music where music_title like '%" + req.params.query +"%'",
                 function(err, data){
                 if(err) {
@@ -32,7 +32,7 @@ pg.connect(dbUrl, function(err, client) {
             });
 			// callback(null, 'res1');
 		}, function(callback) {
-			console.log('Searching playlist');
+			// console.log('Searching playlist');
 			client.query("SELECT * FROM playlist where playlistname like '%" + req.params.query +"%'",
                 function(err, data){
                 if(err) {
@@ -45,7 +45,7 @@ pg.connect(dbUrl, function(err, client) {
             });
 			// callback(null, null);			
 		}, function(callback) {
-			console.log('Searching artist');
+			// console.log('Searching artist');
 			client.query("SELECT * FROM artist where artist_name like '%" + req.params.query +"%'",
                 function(err, data){
                 if(err) {
@@ -58,7 +58,7 @@ pg.connect(dbUrl, function(err, client) {
             });
 			// callback(null, null);			
 		}, function(callback) {
-			console.log('Searching album');
+			// console.log('Searching album');
 			client.query("SELECT * FROM album where album_name like '%" + req.params.query +"%'",
                 function(err, data){
                 if(err) {
