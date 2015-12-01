@@ -42,9 +42,10 @@
 			};
 
 			$scope.add = function(music_id) {
-				// console.log(music_id);
+				// console.log('id: ' + music_id);
+				// console.log('index: ' + theIndexOf(music_id, $scope.musicList))
 				// console.log($scope.musicList[theIndexOf(music_id, $scope.musicList)]);
-				$scope.toCreate.push($scope.musicList[theIndexOf(music_id, $scope.musicList)]);
+				$scope.toCreate.unshift($scope.musicList[theIndexOf(music_id, $scope.musicList)]);
 			};
 
 			$scope.search = function() {

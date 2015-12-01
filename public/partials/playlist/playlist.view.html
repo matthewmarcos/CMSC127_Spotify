@@ -14,6 +14,7 @@
 				<input class="col s9" id="search" type="search" ng-model="playlistName" required>
 				<input type="button" value="Create!" ng-click="create()">
 			</div>
+		</form>
 		<table>
 			<thead>	
 				<div>
@@ -57,7 +58,7 @@
 				</div>
 			</thead>
 			<tbody>
-				<tr ng-repeat="music in musicList track by $index">
+				<tr ng-repeat="music in musicList">
 					<td class="col s2">{{ music.music_title }}</td>
 					<td class="col s2">{{ music.artist_name }}</td>
 					<td class="col s2">{{ music.username }}</td>
