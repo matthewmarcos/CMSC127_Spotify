@@ -12,7 +12,7 @@ router.route('/')
 	.post(SessionAuth.isLoggedIn, playlist.createPlaylist);
 router.route('/:id')
 	// Get all playlist with playlist_id
-	.get(SessionAuth.isLoggedIn, playlist.getThis)
+	.get(SessionAuth.isLoggedIn, playlist.findMusicByPlaylist)
 	// Edit playlist with playlist_id
 	.put(/*SessionAuth.isLoggedIn, */playlist.editPlaylist)
 	.delete(/*SessionAuth.isLoggedIn, */playlist.deletePlaylist);

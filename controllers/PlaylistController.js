@@ -196,4 +196,24 @@ exports.subscribe = function(req, res) {
 
 exports.unsubscribe = function(req, res) {
 
-}
+};
+
+exports.findMusicByPlaylist = function(req, res) {
+     pg.connect(dbUrl, function(err, client) {
+        if(err) {
+            return console.error('Client cannot connect to PG');
+        }
+        // res.send('Updating at ' + req.params.id);
+        client.query("select * from music natural join playlist natural join playlist_has_music natural join artist_create_music natural join artist where playlist_id = $1",
+            [req.params.id],
+            function(err, data){
+            client.end();
+            if(err) {
+                console.log('Error');
+                res.sendStatus(err);
+                return;
+            }
+            res.send(data.rows);
+        });
+    });  
+};
