@@ -24,3 +24,25 @@ exports.getAll = function(req, res) {
         });   
     });
 };
+
+
+exports.getAllByArtist = function(req, res) {
+    // console.log('Finding' + req.params.artist_id);
+    pg.connect(dbUrl, function(err, client) {
+        if(err) {
+            return console.error('Client cannot connect to PG');
+        }
+        client.query("select " +
+        "users_id, artist_id, music_id, album_id, album_name, file_path, music_title, music_length, times_played, views, username " +
+        "from music natural join artist_create_music natural join album natural join users where artist_id = $1",
+        [req.params.artist_id], function(err, data){ 
+            client.end();
+            if(err) {
+               console.log(err);
+               res.sendStatus(err);
+               return;
+            }
+            res.send(data.rows);
+        });   
+    });
+}
