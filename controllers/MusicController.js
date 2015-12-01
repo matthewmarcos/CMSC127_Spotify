@@ -55,8 +55,8 @@ exports.getThis = function(req, res) {
         // res.send('Updating at ' + req.params.id);
         async.waterfall([
             function(callback) {
-                client.query("SELECT file_path from music where music_id = $1", 
-                            [Number(req.params.music_id)], function(err, data){
+                client.query("SELECT * from music natural join artist_create_music natural join artist natural join album where music_id = $1", 
+                        [Number(req.params.music_id)], function(err, data){
                     client.end();
                     if(err) {
                         callback(err, null);                        
