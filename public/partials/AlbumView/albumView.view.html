@@ -1,5 +1,5 @@
 <div class="container">
-	<h2 class="text_h2 brown-text text-darken-4">Albums</h2>
+	<h2 class="text_h2 brown-text text-darken-4">{{albumName	}}</h2>
 
 	<table class="responsive-table hoverable centered bordered">
 				<thead>
@@ -15,7 +15,7 @@
 						<td>{{ albumMusic.artist_name }}</td>
 						<td>
 							<div class="center row">
-								<a href="#/AlbumView/{{albumMusic.music_id}}" class="btn waves-effect waves-light brown darken-1">Play</a>
+								<a href="#/musicView/{{albumMusic.music_id}}" class="btn waves-effect waves-light brown darken-1">Play</a>
 							</div>
 						</td>
 					</tr>

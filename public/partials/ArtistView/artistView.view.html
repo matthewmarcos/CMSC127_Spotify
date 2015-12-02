@@ -1,13 +1,13 @@
 This is artist view
-
+Music by {{artistName}}
 			<table class="responsive-table hoverable centered bordered">
 				<thead>
 					<tr>
 						<th>Title</th>
-						<!-- <th>Artist</th> -->
+						<th>Uploader</th>
+						<th>Album Name</th>
 						<th>Track Length</th>
 						<th>Times Played</th>
-						<th>Album Name</th>
 						<th>Views</th>					
 						<th>Action</th>
 					</tr>
@@ -15,13 +15,13 @@ This is artist view
 				<tbody>
 					<tr ng-repeat="music in artists">
 						<td>{{ music.music_title }}</td>
-						<!-- <td>{{ music.artist_name }}</td> -->
+						<td>{{ music.username }}</td>
+						<td>{{ music.album_name }}</td>
 						<td>{{ music.music_length }}</td>
 						<td>{{ music.times_played }}</td>
-						<td>{{ music.album_name }}</td>
 						<td>{{ music.views }}</td>
 						<td>
-								<a href="#/musicView/{{music.music_id}}" class="btn waves-effect waves-light brown darken-1">View</a>
+							<a href="#/musicView/{{music.music_id}}" class="btn waves-effect waves-light brown darken-1">Play</a>
 						</td>
 					</tr>
 				</tbody>
