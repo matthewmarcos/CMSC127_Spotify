@@ -35,11 +35,13 @@
 						.then(function(data) {
 							$http.get('/playlist')
 								.then(function(data) {
+									alert('Successfully created playlist'); 
+									console.log(data.data);
 									$scope.playlists = data.data;
 								}, function(err) {
 									console.log(error);
 								});
-							alert('Successfully created playlist');
+							
 
 						}, function(err) {
 							console.log(err);
