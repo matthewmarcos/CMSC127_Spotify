@@ -55,8 +55,8 @@ exports.getAllAlbums = function(req, res) {
         if(err) {
             return console.error('Client cannot connect to PG');
         }
-        client.query("select * from album natural join artist",
-        [req.params.artist_id], function(err, data){ 
+        client.query("select album_name, count, album_id, artist_name, artist_id from album natural join artist natural join (select album_id, count(*) as count from artist natural join album natural join music natural join artist_create_music group by album_id) a",
+        function(err, data){ 
             client.end();
             if(err) {
                console.log(err);
