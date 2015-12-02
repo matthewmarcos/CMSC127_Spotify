@@ -54,7 +54,6 @@
 		}
 
 		$scope.signup = function() {
-			alert($scope.inputFile);
 			if(!($scope.inputFName) ){
 				alert('Invalid Credentials');
 				return;
