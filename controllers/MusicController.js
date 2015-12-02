@@ -82,8 +82,8 @@ exports.addMusic = function(req, res) {
     var artist_id;
     var music_id;
     var album_id;
-    // var file_path = req.file.path.substr(3, req.file.path.length);
-
+    var file_path = req.file.path;
+    console.log('HERE');
     pg.connect(dbUrl, function(err, client) {
         if(err) {
             return console.error('Client cannot connect to PG');
@@ -94,7 +94,7 @@ exports.addMusic = function(req, res) {
                 console.log()
                 client.query("INSERT INTO music (music_title, file_path, music_length, users_id) " +
                     "VALUES($1, $2, $3, $4)", 
-                    [req.body.music_title, "tempPath", req.body.music_length, req.session.user.users_id], 
+                    [req.body.music_title, file_path + '.mp3', req.body.music_length, req.session.user.users_id], 
                     function(err, data){
                     if(err) {
                         console.error(err);
@@ -239,7 +239,8 @@ exports.addMusic = function(req, res) {
             if(err) {
                 res.sendStatus(err);
             } else {
-                res.send(data);
+                // res.send(data);
+                res.redirect('/home');
             }
         });
     });
