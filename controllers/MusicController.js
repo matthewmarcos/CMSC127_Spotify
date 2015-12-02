@@ -94,7 +94,7 @@ exports.addMusic = function(req, res) {
                 console.log()
                 client.query("INSERT INTO music (music_title, file_path, music_length, users_id) " +
                     "VALUES($1, $2, $3, $4)", 
-                    [req.body.music_title, file_path + '.mp3', req.body.music_length, req.session.user.users_id], 
+                    [req.body.music_title, '/' + file_path, req.body.music_length, req.session.user.users_id], 
                     function(err, data){
                     if(err) {
                         console.error(err);
