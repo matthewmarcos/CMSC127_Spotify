@@ -33,6 +33,10 @@
 				controller: 'AlbumCtrl',
 				templateUrl: '/public/partials/album/album.view.html'
 			})
+			.when('/albumView/:album_id', {
+				controller: 'AlbumViewCtrl',
+				templateUrl: '/public/partials/AlbumView/AlbumView.view.html'
+			})
 			.when('/popular', {
 				controller: 'PopularCtrl',
 				templateUrl: '/public/partials/popular/popular.view.html'

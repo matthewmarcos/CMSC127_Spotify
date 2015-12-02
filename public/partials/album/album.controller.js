@@ -11,7 +11,6 @@
 
 			$http.get('/album')
 				.then(function(data) {
-					alert('hahah');
 					console.log(data.data);
 					$scope.albums = data.data;
 				}, function(err) {
