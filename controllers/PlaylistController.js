@@ -128,13 +128,75 @@ exports.createPlaylist = function(req, res) {
             }
         );
 
-    });
-
-    
+    });    
 };
 
 
 exports.deletePlaylist = function() {
+
+    pg.connect(dbUrl, function(err, client) {
+        if(err) {
+            return console.error('Client cannot connect to PG');
+        }
+        async.waterfall([
+            function(callback) {
+                client.query("SELECT COUNT(*) FROM playlist where playlist_id = $1 and users_id = $2",
+                    [req.params.id, req.session.user.users_id],
+                    function(err, data){
+                    if(err) {
+                        console.log('Error1');
+                        console.error( err);
+                        callback(err, null);
+                        return;
+                    }
+                    console.log(data);
+                    callback(null, data);
+                });
+            },
+            function(data, callback) {
+                console.log(data);
+                if(Number(data.rows[0].count) === 0) {
+                    callback(err, null);
+                    return;
+                }
+                client.query("DELETE FROM playlist where playlist_id = $1",
+                    [req.params.id],
+                    function(err, data){
+                    if(err) {
+                        console.log('Error1');
+                        console.error( err);
+                        callback(err, null);
+                        return;
+                    }
+                    console.log(data);
+                    callback(null, data);
+                });
+            },
+            function(data, callback) {
+                client.query("DELETE FROM playlist_has_music where playlist_id = $1",
+                    [req.params.id],
+                    function(err, data){
+                    if(err) {
+                        console.log('Error1');
+                        console.error( err);
+                        callback(err, null);
+                        return;
+                    }
+                    console.log(data);
+                    callback(null, data);
+                });
+            }
+            ], function(err, data) {
+                client.end();
+                if(err) {
+                    res.sendStatus(err);
+                } else {
+                    res.send(data);
+                }
+            }
+        );
+
+    });
 
 };
 
