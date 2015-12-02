@@ -1,0 +1,29 @@
+<h1>This is playlist view huehue</h1>
+<div class="col s8">
+	<div ng-if="tracks.length === 0">No music added yet</div>
+
+		<table class="responsive-table hoverable centered bordered" ng-if="tracks.length > 0">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Artist</th>
+					<th>Track Length</th>
+					<th>Times Played</th>
+					<th>Views</th>					
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="music in tracks">
+					<td>{{ music.music_title }}</td>
+					<td>{{ music.artist_name }}</td>
+					<td>{{ music.music_length }}</td>
+					<td>{{ music.times_played }}</td>
+					<td>{{ music.views }}</td>
+					<td>
+					<a href="#/musicView/{{music.music_id}}" class="btn waves-effect waves-light brown darken-1">Play</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+</div>

@@ -8,7 +8,6 @@
 
 		function AlbumCtrl($scope,$http,$routeParams){
 			$scope.albums = [];
-
 			$http.get('/album')
 				.then(function(data) {
 					console.log(data.data);
@@ -18,6 +17,4 @@
 				});
 				
 		}
-
-
 })();

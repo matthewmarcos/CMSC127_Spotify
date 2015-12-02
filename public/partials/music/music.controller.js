@@ -20,7 +20,6 @@
 				$scope.addTrackAlbum = '';
 			};
 			var init = function() {
-				// console.log('init!');
 				$http.get('/music')
 					.then(function(data) {
 						$scope.tracks = data.data;
@@ -41,9 +40,6 @@
 				newTrack.artist_name = $scope.addTrackArtist;
 				newTrack.music_length = $scope.addTrackLength;
 				newTrack.album_name = $scope.addTrackAlbum;
-				// newTrack.music = file;
-				// fileUpload.uploadFileToUrl(file, uploadUrl);
-
 				console.log('sending' + newTrack);
 				$http.post('/music', newTrack)
 					.then(function(data){

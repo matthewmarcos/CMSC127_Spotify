@@ -8,7 +8,6 @@
 
 		function SearchCtrl($scope, $http, $routeParams) {
 			$scope.searchQuery = $routeParams.toSearch;
-
 			$scope.searchMusic = [];
 			$scope.artists = [];
 			$scope.albums = [];
