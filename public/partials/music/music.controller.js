@@ -4,9 +4,9 @@
 		.module("spotifyApp")
 		.controller("MusicCtrl", MusicCtrl);
 
-		MusicCtrl.$inject = ['$scope', '$http'];
+		MusicCtrl.$inject = ['$scope', '$http', 'fileUpload'];
 
-		function MusicCtrl ($scope, $http) {
+		function MusicCtrl ($scope, $http, fileUpload) {
 			$scope.tracks = [];
 			$scope.addTrackTitle = '';
 			$scope.addTrackArtist = '';
@@ -28,17 +28,21 @@
 						console.err(err);
 					});
 			};	
-
+			$scope.myFile = '';
 			init();
 			resetFields();		
-
+			
 			$scope.addMusic = function() {
 				var newTrack = {};
+				var file = $scope.myFile;
+				var uploadUrl = '/music';
 				
 				newTrack.music_title = $scope.addTrackTitle;
 				newTrack.artist_name = $scope.addTrackArtist;
 				newTrack.music_length = $scope.addTrackLength;
 				newTrack.album_name = $scope.addTrackAlbum;
+				// newTrack.music = file;
+				// fileUpload.uploadFileToUrl(file, uploadUrl);
 
 				console.log('sending' + newTrack);
 				$http.post('/music', newTrack)

@@ -47,32 +47,39 @@
 
 			$scope.username = '';
 			$scope.recommendedAlready = false;
-			
-			$http.get('/profile')
-				.then(function(data) {
-					console.log(data.data);
-					$scope.username = data.data.username;
-					$scope.recommendations.forEach(function(username) {
-						if(username === $scope.username) {
-							console.log('You have already recommended this shizz')
-							$scope.recommendedAlready = true;
-						}
+			$scope.recommendations.forEach(function(data) {
+				console.log(data);
+			});
+			(function() {			
+				$http.get('/profile')
+					.then(function(data) {
+						getRecommendations();
+						// console.log(data.data.username);
+						$scope.username = data.data.username;
+						$scope.recommendations.forEach(function(username) {
+							if(username === $scope.username) {
+								console.log('You have already recommended this shizz')
+								$scope.recommendedAlready = true;
+							}
+						});
+					}, function(err) {
+									
 					});
-				}, function(err) {
-								
-				});
 
-			$scope.recommendations.forEach(function(username) {
-				if(username === $scope.username) {
-					console.log('You have already recommended this shizz')
-					$scope.recommendedAlready = true;
-				}
-			})
+				console.log($scope.recommendedAlready);
+			})();
 
-
+			// $scope.recommendations.forEach(function(username) {
+			// 	if(username === $scope.username) {
+			// 		console.log('You have already recommended this shizz')
+			// 		$scope.recommendedAlready = true;
+			// 	}
+			// });
 
 
-			getRecommendations();
+
+
+			
 
 		}
 })();

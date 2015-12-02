@@ -11,13 +11,26 @@
               	Add Music
               </span>
             </div>
-            <form novalidate ng-submit="addMusic()">
+<!--             <form novalidate ng-submit="addMusic()">
 	            <div class="card-content">	             	
 					<input type="text" placeholder = "Track Title" ng-model="addTrackTitle" required>
 					<input type="text" placeholder = "Track Artist" ng-model="addTrackArtist"required>
 					<input type="text" placeholder = "Track Length" ng-model="addTrackLength"required>
 					<input type="text" placeholder = "Album Name" ng-model="addTrackAlbum"required>
 					<input type="file" name="music" id="music">
+	          		<input type="file" name="music" file-model="myFile"/>
+	            </div>
+	            <div class="card-action center">
+	              	<input class="btn waves-effect waves-light brown darken-1" type="submit" value="Add Track">
+	            </div>
+			</form>
+ -->			<form novalidate method="POST" enctype="multipart/form-data" action="/music">
+	            <div class="card-content">	             	
+					<input type="text" placeholder = "Track Title" name="music_title" ng-model="addTrackTitle" required>
+					<input type="text" placeholder = "Track Artist" name="artist_name" ng-model="addTrackArtist" required>
+					<input type="text" placeholder = "Track Length" name="music_length" ng-model="addTrackLength" required>
+					<input type="text" placeholder = "Album Name" name="album_name" ng-model="addTrackAlbum" required>
+					<input type="file" name="music" file-model="myFile"/>
 	            </div>
 	            <div class="card-action center">
 	              	<input class="btn waves-effect waves-light brown darken-1" type="submit" value="Add Track">
@@ -53,7 +66,7 @@
 						<td>{{ music.album_name }}</td>
 						<td>{{ music.views }}</td>
 						<td>
-								<a href="#/musicView/{{music.music_id}}" class="btn waves-effect waves-light brown darken-1">Play</a>
+						<a href="#/musicView/{{music.music_id}}" class="btn waves-effect waves-light brown darken-1">Play</a>
 						</td>
 					</tr>
 				</tbody>
