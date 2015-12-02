@@ -29,6 +29,7 @@ exports.getMusicByAlbum = function(req, res) {
     });
 }
 
+
 exports.getAlbumByArtist = function(req, res) {
     // console.log('Finding' + req.params.artist_id);
     pg.connect(dbUrl, function(err, client) {
@@ -46,4 +47,23 @@ exports.getAlbumByArtist = function(req, res) {
             res.send(data.rows);
         });   
     });
-}
+};
+
+
+exports.getAllAlbums = function(req, res) {
+    pg.connect(dbUrl, function(err, client) {
+        if(err) {
+            return console.error('Client cannot connect to PG');
+        }
+        client.query("select * from album natural join artist",
+        [req.params.artist_id], function(err, data){ 
+            client.end();
+            if(err) {
+               console.log(err);
+               res.sendStatus(err);
+               return;
+            }
+            res.send(data.rows);
+        });   
+    });
+};
