@@ -1,18 +1,22 @@
 var express = require('express');
-var router = express.Router();
+var path = require('path');
+var crypto = require('crypto');
+;var router = express.Router();
 var SessionAuth = require('./../authentications/SessionAuth');
 var MusicController = require('./../controllers/MusicController');
 var multer = require('multer');
 var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './uploads');
-  },
+  destination: './uploads/',
   filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now() + '.mp3');
+    crypto.pseudoRandomBytes(16, function (err, raw) {
+      if (err) return cb(err)
+
+      cb(null, raw.toString('hex') + path.extname(file.originalname))
+    })
   }
-});
-// var upload = multer({ storage: storage });
-var upload = multer({dest: './uploads/'});
+})
+var upload = multer({ storage: storage });
+// var upload = multer({dest: './uploads/'});
 
 
 
