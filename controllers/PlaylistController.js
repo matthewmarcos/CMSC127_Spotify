@@ -132,7 +132,7 @@ exports.createPlaylist = function(req, res) {
 };
 
 
-exports.deletePlaylist = function() {
+exports.deletePlaylist = function(req,res) {
 
     pg.connect(dbUrl, function(err, client) {
         if(err) {
@@ -154,12 +154,12 @@ exports.deletePlaylist = function() {
                 });
             },
             function(data, callback) {
-                console.log(data);
                 if(Number(data.rows[0].count) === 0) {
                     callback(403, null);
                     return;
                 }
-                client.query("DELETE FROM playlist where playlist_id = $1",
+
+                client.query("DELETE FROM playlist_has_music where playlist_id = $1",
                     [req.params.id],
                     function(err, data){
                     if(err) {
@@ -173,7 +173,7 @@ exports.deletePlaylist = function() {
                 });
             },
             function(data, callback) {
-                client.query("DELETE FROM playlist_has_music where playlist_id = $1",
+                client.query("DELETE FROM playlist where playlist_id = $1",
                     [req.params.id],
                     function(err, data){
                     if(err) {
@@ -195,7 +195,6 @@ exports.deletePlaylist = function() {
                 }
             }
         );
-
     });
 
 };

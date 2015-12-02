@@ -25,9 +25,9 @@
 		</li>
 	</ul>
 
-	<span ng-if="recommendations.length === 0">Nobody has recommended this song. Be the first one to do so! Initiative lang yan! leader ka ba?</span>
+	<span ng-if="recommendations.length === 0">Nobody has recommended this song</span>
 
 
-	<button ng-if="recommendations.indexOf(username)!== -1" ng-click="recommend()">Recommend!</button>
-	<span ng-if="!(recommendations.indexOf(username)!== -1)"> You have already recommended this song</span>
-
+	<button ng-click="recommend()">Recommend!</button>
+	<!-- <span ng-if="(recommendations.indexOf(username) !== -1)"> You have already recommended this song</span>
+ -->

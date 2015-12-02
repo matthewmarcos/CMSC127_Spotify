@@ -13,7 +13,6 @@
 			$scope.playlistName = '';
 			$scope.playlists = [];
 
-
 			$http.get('/playlist')
 				.then(function(data) {
 					$scope.playlists = data.data;
@@ -54,8 +53,22 @@
 			}
 
 			$scope.remove = function (music_id) {
-				console.log(music_id);
-				$scope.toCreate.splice(theIndexOf(music_id, $scope.toCreate), 1);
+				// alert('delete' + music_id);
+				$http.delete('/playlist/' + music_id)
+					.then(function(data){
+						alert('Successfully deleted playlist'); 
+						$http.get('/playlist')
+							.then(function(data) {
+								// console.log(data.data);
+								$scope.playlists = data.data;
+							}, function(err) {
+								console.log(error);
+							});
+					}, function(err){
+						console.log(err);
+					});		
+			//console.log(music_id);
+				//$scope.toCreate.splice(theIndexOf(music_id, $scope.toCreate), 1);
 			};
 
 			$scope.add = function(music_id) {
