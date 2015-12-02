@@ -6,13 +6,28 @@
 	<p class="col m3">times played: {{ specificMusic.times_played }}</p>
 	<p class="col m3">views: {{ specificMusic.views }}</p>
 	<p class="col m3">file-path: {{ specificMusic.file_path }}</p>
+	<p class="col m3">Number of Recommendations: {{ recommendations.length }}</p>
 	<!-- <audio ></audio> -->
 
 	<audio controls>
 		<!-- <source src="horse.ogg" type="audio/ogg"> -->
 		<!-- <source ng-src="{{specificMusic.file_path}}" type="audio/mpeg"> -->
-		<source src="uploads/asd.mp3" type="audio/mpeg">
+		<source ng-src="/uploads/asd.mp3" type="audio/mpeg">
 
 
 		Your browser does not support the audio element.
 	</audio>
+
+	<ul ng-if="recommendations.length > 0">
+		<li>List of people who recommend this song</li>
+		<li ng-repeat="recommendation in recommendations">
+			{{ recommendation.username }}
+		</li>
+	</ul>
+
+	<span ng-if="recommendations.length === 0">Nobody has recommended this song. Be the first one to do so! Initiative lang yan! leader ka ba?</span>
+
+
+	<button ng-if="!recommendedAlready" ng-click="recommend()">Recommend!</button>
+	<span ng-if="recommendedAlready"> You have already recommended this song</span>
+

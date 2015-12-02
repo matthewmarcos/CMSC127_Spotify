@@ -3,6 +3,15 @@ var router = express.Router();
 var SessionAuth = require('./../authentications/SessionAuth');
 var MusicController = require('./../controllers/MusicController');
 var multer = require('multer');
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads');
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + '.mp3');
+  }
+});
+// var upload = multer({ storage: storage });
 var upload = multer({dest: './uploads/'});
 
 
@@ -12,11 +21,13 @@ router.route('/')
 	// Get list of your music
 	.get(SessionAuth.isLoggedIn, MusicController.getMine)
 	// Upload new music 
-	.post(SessionAuth.isLoggedIn/*, upload.single('music')*/, MusicController.addMusic);
+	.post(SessionAuth.isLoggedIn, upload.single('music'), MusicController.addMusic);
 router.route('/popular')
 	//Get top 10 music with most views
 	.get(SessionAuth.isLoggedIn, MusicController.popular);
 router.route('/recommend/:music_id')
+	//Get list of users who recommended this!
+	.get(/*SessionAuth.isLoggedIn, */MusicController.getRecommendations)
 	//Recommend music_id
 	.post(SessionAuth.isLoggedIn, MusicController.recommend);
 router.route('/:music_id')

@@ -7,11 +7,20 @@
 		MusicViewCtrl.$inject = ['$scope', '$http', '$routeParams'];
 
 		function MusicViewCtrl ($scope, $http, $routeParams) {
+
+			var getRecommendations = function() {
+				$http.get('/music/recommend/' + $routeParams.music_id)
+					.then(function(data) {
+						// console.log(data.data);
+						$scope.recommendations = data.data;
+					}, function(err) {
+						alert('Failed to Recommend!');
+					});
+			};
+
 			$scope.specificMusic = {};
 			$http.get('/music/' + $routeParams.music_id)
 				.then(function(data) {
-					// console.log('successfully viewed music');
-					console.log(data.data);
 					$scope.specificMusic.music_title = data.data.music_title;
 					$scope.specificMusic.artist_name = data.data.artist_name;
 					$scope.specificMusic.music_length = data.data.music_length;					
@@ -21,5 +30,56 @@
 				}, function(err) {
 					console.err(err);
 				});
+				
+			$scope.recommendations = [];
+
+			$scope.recommend = function() {
+				$http.post('/music/recommend/' + $routeParams.music_id, {})
+					.then(function(data) {
+						alert('Successfully Recommended!');
+						getRecommendations();
+					}, function(err) {
+						alert('Failed to Recommend!');
+						getRecommendations();						
+					});
+			};
+
+
+			$scope.username = '';
+			$scope.recommendedAlready = false;
+			$scope.recommendations.forEach(function(data) {
+				console.log(data);
+			});
+			(function() {			
+				$http.get('/profile')
+					.then(function(data) {
+						getRecommendations();
+						// console.log(data.data.username);
+						$scope.username = data.data.username;
+						$scope.recommendations.forEach(function(username) {
+							if(username === $scope.username) {
+								console.log('You have already recommended this shizz')
+								$scope.recommendedAlready = true;
+							}
+						});
+					}, function(err) {
+									
+					});
+
+				console.log($scope.recommendedAlready);
+			})();
+
+			// $scope.recommendations.forEach(function(username) {
+			// 	if(username === $scope.username) {
+			// 		console.log('You have already recommended this shizz')
+			// 		$scope.recommendedAlready = true;
+			// 	}
+			// });
+
+
+
+
+			
+
 		}
 })();
