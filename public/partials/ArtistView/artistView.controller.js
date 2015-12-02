@@ -11,7 +11,7 @@
 			$scope.artists = [];
 			$http.get('/artist/music/' + $routeParams.artist_id)
 				.then(function(data){
-					console.log('successfully viewed artist');
+					// console.log('successfully viewed artist');
 					$scope.artists = data.data;
 					$scope.artistName = $scope.artists[0].artist_name;
 				}, function(err) {
