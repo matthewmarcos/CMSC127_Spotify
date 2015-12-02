@@ -77,7 +77,7 @@ exports.login = function(req, res){
             client.end();
             if(err) {
                 console.log('Error');
-                disconnectAll();
+                // disconnectAll();
                 onDone(err, data);
                 return;
             }
