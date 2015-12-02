@@ -35,7 +35,7 @@
 			})
 			.when('/albumView/:album_id', {
 				controller: 'AlbumViewCtrl',
-				templateUrl: '/public/partials/AlbumView/AlbumView.view.html'
+				templateUrl: '/public/partials/AlbumView/albumView.view.html'
 			})
 			.when('/popular', {
 				controller: 'PopularCtrl',

@@ -13,8 +13,7 @@
 				.then(function(data){
 					console.log('successfully viewed artist');
 					$scope.artists = data.data;
-					$scope.artistName = data.data.artist_name;
-					alert($scope.artist_name);
+					$scope.artistName = $scope.artists[0].artist_name;
 				}, function(err) {
 					console.err(err);
 				});
