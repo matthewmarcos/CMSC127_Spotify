@@ -59,7 +59,7 @@ pg.connect(dbUrl, function(err, client) {
 			// callback(null, null);			
 		}, function(callback) {
 			// console.log('Searching album');
-			client.query("SELECT * FROM album where album_name like '%" + req.params.query +"%'",
+			client.query("SELECT * FROM album natural join artist where album_name like '%" + req.params.query +"%'",
                 function(err, data){
                 if(err) {
                     console.log('Error');
