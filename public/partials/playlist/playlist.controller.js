@@ -51,9 +51,7 @@
 				}
 				
 			}
-
-			$scope.remove = function (music_id) {
-				// alert('delete' + music_id);
+			$scope.deleteThis = function(music_id) {
 				$http.delete('/playlist/' + music_id)
 					.then(function(data){
 						alert('Successfully deleted playlist'); 
@@ -67,8 +65,25 @@
 					}, function(err){
 						console.log(err);
 					});		
+			};
+
+			$scope.remove = function (music_id) {
+				// alert('delete' + music_id);
+				// $http.delete('/playlist/' + music_id)
+				// 	.then(function(data){
+				// 		alert('Successfully deleted playlist'); 
+				// 		$http.get('/playlist')
+				// 			.then(function(data) {
+				// 				// console.log(data.data);
+				// 				$scope.playlists = data.data;
+				// 			}, function(err) {
+				// 				console.log(error);
+				// 			});
+				// 	}, function(err){
+				// 		console.log(err);
+				// 	});		
 			//console.log(music_id);
-				//$scope.toCreate.splice(theIndexOf(music_id, $scope.toCreate), 1);
+				$scope.toCreate.splice(theIndexOf(music_id, $scope.toCreate), 1);
 			};
 
 			$scope.add = function(music_id) {

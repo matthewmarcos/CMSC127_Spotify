@@ -67,6 +67,7 @@ exports.createPlaylist = function(req, res) {
         }
         async.waterfall([
             function(callback) {
+                console.log(1);
                 client.query("INSERT INTO playlist (users_id, playlist_pic, playlistname, date_created) VALUES" +
                     "($1, $2, $3, now())",
                     [req.session.user.users_id, "img/project4.jpg", req.body.playlist_name],
@@ -81,7 +82,8 @@ exports.createPlaylist = function(req, res) {
                     callback(null, data);
                 });
             },
-            function(data, callback){               
+            function(data, callback){
+                console.log(2);               
                 client.query("SELECT lastval()", 
                     function(err, data){
                     if(err) {
@@ -95,6 +97,7 @@ exports.createPlaylist = function(req, res) {
                 });              
                  
             }, function(data, callback) {
+                console.log(3);
                 async.eachSeries(req.body.music_ids, 
                     function(music_id, cb) {
                         console.log(music_id);
@@ -155,7 +158,7 @@ exports.deletePlaylist = function(req,res) {
             },
             function(data, callback) {
                 if(Number(data.rows[0].count) === 0) {
-                    callback(403, null);
+                    callback({message: 'Playlist not found'}, null);
                     return;
                 }
 

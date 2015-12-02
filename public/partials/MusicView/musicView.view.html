@@ -20,7 +20,7 @@
 
 	<ul ng-if="recommendations.length > 0">
 		<li>List of people who recommend this song</li>
-		<li ng-repeat="recommendation in recommendations">
+		<li ng-repeat="recommendation in recommendations track by $index">
 			{{ recommendation.username }}
 		</li>
 	</ul>
