@@ -4,9 +4,6 @@
 
 	config.$inject = ['$routeProvider', '$locationProvider'];
 
-	
-	$scope.searchInput = '';
-
 	function config($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/', {

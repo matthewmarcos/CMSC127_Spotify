@@ -17,17 +17,23 @@
             				<th>Name</th>
             				<th>Date Created</th>
             				<th>Action</th>
+            				<th>Delete</th>
             			</tr>
             		</thead>
             		<tbody>
-            			<tr ng-repeat="playlist in playlists">
+            			<tr ng-repeat="playlist in playlists track by $index">
             				<td>{{playlist.playlistname}}</td>
             				<td>{{playlist.date_created | date:'MMMM dd, yyyy'}}</td>
             				<td>
 							<div class="center row">
-								<a href="#/playlistView/{{playlist.playlist_id}}" class="btn waves-effect waves-light brown darken-1 white-text">Play</a>
+								<a href="#/playlistView/{{playlist.playlist_id}}" class="btn waves-effect waves-light brown darken-1 white-text">View</a>
 							</div>
-						</td>
+							</td>
+							<td>
+							<div class="center row">
+								<a href="#/playlist" ng-click="remove(playlist.playlist_id)" class="btn waves-effect waves-light brown darken-1 white-text">Remove</a>
+							</div>
+							</td>
             			</tr>
             		</tbody>
             	</table>
@@ -111,7 +117,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="music in musicList">
+							<tr ng-repeat="music in musicList track by $index">
 								<td>{{ music.music_title }}</td>
 								<td>{{ music.artist_name }}</td>
 								<td>{{ music.username }}</td>
