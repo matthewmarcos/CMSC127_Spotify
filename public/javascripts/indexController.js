@@ -24,7 +24,7 @@
 		$scope.inputConfirmEmail = '';
 		$scope.inputConfirmPassword = '';
 		$scope.inputPassword = '';
-
+		$scope.inputFile = '';
 
 		$scope.login = function() {
 			console.log("username: " + $scope.inputUsername);
@@ -54,7 +54,43 @@
 		}
 
 		$scope.signup = function() {
-			alert('lol');
+			alert($scope.inputFile);
+			if(!($scope.inputFName) ){
+				alert('Invalid Credentials');
+				return;
+			}
+
+			if(!($scope.inputLName) ){
+				alert('Invalid Credentials');
+				return;
+			}
+
+			if(!($scope.inputUsernameSignUp) ){
+				alert('Invalid Credentials');
+				return;
+			}
+
+			if(!($scope.inputPasswordSignUp) ){
+				alert('Invalid Credentials');
+				return;
+			}
+
+			if(!($scope.inputConfirmPassword) ){
+				alert('Invalid Credentials');
+				return;
+			}
+
+			if(!($scope.inputEmail) ){
+				alert('Invalid Credentials');
+				return;
+			}
+
+			if(($scope.inputPasswordSignUp)!==($scope.inputConfirmPassword)){
+				alert('Password does not match');
+				return;
+			}
+
+
 			$http.post('/auth/create', {
 				fname: $scope.inputFName,
 				lname: $scope.inputLName,
