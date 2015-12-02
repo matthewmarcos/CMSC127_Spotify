@@ -6,7 +6,7 @@
 
 		AlbumViewCtrl.$inject = ["$scope","$http", "$routeParams"];
 
-		function AlbumViewCtrl($scope,$http,$routeParams){
+		function AlbumViewCtrl($scope, $http, $routeParams){
 			$scope.albumView = [];
 			alert($routeParams.album_id);
 			console.log('routeParams is ' + $routeParams.album_id);
