@@ -77,7 +77,7 @@
                 <label for="icon_prefix" class="brown-text">Username</label>
               </div>
               <div class="input-field">
-                <i class="mdi-action-settings prefix brown-text"></i>
+                <i class="mdi-action-settings prefix brown-text"></i>   
                 <input id="icon_settings" name="name" type="password" class="validate brown-text" ng-model="inputPassword">
                 <label for="icon_settings" class="brown-text">Password</label>
               </div>
@@ -94,7 +94,6 @@
 </div>
 
 <!--===========================SIGN UP==================================-->
-<form name = "signup" novalidate>
 <div class="section scrollspy" id="work">
     <div class="container">
         <h2 class="header text_b brown-text">Sign Up</h2>
@@ -113,11 +112,11 @@
             </div>
              <div class="row">
                 <div class="input-field col s6">
-                   <input id="password" type="password" class="validate" ng-model="inputPasswordSignUp" required>
+                   <input id="password" type="password" class="validate" ng-model="inputPasswordSignUp">
                     <label for="password" class="brown-text">Password</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="c_password" type="password" class="validate" ng-model="inputConfirmPassword" required>
+                    <input id="c_password" type="password" class="validate" ng-model="inputConfirmPassword">
                     <label for="c_password" class="brown-text">Confirm Password</label>
                 </div>
             </div>
@@ -126,18 +125,17 @@
 
           <div class="col s6">
             <div class="input-field">
-              <input id="user_name" type="text" class="validate" ng-model="inputUsernameSignUp" required>
+              <input id="user_name" type="text" class="validate" ng-model="inputUsernameSignUp">
               <label for="user_name" class="brown-text">User Name</label>
             </div>
             <div class="input-field">
-              <input id="email" type="email" name="signupemail" class="validate" ng-model="inputEmail"  required>
+              <input id="email" type="email" name="signupemail" class="validate" ng-model="inputEmail">
               <label for="email">Email</label>
-               <span  span ng-show="signup.signupemail.$invalid && signup.signupemail.$dirty">invalid email</span>
             </div>
               <div class="file-field input-field">
                 <div class="btn brown">
                   <span>Profile Picture</span>
-                  <input type="file" required>
+                  <input type="file" ng-model="inputFile">
                 </div>
                 <div class="file-path-wrapper">
                   <input class="file-path validate" type="text">
@@ -148,20 +146,13 @@
         </div>
 
         <div class="center">
-          <button class="btn waves-effect waves-light brown darken-1" type="submit" ng-disabled='signup.$invalid' ng-click="signup()">Sign Up
+          <button class="btn waves-effect waves-light brown darken-1" ng-click="signup()">Sign Up
               <i class="mdi-content-send right white-text"></i>
           </button>
         </div>
         </div>
         </div>
-</form>
-        <div class="center">
-          <p class="brown-text">
-            By clicking sign up, you agree to Spotify's <a class="brown-text text-darken-4">Terms of use</a>.
-          </p>
-        </div>
-    </div>
-</div>
+
 
 <!--==========================PARALLAX=================================-->
 <div class="parallax-container">
