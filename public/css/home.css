@@ -1,13 +1,12 @@
 /* By yours truly, Bes <3*/
 
 .smallify {
-	height: 32px !important;
+	height: 20px !important;
 	line-height: inherit !important;
 }
 
 .backgroundimage{
-	height:100%;
-	width: 100%;
+	width:100%;
 	padding: 0;
 	margin: 0;
 	position: absolute;
@@ -88,7 +87,7 @@
 	margin-right: 0px;
 }
  .card-tile{
- 	font-size: 10px;s
+ 	font-size: 10px;
  }
 
 .container{

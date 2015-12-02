@@ -24,6 +24,8 @@
 		$scope.inputConfirmEmail = '';
 		$scope.inputConfirmPassword = '';
 		$scope.inputPassword = '';
+
+
 		$scope.login = function() {
 			console.log("username: " + $scope.inputUsername);
 			console.log("Password: " + $scope.inputPassword);
@@ -61,8 +63,8 @@
 				picture: 'NULL',
 				email: $scope.inputEmail
 			}).then(function(data){
-				alert("Sign up successful! please to be approvedby admin");
-				console.log("Successful SignUp");
+				alert("Sign up successful! please to be approved by admin");
+				console.log("Successful Sign Up");
 				console.log(data);
 				window.location = '/home';
 			}, function(err) {

@@ -55,29 +55,33 @@ exports.getThis = function(req, res) {
 }
 
 
-exports.create = function(req, res) {
+exports.createPlaylist = function(req, res) {
     // Create a new playlist for users_id
     // Add songs eachSeries]
-    console.log(req.body);
+    // console.log(req.body);
     var playlist_id;
-    async.waterfall([
-        function(callback) {
-            client.query("INSERT INTO playlist (users_id, playlist_pic, playlistname, date_created) VALUES" +
-                "($1, $2, $3, now())",
-                [req.session.user.users_id, "img/project4.jpg", req.body.playlist_name],
-                function(err, data){
-                if(err) {
-                    console.log('Error1');
-                    console.error(err);
-                    callback(err, false);
-                    return;
-                }
-                callback(null, data);
-            });
-        },
-        function(data, callback){
-            console.log('here2');
-            pg.connect(dbUrl, function(err, client) {
+
+    pg.connect(dbUrl, function(err, client) {
+        if(err) {
+            return console.error('Client cannot connect to PG');
+        }
+        async.waterfall([
+            function(callback) {
+                client.query("INSERT INTO playlist (users_id, playlist_pic, playlistname, date_created) VALUES" +
+                    "($1, $2, $3, now())",
+                    [req.session.user.users_id, "img/project4.jpg", req.body.playlist_name],
+                    function(err, data){
+                    if(err) {
+                        console.log('Error1');
+                        console.error( err);
+                        callback(err, false);
+                        return;
+                    }
+                    console.log(data);
+                    callback(null, data);
+                });
+            },
+            function(data, callback){               
                 client.query("SELECT lastval()", 
                     function(err, data){
                     if(err) {
@@ -87,22 +91,16 @@ exports.create = function(req, res) {
                         return;
                     }
                     playlist_id = Number(data.rows[0].lastval);
-                    callback(null, true);
-                });
-            });  
-             
-        }, function(err, callback) {
-            async.eachSeries(req.body.music_ids, 
-                function(music_id, cb) {
-                    pg.connect(dbUrl, function(err, client) {
-                        if(err) {
-                            return console.error('Client cannot connect to PG');
-                        }
-                        // res.send('Updating at ' + req.params.id);
+                    callback(null, data);
+                });              
+                 
+            }, function(data, callback) {
+                async.eachSeries(req.body.music_ids, 
+                    function(music_id, cb) {
+                        console.log(music_id);
                         client.query("INSERT INTO playlist_has_music (playlist_id, music_id) VALUES ($1, $2)", 
                             [playlist_id, music_id],
                             function(err, data){
-                            client.end();
                             if(err) {
                                 console.log('Error: ' + music_id);
                                 cb(err);
@@ -110,26 +108,37 @@ exports.create = function(req, res) {
                             }
                             cb(null);
                         });
-                    });  
-                }, function(err) {
-                    callback(null, true);
+                        // callback(null);
+                    }, function(err, data) {
+                        if(err) {
+                            callback(err, null);
+                            return;
+                        }
+                        callback(null, data);
+                    }
+                );
+              }  
+            ], function(err, data) {
+                client.end();
+                if(err) {
+                    res.sendStatus(err);
+                } else {
+                    res.send(data);
                 }
-            );
-          }  
-        ], function(err, data) {
-            client.end();
-            if(err) {
-                res.sendStatus(err);
-            } else {
-                res.send(data);
             }
-        }
-    );
+        );
 
+    });
+
+    
 };
 
 
-exports.edit = function(req, res) {
+exports.deletePlaylist = function() {
+
+};
+
+exports.editPlaylist = function(req, res) {
     // Edit playlist of users_id with playlist_id
     // delete from playlist_has_songs with playlist_id
     // add again to playlist_has_songs
@@ -187,4 +196,24 @@ exports.subscribe = function(req, res) {
 
 exports.unsubscribe = function(req, res) {
 
-}
+};
+
+exports.findMusicByPlaylist = function(req, res) {
+     pg.connect(dbUrl, function(err, client) {
+        if(err) {
+            return console.error('Client cannot connect to PG');
+        }
+        // res.send('Updating at ' + req.params.id);
+        client.query("select * from music natural join playlist natural join playlist_has_music natural join artist_create_music natural join artist where playlist_id = $1",
+            [req.params.id],
+            function(err, data){
+            client.end();
+            if(err) {
+                console.log('Error');
+                res.sendStatus(err);
+                return;
+            }
+            res.send(data.rows);
+        });
+    });  
+};

@@ -1,74 +1,149 @@
-<h2>Playlists</h2>
-<div class="row">
-	<h3>My Playlists</h3>
-</div>
+<!--  <div class="container">
+	<h2 class="text_h2 brown-text text-darken-4">Playlists</h2>
 
+	<div class="row">
 
-<div class="row">
-	<h3>Create a playlist</h3>
-	<div class="col s6">
-		<h4>Songs to add</h4>
-		<form class="row">
-			<div class="input-field">
-				<h4>Playlist Name</h4>
-				<input class="col s9" id="search" type="search" ng-model="playlistName" required>
-				<input type="button" value="Create!" ng-click="create()">
-			</div>
-		<table>
-			<thead>	
-				<div>
-					<th>Music Title</th>
-					<th>Artist Name</th>
-					<th>Uploader</th>
-					<th>Album</th>
-					<th>Plays</th>
-					<th>Options</th>
-				</div>
-			</thead>
-			<tbody ng-repeat="music in toCreate">				
-					<tr ng-repeat="music in toCreate track by $index">
-					<td class="col s2" >{{ music.music_title }}</td>
-					<td class="col s2">{{ music.artist_name }}</td>
-					<td class="col s2">{{ music.username }}</td>
-					<td class="col s2">{{ music.album_name }}</td>
-					<td class="col s1">{{ music.times_played }}</td>
-					<td class="col s2"><input type="button" value="Remove" ng-click="remove(music.music_id)"></td>
-			</tbody>
-		</table>
-	</div>
-	<div class="col s6">
-		<h4>Search for a song</h4>
-		<form class="row">
-			<div class="input-field">
-				<input class="col s9" id="search" type="search" ng-model="query">
-				<label for="search"><i class="material-icons">Search</i></label>
-			</div>
-			<input class="col s3" type="button" value="Search" ng-click="search()">
-		</form>
-		<table>
-			<thead>	
-				<div class="row">
-					<th class="col s2">Music Title</th>
-					<th class="col s2">Artist Name</th>
-					<th class="col s2">Uploader</th>
-					<th class="col s2">Album</th>
-					<th class="col s1">Plays</th>
-					<th class="col s2">Options</th>
-				</div>
-			</thead>
-			<tbody>
-				<tr ng-repeat="music in musicList">
-					<td >{{ music.music_title }}</td>
-					<td >{{ music.artist_name }}</td>
-					<td >{{ music.username }}</td>
-					<td >{{ music.album_name }}</td>
-					<td >{{ music.times_played }}</td>
-					<td ><input type="button" value="Add" ng-click="add(music.music_id)"></td>
-				</tr>
-			</tbody>
-		</table>
-		<div ng-if="musicList.length === 0">
-			<p>Empty List</p>
+		<div class="col s5 offset-7">
+	        <div class="card thinify">
+	            <div class="card-image">
+	              <img src="img/parallax1.png" style="height:90px;">
+	              <span class="card-title">
+	              	My Playlist
+	              </span>
+	            </div>
+	            <div class="card-content">
+	            	<table class="hoverable centered bordered">
+	            		<thead>
+	            			<tr>
+	            				<th>Name</th>
+	            				<th>Date Created</th>
+	            			</tr>
+	            		</thead>
+	            		<tbody>
+	            			<tr ng-repeat="playlist in playlists">
+	            				<td>{{playlist.playlistname}}</td>
+	            				<td>{{playlist.date_created}}</td>
+	            			</tr>
+	            		</tbody>
+	            	</table>
+	            </div>
+	        </div>
 		</div>
+
+		<div class="col s7">
+			<h4 class="text_h2 brown-text text-darken-4">Create a playlist</h4>
+				
+				<form class="row">
+					<div class="input-field">
+						<h4>Playlist Name</h4>
+						<input class="col s9" id="search" type="search" ng-model="playlistName" required>
+						<input type="button" value="Create!" ng-click="create()">
+					</div>
+				</form>
+
+				<table>
+					<thead>	
+						<div>
+							<th class="col s2">Music Title</th>
+							<th class="col s2">Artist Name</th>
+							<th class="col s2">Uploader</th>
+							<th class="col s2">Album</th>
+							<th class="col s2">Plays</th>
+							<th class="col s2">Options</th>
+						</div>
+					</thead>
+					<tbody>				
+						<tr ng-repeat="music in toCreate track by $index">
+							<td class="col s2" >{{ music.music_title }}</td>
+							<td class="col s2">{{ music.artist_name }}</td>
+							<td class="col s2">{{ music.username }}</td>
+							<td class="col s2">{{ music.album_name }}</td>
+							<td class="col s1">{{ music.times_played }}</td>
+							<td class="col s2"><input type="button" value="Remove" ng-click="remove(music.music_id)"></td>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+				<div class="col s6">
+					<h4>Search for a song</h4>
+					<form class="row">
+						<div class="input-field">
+							<input class="col s9" id="search" type="search" ng-model="query">
+							<label for="search"><i class="material-icons">Search</i></label>
+						</div>
+						<input class="col s3" type="button" value="Search" ng-click="search()">
+					</form>
+					<table>
+						<thead>	
+							<div class="row">
+								<th class="col s2">Music Title</th>
+								<th class="col s2">Artist Name</th>
+								<th class="col s2">Uploader</th>
+								<th class="col s2">Album</th>
+								<th class="col s1">Plays</th>
+								<th class="col s2">Options</th>
+							</div>
+						</thead>
+						<tbody>
+							<tr ng-repeat="music in musicList">
+								<td class="col s2">{{ music.music_title }}</td>
+								<td class="col s2">{{ music.artist_name }}</td>
+								<td class="col s2">{{ music.username }}</td>
+								<td class="col s2">{{ music.album_name }}</td>
+								<td class="col s2">{{ music.times_played }}</td>
+								<td class="col s2"><input type="button" value="Add" ng-click="add(music.music_id)"></td>
+							</tr>
+						</tbody>
+					</table>
+					<div ng-if="musicList.length === 0">
+						<p>Empty List</p>
+					</div>
+				</div>
+			</div>
+</div> -->
+	
+	<div class="container">
+	  <div class="row">
+	    <div class="col s12 m9 l10">
+	      <div id="mplaylist" class="section scrollspy">
+	        <h4 class="text_h2 brown-text text-darken-4">My Playlists</h4>
+	        <div class="card thinify">
+	            <div class="card-image">
+	              <img src="img/parallax1.png" style="height:90px;">
+	              <span class="card-title">
+	              	My Playlist
+	              </span>
+	            </div>
+	            <div class="card-content">
+	            	<table class="hoverable centered bordered">
+	            		<thead>
+	            			<tr>
+	            				<th>Name</th>
+	            				<th>Date Created</th>
+	            			</tr>
+	            		</thead>
+	            		<tbody>
+	            			<tr ng-repeat="playlist in playlists">
+	            				<td>{{playlist.playlistname}}</td>
+	            				<td>{{playlist.date_created}}</td>
+	            			</tr>
+	            		</tbody>
+	            	</table>
+	            </div>
+	        </div>
+	      </div>
+
+	      <div id="cplaylist" class="section scrollspy">
+	        <h4 class="text_h2 brown-text text-darken-4">Create a playlist</h4>
+	      </div>
+
+	    </div>
+	    <div class="col hide-on-small-only m3 l2">
+	      <ul class="section table-of-contents">
+	        <li><a href="#mplaylist">My Playlist</a></li>
+	        <li><a href="#cplaylist">Create Playlist</a></li>
+	      </ul>
+	    </div>
+	  </div>
 	</div>
-</div>
