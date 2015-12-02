@@ -1,0 +1,26 @@
+<div class="container">
+
+	<h2 class="text_h2 brown-text text-darken-4">Albums</h2>
+
+
+	<table class="responsive-table hoverable centered bordered">
+				<thead>
+					<tr>
+						<th>Album Name</th>
+						<th>Artist Name</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="album in albums" class="row">
+						<td>{{ album.album_name }}</td>
+						<td>{{ album.artist_name }}</td>
+						<td>
+							<div class="center row">
+								<a href="#/AlbumView/{{album.album_id}}" class="btn waves-effect waves-light brown darken-1">View</a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+	</table>
+</div>

@@ -29,6 +29,10 @@
 				controller: 'AdminCtrl',
 				templateUrl: '/public/partials/admin/admin.view.html'
 			})
+			.when('/album', {
+				controller: 'AlbumCtrl',
+				templateUrl: '/public/partials/album/album.view.html'
+			})
 			.when('/popular', {
 				controller: 'PopularCtrl',
 				templateUrl: '/public/partials/popular/popular.view.html'
