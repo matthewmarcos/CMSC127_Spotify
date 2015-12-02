@@ -8,13 +8,14 @@
 
 		function AlbumViewCtrl($scope,$http,$routeParams){
 			$scope.albumView = [];
-
-			$http.get('/album/music/'  + $routeParams.album_id)
+			alert($routeParams.album_id);
+			console.log('routeParams is ' + $routeParams.album_id);
+/*			$http.get('/album/music/'  + $routeParams.album_id)
 				.then(function(data) {
 					console.log(data.data);
-					/*$scope.albumView = data.data;*/
+					$scope.albumView = data.data;
 				}, function(err) {
 					console.err(err);
-				});		
+				});		*/
 		}
 })();
