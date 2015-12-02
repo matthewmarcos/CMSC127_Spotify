@@ -20,7 +20,7 @@
 				$scope.addTrackAlbum = '';
 			};
 			var init = function() {
-				console.log('init!');
+				// console.log('init!');
 				$http.get('/music')
 					.then(function(data) {
 						$scope.tracks = data.data;

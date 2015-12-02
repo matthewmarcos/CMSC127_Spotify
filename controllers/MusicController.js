@@ -28,7 +28,6 @@ exports.getMine = function(req, res) {
 
 exports.popular = function(req, res) {
 // select * from music order by times_played desc LIMIT 10
-    console.log('Getting the popular shizz');
     pg.connect(dbUrl, function(err, client) {
         if(err) {
             return console.error('Client cannot connect to PG');
@@ -363,3 +362,22 @@ exports.incrementTimesPlayed = function(req, res) {
 
 };
 
+exports.getRecommendations = function(req, res) {
+    pg.connect(dbUrl, function(err, client) {
+        if(err) {
+            return console.error('Client cannot connect to PG');
+        }
+        // res.send('Updating at ' + req.params.id);
+        client.query("select username from users natural join users_recommends_music where music_id = $1",
+            [req.params.music_id], 
+            function(err, data){
+                client.end();
+                if(err) {
+                    res.sendStatus(404);
+                    return;
+            }
+            res.send(data.rows);
+        });
+    });
+
+};
