@@ -57,7 +57,7 @@
 						alert('Successfully deleted playlist'); 
 						$http.get('/playlist')
 							.then(function(data) {
-								// console.log(data.data);
+								// consolnpde.log(data.data);
 								$scope.playlists = data.data;
 							}, function(err) {
 								console.log(error);

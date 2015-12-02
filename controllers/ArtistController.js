@@ -34,7 +34,7 @@ exports.getAllByArtist = function(req, res) {
         }
         client.query("select " +
         "users_id, artist_id, music_id, artist_name, album_id, album_name, music_title, music_length, times_played, views, username " +
-        "from music natural join artist_create_music natural join album natural join users natural join artist where artist_id = $1",
+        "from music natural join artist_create_music natural join album natural join album_contains_music natural join users natural join artist where artist_id = $1",
         [req.params.artist_id], function(err, data){ 
             client.end();
             if(err) {

@@ -14,9 +14,7 @@ exports.getMusicByAlbum = function(req, res) {
         if(err) {
             return console.error('Client cannot connect to PG');
         }
-        client.query("select " +
-        "users_id, artist_id, music_id, album_id, artist_name, album_name, file_path, music_title, music_length, times_played, views, username " +
-        "from music natural join artist_create_music natural join artist natural join album natural join users where album_id = $1",
+        client.query("select users_id, artist_id, music_id, album_id, artist_name, album_name, file_path, music_title, music_length, times_played, views, username from music natural join artist_create_music natural join album_contains_music natural join artist natural join album natural join users where album_id = $1",
         [req.params.album_id], function(err, data){ 
             client.end();
             if(err) {

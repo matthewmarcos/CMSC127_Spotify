@@ -14,7 +14,7 @@ exports.getMine = function(req, res) {
             return console.error('Client cannot connect to PG');
         }
         // res.send('Updating at ' + req.params.id);
-        client.query("SELECT * from music natural join artist_create_music natural join artist natural join album where users_id = $1", 
+        client.query("SELECT * from music natural join artist_create_music natural join artist natural join album natural join album_contains_music where users_id = $1", 
                     [req.session.user.users_id], function(err, data){
             client.end();
             if(err) {

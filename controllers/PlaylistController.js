@@ -41,7 +41,8 @@ exports.getThis = function(req, res) {
             return console.error('Client cannot connect to PG');
         }
         // res.send('Updating at ' + req.params.id);
-        client.query("SELECT * from music NATURAL JOIN playlist_has_music NATURAL JOIN artist NATURAL JOIN album where playlist_id = $1",
+        // Edited
+        client.query("select * from playlist_has_music natural join music natural join artist_create_music natural join artist where playlist_id = $1",
             [req.params.id],
             function(err, data){
             client.end();
@@ -268,7 +269,7 @@ exports.findMusicByPlaylist = function(req, res) {
             return console.error('Client cannot connect to PG');
         }
         // res.send('Updating at ' + req.params.id);
-        client.query("select * from music natural join playlist natural join playlist_has_music natural join artist_create_music natural join artist where playlist_id = $1",
+        client.query("select * from playlist_has_music natural join music natural join artist_create_music natural join artist where playlist_id = $1",
             [req.params.id],
             function(err, data){
             client.end();
