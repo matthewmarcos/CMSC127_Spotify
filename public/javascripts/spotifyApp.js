@@ -49,7 +49,7 @@
 				controller: 'PlaylistCtrl',
 				templateUrl: '/public/partials/playlist/playlist.view.html'
 			})
-			.when('/playlist/:playlist_id', {
+			.when('/playlistView/:playlist_id', {
 				controller: 'PlaylistViewCtrl',
 				templateUrl: '/public/partials/PlaylistView/playlistView.view.html'
 			})

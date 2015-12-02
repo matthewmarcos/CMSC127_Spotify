@@ -2,11 +2,12 @@
 (function(){
 	angular
 		.module("spotifyApp")
-		.controller("PlayViewlistCtrl", PlayViewlistCtrl);
+		.controller("PlaylistViewCtrl", PlaylistViewCtrl);
 
 		PlaylistViewCtrl.$inject = ['$scope', '$http', '$routeParams'];
 
 		function PlaylistViewCtrl ($scope, $http, $routeParams) {
+			alert('lol');
 			$scope.tracks = [];
 			$http.get('/playlist/' + $routeParams.playlist_id)
 				.then(function(data) {

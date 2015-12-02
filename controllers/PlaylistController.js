@@ -41,7 +41,7 @@ exports.getThis = function(req, res) {
             return console.error('Client cannot connect to PG');
         }
         // res.send('Updating at ' + req.params.id);
-        client.query("SELECT * from music NATURAL JOIN playlist_has_music where playlist_id = $1",
+        client.query("SELECT * from music NATURAL JOIN playlist_has_music NATURAL JOIN artist NATURAL JOIN album where playlist_id = $1",
             [req.params.id],
             function(err, data){
             client.end();
