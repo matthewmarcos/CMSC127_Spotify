@@ -8,6 +8,7 @@
 
 		function PlaylistViewCtrl ($scope, $http, $routeParams) {
 			$scope.tracks = [];
+			$scope.ID = $routeParams.playlist_id;
 			$scope.playlistName = '';
 			$http.get('/playlist/' + $routeParams.playlist_id)
 				.then(function(data) {
