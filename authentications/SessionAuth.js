@@ -21,7 +21,7 @@ exports.isLoggedInPage = function(req, res, next){
     next();
   } else {
       console.log("not logged in!");
-  res.redirect('/');
+      res.redirect('/');
   }
 };
 

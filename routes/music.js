@@ -31,7 +31,7 @@ router.route('/popular')
 	.get(SessionAuth.isLoggedIn, MusicController.popular);
 router.route('/recommend/:music_id')
 	//Get list of users who recommended this!
-	.get(/*SessionAuth.isLoggedIn, */MusicController.getRecommendations)
+	.get(SessionAuth.isLoggedIn, MusicController.getRecommendations)
 	//Recommend music_id
 	.post(SessionAuth.isLoggedIn, MusicController.recommend);
 router.route('/:music_id')
