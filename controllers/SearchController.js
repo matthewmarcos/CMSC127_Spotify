@@ -20,7 +20,7 @@ pg.connect(dbUrl, function(err, client) {
 	async.series([
 		function(callback) {
 			// console.log('Searching music');
-			client.query("SELECT * FROM music natural join artist natural join album where music_title like '%" + req.params.query +"%'",
+			client.query("SELECT * FROM music natural join artist natural join album natural join album_contains_music where music_title like '%" + req.params.query +"%'",
                 function(err, data){
                 if(err) {
                     console.log('Error');
