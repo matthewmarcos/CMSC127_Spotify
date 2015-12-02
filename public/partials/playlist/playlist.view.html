@@ -16,12 +16,18 @@
             			<tr>
             				<th>Name</th>
             				<th>Date Created</th>
+            				<th>Action</th>
             			</tr>
             		</thead>
             		<tbody>
             			<tr ng-repeat="playlist in playlists">
             				<td>{{playlist.playlistname}}</td>
             				<td>{{playlist.date_created | date:'MMMM dd, yyyy'}}</td>
+            				<td>
+							<div class="center row">
+								<a href="#/playlistView/{{playlist.playlist_id}}" class="btn waves-effect waves-light brown darken-1">Play</a>
+							</div>
+						</td>
             			</tr>
             		</tbody>
             	</table>
@@ -46,7 +52,7 @@
 						<div class="input-field">
 							<input class="col s9" id="search" type="search" ng-model="playlistName" required>
 							<!-- <input type="button" value="Create!" ng-click="create()"> -->
-							<a class="btn waves-effect waves-light brown darken-1" ng-click="create()">Create!</a>
+							<a class="btn white-text waves-effect waves-light brown darken-1" ng-click="create()">Create!</a>
 						</td>
 						</div>
 					</form>

@@ -49,6 +49,10 @@
 				controller: 'PlaylistCtrl',
 				templateUrl: '/public/partials/playlist/playlist.view.html'
 			})
+			.when('/playlist/:playlist_id', {
+				controller: 'PlaylistViewCtrl',
+				templateUrl: '/public/partials/PlaylistView/playlistView.view.html'
+			})
 			.when('/profile', {
 				controller: 'ProfileCtrl',
 				templateUrl: '/public/partials/profile/profile.view.html'
