@@ -11,17 +11,18 @@
               	Add Music
               </span>
             </div>
-            <div class="card-content">
-             	<form>
+            <form novalidate ng-submit="addMusic()">
+	            <div class="card-content">	             	
 					<input type="text" placeholder = "Track Title" ng-model="addTrackTitle" required>
 					<input type="text" placeholder = "Track Artist" ng-model="addTrackArtist"required>
 					<input type="text" placeholder = "Track Length" ng-model="addTrackLength"required>
 					<input type="text" placeholder = "Album Name" ng-model="addTrackAlbum"required>
-				</form>
-            </div>
-            <div class="card-action center">
-              <input class="btn waves-effect waves-light brown darken-1" type="button" value="Add Track" ng-click="addMusic()">
-            </div>
+					<input type="file" name="music" id="music">
+	            </div>
+	            <div class="card-action center">
+	              	<input class="btn waves-effect waves-light brown darken-1" type="submit" value="Add Track">
+	            </div>
+			</form>
           </div>
 
 			

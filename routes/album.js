@@ -8,6 +8,8 @@ router.route('/artist/:artist_id')
 	.get(SessionAuth.isLoggedIn, album.getAlbumByArtist);
 
 router.route('/music/:album_id')
-	.get(/*SessionAuth.isLoggedIn,*/ album.getMusicByAlbum);
+	.get(SessionAuth.isLoggedIn, album.getMusicByAlbum);
 
+router.route('/')
+	.get(SessionAuth.isLoggedIn, album.getAllAlbums);
 module.exports = router;

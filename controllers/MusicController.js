@@ -83,6 +83,7 @@ exports.addMusic = function(req, res) {
     var artist_id;
     var music_id;
     var album_id;
+    // var file_path = req.file.path.substr(3, req.file.path.length);
 
     pg.connect(dbUrl, function(err, client) {
         if(err) {
