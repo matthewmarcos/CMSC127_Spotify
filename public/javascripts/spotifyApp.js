@@ -3,6 +3,10 @@
 	.config(config);
 
 	config.$inject = ['$routeProvider', '$locationProvider'];
+
+	
+	$scope.searchInput = '';
+
 	function config($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/', {
@@ -52,6 +56,10 @@
 			.when('/subscriptions', {
 				controller: 'SubscriptionsCtrl',
 				templateUrl: '/public/partials/subscriptions/subscriptions.view.html'
+			})
+			.when('/search/:toSearch', {
+				controller: 'SearchCtrl',
+				templateUrl: '/public/partials/search/search.view.html'
 			})
 			.otherwise({
 				controller: 'HomeCtrl',

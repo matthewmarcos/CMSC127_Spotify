@@ -1,14 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Spotify</title>
-	<link rel="stylesheet" href="/stylesheets/reset.css">
-	<link rel="stylesheet" href="/stylesheets/materialize.min.css">
-	<link rel="stylesheet" href="/stylesheets/style.css">
-</head>
+{{searchQuery}}
 
-<body class="brown">
-		THIS IS WHAT YOU ARE SUPPOSED TO SEE IF YOU WANT TO SEARCH FOR ANYTHING
-</body>
-</html>
+mga tugtog:
+<table class="responsive-table hoverable centered bordered">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Artist</th>
+						<th>Track Length</th>
+						<th>Times Played</th>
+						<th>Album Name</th>
+						<th>Views</th>					
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="music in searchMusic">
+						<td>{{ music.music_title }}</td>
+						<td>{{ music.artist_name }}</td>
+						<td>{{ music.music_length }}</td>
+						<td>{{ music.times_played }}</td>
+						<td>{{ music.album_name }}</td>
+						<td>{{ music.views }}</td>
+						<td>
+						<a href="#/musicView/{{music.music_id}}" class="btn waves-effect waves-light brown darken-1">Play</a>
+						</td>
+					</tr>
+				</tbody>
+</table>
+
+
+mga gumawa ng tugtog:
+<table class="responsive-table hoverable centered bordered">
+				<thead>
+					<tr>
+						<th>Artist ID</th>
+						<th>Artist Name</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="artist in artists" class="row">
+						<td>{{ artist.artist_id }}</td>
+						<td>{{ artist.artist_name }}</td>
+						<td>
+							<div class="center row">
+								<a href="#/artistView/{{artist.artist_id}}" class="btn waves-effect waves-light brown darken-1">Play</a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+</table>
+
+mga albom:
+<table class="responsive-table hoverable centered bordered">
+				<thead>
+					<tr>
+						<th>Album Name</th>
+						<th>Artist Name</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="album in albums" class="row">
+						<td>{{ album.album_name }}</td>
+						<td>{{ album.artist_name }}</td>
+						<td>
+							<div class="center row">
+								<a href="#/albumView/{{album.album_id}}" class="btn waves-effect waves-light brown darken-1">View</a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+	</table>
+

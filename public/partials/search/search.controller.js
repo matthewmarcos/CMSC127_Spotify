@@ -3,19 +3,24 @@
 	angular
 		.module("spotifyApp")
 		.controller("SearchCtrl", SearchCtrl);
-		SearchCtrl.$inject = ['$scope', '$http'];
+		
+		SearchCtrl.$inject = ['$scope', '$http','$routeParams'];
 
-		function SearchCtrl($scope, $http) {
-			$scope.query = '';
-			$scope.results = {};
-			$scope.search = function() {
-				// console.log($scope.query);	
-				$http.get('/search/' + $scope.query)
+		function SearchCtrl($scope, $http, $routeParams) {
+			$scope.searchQuery = $routeParams.toSearch;
+
+			$scope.searchMusic = [];
+			$scope.artists = [];
+			$scope.albums = [];
+				$http.get('/search/'+ $routeParams.toSearch)
 					.then(function(data) {
-						console.log(data);	
+						console.log('Successfully searched');
+						$scope.searchMusic = data.data.music;
+						$scope.artists = data.data.artists;
+						$scope.albums = data.data.albums;
 					}, function(err) {
-						$console.log(data);
+						console.err(err);
 					});
-			};
+
 		}
 })();
