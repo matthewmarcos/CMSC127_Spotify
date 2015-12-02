@@ -156,7 +156,7 @@ exports.deletePlaylist = function() {
             function(data, callback) {
                 console.log(data);
                 if(Number(data.rows[0].count) === 0) {
-                    callback(err, null);
+                    callback(403, null);
                     return;
                 }
                 client.query("DELETE FROM playlist where playlist_id = $1",
