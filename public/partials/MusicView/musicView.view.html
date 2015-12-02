@@ -1,6 +1,5 @@
-<h1>Music View Goes here!</h1>
-
-	<p class="col m3">title: {{ specificMusic.music_title }}</p> 
+<div class="container">
+	<h2 class="text_h2 brown-text text-darken-4">{{ specificMusic.music_title }}</h2>
 	<p class="col m3">artist: {{ specificMusic.artist_name }}</p>
 	<p class="col m3">length: {{ specificMusic.music_length }}</p>
 	<p class="col m3">times played: {{ specificMusic.times_played }}</p>
@@ -31,3 +30,4 @@
 	<button ng-click="recommend()">Recommend!</button>
 	<!-- <span ng-if="(recommendations.indexOf(username) !== -1)"> You have already recommended this song</span>
  -->
+</div>

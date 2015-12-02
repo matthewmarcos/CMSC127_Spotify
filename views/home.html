@@ -103,23 +103,21 @@
 	<!-- End Navigation Here! -->
 <!-- End Left sidebar Here! -->
 
-	<!-- Main Div to change -->
 	<div style="margin-left:20%">
-		<!-- Search bar goes here -->			
-		<div class="section brown darken-4" id="normal-banner">
-			<div ng-controller="ProfileCtrl" >
-				<h4  id="logo-container" class="white-text rightify header">{{user.username}}</h4>
+			<!-- Search bar goes here -->			
+			<div class="section brown darken-4" id="normal-banner">
+				<div ng-controller="ProfileCtrl" >
+					<h4  id="logo-container" class="white-text rightify header">{{user.username}}</h4>
+				</div>
 			</div>
-		</div>
-	<!-- End of main navbar -->
-		<!-- Start of main div -->
-		<div>
-			<div ng-view></div>
-			<!-- ng-view goes here -->
-		</div>
-		<!-- End of main Div -->			
+		<!-- End of main navbar -->
+			<!-- Start of main div -->
+			<div>
+				<div ng-view></div>
+				<!-- ng-view goes here -->
+			</div>
+			<!-- End of main Div -->			
 	</div>
-<!--  end of main div -->
 </div>
 </body>
 <!--==========================================SCRIPTS============================================= -->
